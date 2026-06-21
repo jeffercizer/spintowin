@@ -125,8 +125,8 @@ func get_slice_from_bucket(bucket_index: int) -> int:
 
 
 signal spin_started
-var experience_to_level_up = 0
-var experience = 0
+var experience_to_level_up = 0.0
+var experience = 0.0
 var base_experience_to_level_up = 100
 var level = 1
 var total_buckets = 0.0

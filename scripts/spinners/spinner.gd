@@ -3,8 +3,8 @@ extends SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_experience_to_level_up = 100
-    experience_to_level_up = base_experience_to_level_up * level
+    base_experience_to_level_up = 25
+    experience_to_level_up = base_experience_to_level_up * (level * level * level)
     machine_curve = {
         "luck_cap": 10,
         "thresholds": [
@@ -19,12 +19,12 @@ func _ready() -> void:
     add_slice("Win", winMaterial, 1.0, Callable(self, "default_win")) 
     add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     add_slice("Win", winMaterial, 1.0, Callable(self, "default_win")) 
-    add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     add_slice("Win", winMaterial, 1.0, Callable(self, "default_win")) 
     add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     add_slice("Win", winMaterial, 1.0, Callable(self, "default_win")) 
     add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     add_slice("Jackpot", jackpotMaterial, 1.0, Callable(self, "default_jackpot")) 
+    add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     super._ready()
     
     
@@ -36,6 +36,8 @@ func _ready() -> void:
 @export var winLabel: Label3D
 @export var loseLabel: Label3D
 @export var jackpotLabel: Label3D
+
+@export var level_label: Label3D
 
 @export var loseSound: AudioStream
 @export var winSound: AudioStream
@@ -64,17 +66,29 @@ func _on_spin_requested() -> void:
     
 func add_experience(amount):
     experience += amount
-    #level_up_bar.material_override.set("shader_parameter/progress", experience)
+    var mat := level_up_bar.get_active_material(0)
+
     if(experience >= experience_to_level_up):
         experience -= experience_to_level_up
         level += 1
         experience_to_level_up = base_experience_to_level_up * (level * level)
-        winLabel.text = "= Win " + str(int(5 * pow(1.1, level-1))) + "$"
-        jackpotLabel.text = "= Win " + str(int(5000 * pow(1.1, level-1))) + "$"
+        winLabel.text = "= Win " + str(get_win_amount()) + "$"
+        jackpotLabel.text = "= Win " + str(get_jackpot_amount()) + "$"
+        
+    mat.set_shader_parameter("progress", experience/experience_to_level_up)
+    level_label.text = str(level)
 
+
+
+func get_win_amount():
+    return int(5 * pow(1.5, level-1))
+    
+func get_jackpot_amount():
+    return int(500 * pow(1.5, level-1))
+    
 #wheel specific callbacks
 func default_win():
-    var reward = int(5 * pow(1.1, level-1))
+    var reward = get_win_amount()
     Globals.update_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
@@ -88,7 +102,7 @@ func default_lose():
     pass
     
 func default_jackpot():
-    var reward = int(500 * pow(1.1, level-1))
+    var reward = get_jackpot_amount()
     Globals.update_money(reward)
     add_experience(reward)
     wheelSound.stream = jackpotSound

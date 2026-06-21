@@ -217,7 +217,7 @@ shader = ExtResource("24_0cp0l")
 shader_parameter/albedo_tex = ExtResource("25_f6a44")
 shader_parameter/noise_color = Color(0.6244108, 0.46754545, 0.25378835, 1)
 shader_parameter/strength = -0.16499996033749997
-shader_parameter/noise_scale = 2.9050000000000002
+shader_parameter/noise_scale = 2.905
 shader_parameter/noise_amount = 0.25
 shader_parameter/blank_threshold = 0.05
 
@@ -564,6 +564,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_3vcib")
 transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.0043764114, 0)
 mesh = SubResource("PlaneMesh_4x2dv")
 surface_material_override/0 = SubResource("ShaderMaterial_c5vbb")
+
+[node name="Label3D" type="Label3D" parent="BasicSpinner/spinnerStand/Node3D/MeshInstance3D" unique_id=1955144871]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.5952457, 0, -0.017909914)
+modulate = Color(1, 0.8509804, 0, 1)
+text = "1"
+font_size = 20
+horizontal_alignment = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="BasicSpinner" unique_id=1941860387]
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, -0.4157133, -3.4141827)
