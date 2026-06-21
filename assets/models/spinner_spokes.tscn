@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dpdfps788iefd"]
+
+[ext_resource type="PackedScene" uid="uid://nj4u8f580wpa" path="res://imports/spinner_spokes.blend" id="1_xghyl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7rpy"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="spinner_spokes" unique_id=973009659 instance=ExtResource("1_xghyl")]
+
+[node name="Spokes" parent="." index="0" unique_id=2191386]
+surface_material_override/0 = SubResource("StandardMaterial3D_y7rpy")

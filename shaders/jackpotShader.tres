@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dslca1mj83m5n"]
+
+[ext_resource type="Shader" uid="uid://blqt4q85yb3d3" path="res://shaders/jackpotShader.gdshader" id="1_w0rhm"]
+
+[resource]
+shader = ExtResource("1_w0rhm")
+shader_parameter/GDT_MOUSE_POS = Vector2(0, 0)
+shader_parameter/segments = 16
+shader_parameter/shear = 1

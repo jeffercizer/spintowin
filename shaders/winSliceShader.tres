@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c70p2p75fm1p1"]
+
+[ext_resource type="Shader" uid="uid://cc4s536pc3a0y" path="res://shaders/winSliceShader.gdshader" id="1_mtnc0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mtnc0")

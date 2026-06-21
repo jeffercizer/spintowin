@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bk60x4f6manwn"]
+
+[ext_resource type="Shader" uid="uid://cpyg5yr2yx04s" path="res://shaders/loseSliceShader.gdshader" id="1_7gwef"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7gwef")

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ca0me356osair"]
+
+[node name="SpinnerPaytable" type="SubViewport" unique_id=1449168404]
+
+[node name="Control" type="Control" parent="." unique_id=1506663510]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

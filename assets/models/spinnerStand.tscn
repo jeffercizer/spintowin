@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ywttdoqf1a3j"]
+
+[ext_resource type="PackedScene" uid="uid://bbhwb5ua04cnv" path="res://imports/spinnerStand.blend" id="1_jb48o"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fa8fu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cugr6"]
+noise = SubResource("FastNoiseLite_fa8fu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2235i"]
+albedo_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
+metallic = 0.37
+roughness_texture = SubResource("NoiseTexture2D_cugr6")
+
+[node name="spinnerStand" unique_id=1397979777 instance=ExtResource("1_jb48o")]
+
+[node name="Cube" parent="." index="0" unique_id=1808991422]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_2235i")

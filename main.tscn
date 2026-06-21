@@ -1,0 +1,452 @@
+[gd_scene format=3 uid="uid://dvy58mldtl2g3"]
+
+[ext_resource type="Script" uid="uid://bllumecclay1e" path="res://scripts/camera_controls.gd" id="1_7mycd"]
+[ext_resource type="Shader" uid="uid://cpfm744omjavh" path="res://shaders/light_fog.gdshader" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bf7f3rctc75sj" path="res://scripts/spinners/spinner.gd" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://c0ab5op74irqq" path="res://imports/Spinning Wheel.mp3" id="3_5vw27"]
+[ext_resource type="Material" uid="uid://c70p2p75fm1p1" path="res://shaders/winSliceShader.tres" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ywttdoqf1a3j" path="res://assets/models/spinnerStand.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dpdfps788iefd" path="res://assets/models/spinner_spokes.tscn" id="6_272bh"]
+[ext_resource type="Material" uid="uid://bk60x4f6manwn" path="res://shaders/loseSliceShader.tres" id="6_kek77"]
+[ext_resource type="Material" uid="uid://dslca1mj83m5n" path="res://shaders/jackpotShader.tres" id="8_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://bjr8305vw0t1m" path="res://assets/models/disc.tscn" id="9_getpj"]
+[ext_resource type="Script" uid="uid://bgw86brgbb1xf" path="res://scripts/ui/money_label.gd" id="10_4c57u"]
+[ext_resource type="Script" uid="uid://cb0gml23rfbsb" path="res://scripts/upgrades/luck_button.gd" id="10_efxa6"]
+[ext_resource type="Script" uid="uid://dravr3xtqis6s" path="res://scripts/upgrades/cheat_button.gd" id="11_dg77c"]
+[ext_resource type="Shader" uid="uid://0emai4uigxmu" path="res://shaders/level_up_bar.gdshader" id="11_ryguw"]
+[ext_resource type="StyleBox" uid="uid://brccuutf40n4g" path="res://assets/moneyBG.tres" id="12_ycdy4"]
+[ext_resource type="Script" uid="uid://dp04qy1lvf2fo" path="res://scripts/upgrades/percise_button.gd" id="13_vivmo"]
+[ext_resource type="Script" uid="uid://ca1clinko1ryp" path="res://scripts/upgrades/friction_button.gd" id="14_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://x8ntk187mise" path="res://assets/CursorOutline/hand_thin_open.png" id="16_yaehf"]
+[ext_resource type="Script" uid="uid://ccsvssk1exda6" path="res://mouse_cursor.gd" id="17_074og"]
+[ext_resource type="Texture2D" uid="uid://bm71rq3brkuyh" path="res://assets/CursorOutline/hand_thin_small_open.png" id="18_82xsv"]
+[ext_resource type="Texture2D" uid="uid://dipc4hssarvo6" path="res://assets/CursorOutline/hand_thin_closed.png" id="19_getpj"]
+[ext_resource type="Texture2D" uid="uid://547tcos5negw" path="res://assets/CursorOutline/hand_thin_point.png" id="20_ryguw"]
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lquwl"]
+
+[sub_resource type="Compositor" id="Compositor_7mycd"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_272bh"]
+top_radius = 0.0
+bottom_radius = 2.4
+height = 5.2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ig7tw"]
+frequency = 0.0508
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0xm2m"]
+noise = SubResource("FastNoiseLite_ig7tw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
+render_priority = 0
+shader = ExtResource("1_ig7tw")
+shader_parameter/fog_color = Color(0.30593374, 0.31625664, 0.323071, 1)
+shader_parameter/density = 1.0
+shader_parameter/edge_softness = 2.0
+shader_parameter/noise_strength = 0.2
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_0xm2m")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pet1e"]
+size = Vector2(1.4, 1.445)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c5vbb"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vchc8"]
+size = Vector2(1.4, 1.445)
+
+[sub_resource type="PrismMesh" id="PrismMesh_pet1e"]
+size = Vector3(0.04, 0.22, 0.035)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5vbb"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0xm2m"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.01
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pet1e"]
+height = 0.20874023
+radius = 0.9975586
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4x2dv"]
+size = Vector2(1.155, 0.11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vcib"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5vbb"]
+render_priority = 0
+shader = ExtResource("11_ryguw")
+shader_parameter/progress = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_82xsv"]
+offsets = PackedFloat32Array(0, 0.008547009)
+colors = PackedColorArray(0, 0, 0, 1, 3.7541986e-06, 0.6532019, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pet1e"]
+gradient = SubResource("Gradient_82xsv")
+
+[sub_resource type="Gradient" id="Gradient_getpj"]
+offsets = PackedFloat32Array(0, 0.008547009)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c5vbb"]
+gradient = SubResource("Gradient_getpj")
+
+[node name="Node3D" type="Node3D" unique_id=1543989762]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=559226723]
+transform = Transform3D(1, 0, 0, 0, 0.9945962, 0.1038198, 0, -0.1038198, 0.9945962, 0, 1.7, -0.33787847)
+fov = 60.0
+script = ExtResource("1_7mycd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=288587808]
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Camera3D" unique_id=1112598894]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.1419071, 0, 0)
+
+[node name="World+Lighting" type="Node3D" parent="." unique_id=909221017]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World+Lighting" unique_id=1683055118]
+environment = SubResource("Environment_1bvp3")
+camera_attributes = SubResource("CameraAttributesPractical_lquwl")
+compositor = SubResource("Compositor_7mycd")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World+Lighting" unique_id=1941860387]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.0691824, -3.5586882)
+light_energy = 14.38
+spot_range = 7.021844
+spot_angle = 26.91444
+
+[node name="Conefog" type="MeshInstance3D" parent="World+Lighting/SpotLight3D" unique_id=883512700]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.0030046701, -0.0048274994, -2.5649164)
+visible = false
+mesh = SubResource("CylinderMesh_272bh")
+surface_material_override/0 = SubResource("ShaderMaterial_5vw27")
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1134405060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0031502247, -0.0038282871, 0.007668495)
+mesh = SubResource("PlaneMesh_0xm2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+
+[node name="SpinnerRoot" type="Node3D" parent="." unique_id=31207460]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.655, -3.142975)
+
+[node name="win_board" type="MeshInstance3D" parent="SpinnerRoot" unique_id=1281261778]
+transform = Transform3D(1, 0, 0, 0, 0.97606933, 0.21745971, 0, -0.21745971, 0.97606933, -1.4878381, -0.06302571, 0.91974705)
+mesh = SubResource("PlaneMesh_pet1e")
+
+[node name="Label3D" type="Label3D" parent="SpinnerRoot/win_board" unique_id=877474657]
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, 1.0000002, 0, -1.0000002, -2.9802322e-08, 0.055963635, 0.038000107, -0.5)
+text = "= Win 5$"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpinnerRoot/win_board" unique_id=932778169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46403635, 0.05699992, -0.5)
+mesh = SubResource("PlaneMesh_c5vbb")
+surface_material_override/0 = ExtResource("5_5vw27")
+
+[node name="Label3D2" type="Label3D" parent="SpinnerRoot/win_board" unique_id=1208534163]
+transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, 1.0000002, 0, -1.0000002, -2.9802322e-08, 0.055963635, 0.038000107, -0.19999993)
+text = "= Lose 5$"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpinnerRoot/win_board" unique_id=1819760917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46403635, 0.05700016, -0.19999993)
+mesh = SubResource("PlaneMesh_c5vbb")
+surface_material_override/0 = ExtResource("6_kek77")
+
+[node name="Label3D3" type="Label3D" parent="SpinnerRoot/win_board" unique_id=1748419990]
+transform = Transform3D(1, 0, 0, 0, -1.4901161e-08, 1.0000004, 0, -1.0000004, -1.4901161e-08, -0.29840326, 0.052000523, 0.100000024)
+text = "= Win 5000$"
+horizontal_alignment = 0
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpinnerRoot/win_board" unique_id=378916903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46403635, 0.052000284, 0.100000024)
+mesh = SubResource("PlaneMesh_c5vbb")
+surface_material_override/0 = ExtResource("8_2cqfq")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SpinnerRoot/win_board" unique_id=865909554]
+transform = Transform3D(1, 0, 0, 0, 0.8380919, -0.5455292, 0, 0.5455292, 0.8380919, 0, -0.40623593, -0.11225307)
+mesh = SubResource("PlaneMesh_vchc8")
+
+[node name="Ticker" type="MeshInstance3D" parent="SpinnerRoot" unique_id=1206464607]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.064, -0.956)
+mesh = SubResource("PrismMesh_pet1e")
+surface_material_override/0 = SubResource("StandardMaterial3D_c5vbb")
+
+[node name="WheelSound" type="AudioStreamPlayer3D" parent="SpinnerRoot" unique_id=417439744]
+stream = ExtResource("3_5vw27")
+
+[node name="Spinner" type="MeshInstance3D" parent="SpinnerRoot" unique_id=434319779 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "wheelSound")]
+transform = Transform3D(-0.05233594, 0, 0.9986296, 0, 1.0000001, 0, -0.9986295, 0, -0.052335948, 0, 0, 0)
+mesh = SubResource("CylinderMesh_0xm2m")
+script = ExtResource("2_0xm2m")
+winMaterial = ExtResource("5_5vw27")
+loseMaterial = ExtResource("6_kek77")
+jackpotMaterial = ExtResource("8_2cqfq")
+winLabel = NodePath("../win_board/Label3D")
+loseLabel = NodePath("../win_board/Label3D2")
+jackpotLabel = NodePath("../win_board/Label3D3")
+wheelSound = NodePath("../WheelSound")
+
+[node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerRoot/Spinner" unique_id=2028052762]
+transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpinnerRoot/Spinner/SpinnerCollision" unique_id=1574591398]
+transform = Transform3D(1, 0, 0, 0, 0.93679696, -0.34982932, 0, 0.34982932, 0.93679696, 0, 0.06288576, -0.19317102)
+shape = SubResource("CylinderShape3D_pet1e")
+
+[node name="SpinnerAux" type="Node3D" parent="SpinnerRoot/Spinner" unique_id=1516214368]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15, 0.9999999, 0, 0, 0)
+
+[node name="spinner_spokes" parent="SpinnerRoot/Spinner/SpinnerAux" unique_id=973009659 instance=ExtResource("6_272bh")]
+
+[node name="disc" parent="SpinnerRoot/Spinner/SpinnerAux" unique_id=1693227549 instance=ExtResource("9_getpj")]
+transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
+
+[node name="spinnerStand" parent="SpinnerRoot" unique_id=1397979777 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.655)
+
+[node name="Node3D" type="Node3D" parent="SpinnerRoot/spinnerStand" unique_id=863962928]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpinnerRoot/spinnerStand/Node3D" unique_id=1904127463]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.12248886, 0.06763047, 0.72433186)
+mesh = SubResource("PlaneMesh_4x2dv")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vcib")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpinnerRoot/spinnerStand/Node3D/MeshInstance3D" unique_id=423258307]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.0043764114, 0)
+mesh = SubResource("PlaneMesh_4x2dv")
+surface_material_override/0 = SubResource("ShaderMaterial_c5vbb")
+
+[node name="FullScreenControl" type="Control" parent="." unique_id=501383404]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="FullHBox" type="HBoxContainer" parent="FullScreenControl" unique_id=1332413225]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftSidePanel" type="PanelContainer" parent="FullScreenControl/FullHBox" unique_id=1437004415]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_w48qg")
+
+[node name="LeftSideVBox" type="VBoxContainer" parent="FullScreenControl/FullHBox/LeftSidePanel" unique_id=1925285499]
+layout_mode = 2
+
+[node name="MachineUpgrades" type="VBoxContainer" parent="FullScreenControl/FullHBox/LeftSidePanel/LeftSideVBox" unique_id=2024783076]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullScreenControl/FullHBox" unique_id=2758177]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="FullScreenControl/FullHBox/VBoxContainer" unique_id=1710893289]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer" unique_id=5402827]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=151738839]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer" unique_id=1230519981]
+custom_minimum_size = Vector2(0, 95.66)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("GradientTexture1D_pet1e")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=474172125]
+layout_mode = 2
+text = "= Gain 5$"
+
+[node name="MarginContainer2" type="MarginContainer" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1699889470]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
+
+[node name="TextureRect" type="TextureRect" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer2" unique_id=1973404248]
+custom_minimum_size = Vector2(0, 95.66)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = SubResource("GradientTexture1D_c5vbb")
+expand_mode = 2
+
+[node name="Label2" type="Label" parent="FullScreenControl/FullHBox/VBoxContainer/PanelContainer/HBoxContainer" unique_id=1811183504]
+layout_mode = 2
+text = "= Lose 5$"
+
+[node name="RightSideVBox" type="VBoxContainer" parent="FullScreenControl/FullHBox" unique_id=1970482351]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1405394001]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MoneyPanel" type="PanelContainer" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer" unique_id=719059284]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("12_ycdy4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel" unique_id=1512365729]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel/HBoxContainer" unique_id=693636396]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82907015, 0.6221823, 7.70092e-07, 1)
+text = "Money: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel/HBoxContainer" unique_id=2077027660]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.62352943, 0, 1)
+text = "-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_4c57u")
+
+[node name="Control" type="Control" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1018789146]
+custom_minimum_size = Vector2(0, 55.485)
+layout_mode = 2
+
+[node name="UpgradesLabel" type="Label" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1457936111]
+layout_mode = 2
+text = "Upgrades"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrades" type="VBoxContainer" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1509004413]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheatMargin" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades" unique_id=115644212]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="CheatButton" type="Button" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades/CheatMargin" unique_id=647634550]
+layout_mode = 2
+text = "Place Holder
+$ -1
+Lvl -1"
+alignment = 0
+expand_icon = true
+script = ExtResource("11_dg77c")
+
+[node name="LuckMargin" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades" unique_id=1970743989]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="LuckButton" type="Button" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades/LuckMargin" unique_id=1547501900]
+visible = false
+layout_mode = 2
+text = "Place Holder
+$ -1
+Lvl -1"
+alignment = 0
+expand_icon = true
+script = ExtResource("10_efxa6")
+
+[node name="SpeedMargin" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades" unique_id=849468617]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="SpeedButton" type="Button" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades/SpeedMargin" unique_id=1891565377]
+visible = false
+layout_mode = 2
+text = "Place Holder
+$ -1
+Lvl -1"
+alignment = 0
+expand_icon = true
+script = ExtResource("14_2cqfq")
+
+[node name="PerciseSpinMargin" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades" unique_id=195051605]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PerciseSpinButton" type="Button" parent="FullScreenControl/FullHBox/RightSideVBox/Upgrades/PerciseSpinMargin" unique_id=1388481128]
+visible = false
+layout_mode = 2
+text = "Place Holder
+$ -1
+Lvl -1"
+alignment = 0
+expand_icon = true
+script = ExtResource("13_vivmo")
+
+[node name="MouseCursor" type="TextureRect" parent="." unique_id=585371926]
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+texture = ExtResource("16_yaehf")
+script = ExtResource("17_074og")
+open_hand = ExtResource("18_82xsv")
+closed_hand = ExtResource("19_getpj")
+finger_hand = ExtResource("20_ryguw")
+
+[connection signal="button_up" from="FullScreenControl/FullHBox/RightSideVBox/Upgrades/CheatMargin/CheatButton" to="FullScreenControl/FullHBox/RightSideVBox/Upgrades/CheatMargin/CheatButton" method="_on_button_up"]
+[connection signal="button_up" from="FullScreenControl/FullHBox/RightSideVBox/Upgrades/LuckMargin/LuckButton" to="." method="_on_luck_button_button_up"]
+[connection signal="button_up" from="FullScreenControl/FullHBox/RightSideVBox/Upgrades/LuckMargin/LuckButton" to="FullScreenControl/FullHBox/RightSideVBox/Upgrades/LuckMargin/LuckButton" method="_on_button_up"]
+[connection signal="button_up" from="FullScreenControl/FullHBox/RightSideVBox/Upgrades/SpeedMargin/SpeedButton" to="FullScreenControl/FullHBox/RightSideVBox/Upgrades/SpeedMargin/SpeedButton" method="_on_button_up"]
+[connection signal="button_up" from="FullScreenControl/FullHBox/RightSideVBox/Upgrades/PerciseSpinMargin/PerciseSpinButton" to="FullScreenControl/FullHBox/RightSideVBox/Upgrades/PerciseSpinMargin/PerciseSpinButton" method="_on_button_up"]

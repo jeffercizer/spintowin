@@ -1,0 +1,364 @@
+extends MeshInstance3D
+class_name SpinnerBase
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    experience_to_level_up = base_experience_to_level_up * level
+    
+var machine_curve
+
+@export var wheelSound: AudioStreamPlayer3D
+var spin_speed = 4.0
+var want_to_rebuild
+var _rebuild_luck_store = 0
+var seconds_to_adjust = 0
+var rotated_clockwise = false
+
+var spin_threshold = 5.0
+
+var wheel_angular_velocity = 0.0
+var damping = 0.98
+var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not this (base * level)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    if(want_spin): #we spin
+        wheel_angular_velocity = 0.0
+        #friction calculation
+        if fudging:
+            var force = 0.0
+            var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0) #more torque the further from center up to a point
+            torque_multi = torque_multi * 8
+            var angle = get_mouse_angle()
+            if angle != null and last_mouse_angle != null:
+                var diff = wrapf(angle - last_mouse_angle, -PI, PI)
+                force = diff * torque_multi #increase by mouse
+            last_mouse_angle = angle
+            
+            var fudging_spin = false
+            if((force < 0 and rotated_clockwise) or (force > 0 and not rotated_clockwise)):
+                fudging_spin = true
+        
+            #we now use force to adjust seconds_to_spin
+            var effective_time = max(seconds_to_spin, 1.0)
+            var fudge = abs(force * fudging_base_strength * Globals.spin_friction * effective_time * delta)
+            if(fudging_spin):
+                seconds_to_spin = max(seconds_to_spin - fudge, 0.0)
+            else:
+                seconds_to_spin = max(seconds_to_spin + fudge, 0.0)
+            seconds_to_spin = min(seconds_to_spin, 10.0)
+        #end friction calc
+            
+        if(rotated_clockwise):
+            rotate_y((spin_speed * delta * ((seconds_to_spin*seconds_to_spin)/16)))
+        else:
+            rotate_y(-1 * (spin_speed * delta * ((seconds_to_spin*seconds_to_spin)/16)))
+        seconds_to_spin -= delta
+        if(seconds_to_spin <= 0): #we finish spinning
+            want_spin = false
+            seconds_to_adjust = 0.5
+            
+    elif(seconds_to_adjust > 0): #we settle
+        wheel_angular_velocity = 0.0
+        var target_adjustment_rad = deg_to_rad(snap_to_bucket_signed(rotation_degrees.y))
+        var step = target_adjustment_rad * (delta / seconds_to_adjust)
+        #prevent massive overshooting
+        if abs(step) > abs(target_adjustment_rad):
+            step = target_adjustment_rad
+        rotate_y(step)
+        seconds_to_adjust -= delta
+        if(seconds_to_adjust <= 0.0): #we score
+            result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y))
+            slices[result_slice].callback.call()
+            
+    elif dragging: #we spin the wheel with the mouse
+        var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0)
+        torque_multi = torque_multi * 8
+        var angle = get_mouse_angle()
+        if angle != null and last_mouse_angle != null:
+            var diff = wrapf(angle - last_mouse_angle, -PI, PI)
+            drag_angular_velocity = diff / delta  # radians/sec
+            rotation.y += wheel_angular_velocity * delta
+            wheel_angular_velocity *= damping #natural slow
+            wheel_angular_velocity += diff * torque_multi #increase by mouse
+        last_mouse_angle = angle   
+    elif abs(wheel_angular_velocity) > 0.0001: #we spin the wheel for fun
+        rotate_y(wheel_angular_velocity * delta)
+        wheel_angular_velocity *= damping
+            
+            
+    if(Globals.luck != _rebuild_luck_store): #rebuild wheel when luck gets updated
+        rebuild_spinner()
+        _rebuild_luck_store = Globals.luck
+             
+func bias_angle(angle_deg):
+    var biased_angle = angle_deg
+    if(rotated_clockwise): #give the ticker a bit of a snapback effect based on the way it spinned
+        biased_angle -= 1.0
+    else:
+        biased_angle += 1.0
+    return biased_angle
+    
+func snap_to_bucket_signed(angle_deg: float) -> float:   #TODO bug where is flips around the axis of -180 to 180 or something
+    var biased_angle = bias_angle(angle_deg)
+    var center = 6.0 * round((biased_angle - 3.0) / 6.0) + 3.0
+    #rotate_y snaps from -180 to 180
+    center = fposmod(center + 180.0, 360.0) - 180.0
+    return center - angle_deg
+    
+func get_bucket_index(angle_deg: float) -> int:
+    var biased_angle = bias_angle(angle_deg-90.0) #adjust by 90 because idk DANGER
+    var idx = round((biased_angle - 3.0) / 6.0)
+    return wrapi(idx, 0, 60)
+    
+func get_slice_from_bucket(bucket_index: int) -> int:
+    var running = 0
+    for i in slices.size():
+        var count = slices[i].buckets
+        if bucket_index < running + count:
+            return i
+        running += count
+    return -1 
+
+
+
+signal spin_started
+var experience_to_level_up = 0
+var experience = 0
+var base_experience_to_level_up = 100
+var level = 1
+var total_buckets = 0.0
+var want_spin = false
+var seconds_to_spin = 0.0
+var chosen_angle = 0
+var target_rad = 0
+var result_slice = 0
+var result_bucket = 0
+
+func start_spin():    
+    chosen_angle = randi() % 360 #pick somewhere on the circle
+    want_spin = true
+    var full_spin_rads = TAU*8 * pow(0.9, Globals.spin_percision) #8 full spins + our target
+    target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
+    #print(target_rad)
+    seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement
+    
+    wheelSound.pitch_scale = 9.2 / seconds_to_spin #just a temp thing to make it less sad
+    wheelSound.play()
+    
+func compute_spin_time(target_angle):
+    return pow((48.0 * target_angle) / spin_speed, 1.0/3.0)
+      
+func deg_to_rad(deg: float) -> float:
+    return deg * (TAU / 360.0)
+    
+func rad_to_deg(rad: float) -> float:
+    return rad * (360.0 / TAU)
+
+
+func _on_spin_requested():
+    if(want_spin):
+        return #we are already spinning
+    emit_signal("spin_started")
+    start_spin()
+  
+var slices = []
+
+#mouse drag and friction code
+var dragging = false
+var fudging = false
+var last_mouse_angle = null
+var drag_angular_velocity = 0.0
+var cam_ref
+var mouse_distance = 0.0
+func get_mouse_angle() -> float:
+    var mouse_pos = get_viewport().get_mouse_position()
+    var wheel_screen_pos = cam_ref.unproject_position(global_transform.origin)
+    var v = mouse_pos - wheel_screen_pos
+    mouse_distance = v.length()
+    return atan2(v.x, v.y)
+
+func stop_dragging():
+    if(dragging):
+        dragging = false
+        Globals.mouse_dragging = false
+        check_for_spin()
+        
+func stop_fudging():
+    if(fudging):
+        Globals.mouse_fudging = false
+        fudging = false
+
+
+func check_for_spin():
+    print(drag_angular_velocity)
+    if abs(wheel_angular_velocity) > spin_threshold:
+        if(wheel_angular_velocity > 0.0):
+            rotated_clockwise = true
+        else:
+            rotated_clockwise = false
+        _on_spin_requested()
+    
+    
+#end mouse drag
+
+#mesh creation code below here
+func add_slice(label, material, weight, callback):
+    slices.append({
+        "label": label, #label must be unique in the case of removing slices
+        "material": material,
+        "base_weight": weight,
+        "weight": weight,
+        "buckets": 0,
+        "callback": callback
+    })
+    rebuild_spinner()
+    
+func remove_slice(label):
+    slices = slices.filter(func(s): return s.label != label)
+    rebuild_spinner()
+
+
+func set_slices(new_slices):
+    slices = new_slices
+    rebuild_spinner()
+    
+
+func rebuild_spinner():
+    var arrayMesh = ArrayMesh.new()
+    arrayMesh.clear_surfaces()
+    print("rebuild")
+
+    var odds = get_machine_odds(machine_curve)
+    for slice in slices:
+        var label = slice.label
+        if odds.has(label):
+            print(label + " " + str(odds[label]))
+            slice.weight = odds[label]
+        else:
+            slice.weight = slice.base_weight #just in case idk
+            
+    total_buckets = 60.0
+    allocate_buckets()
+
+        
+    for s in slices:
+        print(s.label, " → buckets: ", s.buckets)
+    print("Total buckets: " + str(total_buckets))
+    var radius = 1.0
+    var segments = 16
+
+    var angle = 0.0
+
+    for slice in slices:
+        var verts = PackedVector3Array()
+        var indices = PackedInt32Array()
+        #calculate per slice angle size
+        var slice_angle = TAU * (slice.buckets / total_buckets)
+
+        # center vert
+        verts.append(Vector3.ZERO)
+        #arc
+        for i in range(segments + 1):
+            var t = float(i) / segments
+            var a = angle + t * slice_angle
+            verts.append(Vector3(cos(a) * radius, 0, sin(a) * radius))
+        #triangle
+        for i in range(segments):
+            indices.append_array([
+                0,
+                i + 1,
+                i + 2 
+            ])
+
+        var normals = PackedVector3Array()
+        for v in verts:
+            normals.append(Vector3.UP) # or compute real normals
+            
+        var uvs = PackedVector2Array()
+
+        # Center UV
+        uvs.append(Vector2(0.5, 0.5))
+
+        for i in range(segments + 1):
+            var t = float(i) / segments
+            var a = angle + t * slice_angle
+
+            # Project onto square UV space
+            var ux = cos(a) * 0.5 + 0.5
+            var uy = sin(a) * 0.5 + 0.5
+
+            uvs.append(Vector2(ux, uy))
+
+
+
+
+        var arrays = []
+        arrays.resize(Mesh.ARRAY_MAX)
+        arrays[Mesh.ARRAY_VERTEX] = verts
+        arrays[Mesh.ARRAY_INDEX] = indices
+        arrays[Mesh.ARRAY_NORMAL] = normals
+        arrays[Mesh.ARRAY_TEX_UV] = uvs
+
+        var surface_index = arrayMesh.get_surface_count()
+        arrayMesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+        arrayMesh.surface_set_material(surface_index, slice.material)
+        angle += slice_angle
+
+
+    mesh = arrayMesh
+
+
+func get_machine_odds(curve: Dictionary):
+    var capped_luck = min(Globals.luck, curve.luck_cap)
+    var thresholds = curve.thresholds
+
+    var a = thresholds[0]
+    var b = thresholds[thresholds.size() - 1]
+
+    for i in range(thresholds.size() - 1):
+        if capped_luck >= thresholds[i].luck and capped_luck <= thresholds[i + 1].luck:
+            a = thresholds[i]
+            b = thresholds[i + 1]
+            break
+
+    var t = 0.0
+    if b.luck != a.luck:
+        t = (capped_luck - a.luck) / float(b.luck - a.luck)
+
+    var results = {}
+    for key in a.keys():
+        if key != "luck":
+            results[key] = lerp(a[key], b[key], t)
+
+    return results
+
+
+func allocate_buckets():
+    var total := 0.0
+    for s in slices:
+        total += s.weight
+
+    var fractional: Array[float] = []
+
+    for i in range(slices.size()):
+        var w = slices[i].weight
+        var exact = 60.0 * (w / total)
+        slices[i].buckets = int(round(exact))
+        fractional.append(exact - floor(exact))
+
+    var sum_buckets := 0
+    for s in slices:
+        sum_buckets += s.buckets
+        
+    while sum_buckets > 60:
+        var idx := fractional.find(fractional.max())
+        slices[idx].buckets -= 1
+        fractional[idx] = 0
+        sum_buckets -= 1
+        
+    while sum_buckets < 60:
+        var idx := fractional.find(fractional.max())
+        slices[idx].buckets += 1
+        fractional[idx] = 0
+        sum_buckets += 1
