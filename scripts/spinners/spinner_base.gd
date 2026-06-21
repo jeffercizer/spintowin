@@ -3,11 +3,13 @@ class_name SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    experience_to_level_up = base_experience_to_level_up * level
-    
+    pass
 var machine_curve
 
 @export var wheelSound: AudioStreamPlayer3D
+@export var tickerSound: AudioStreamPlayer3D
+@export var level_up_bar: MeshInstance3D
+
 var spin_speed = 4.0
 var want_to_rebuild
 var _rebuild_luck_store = 0
@@ -143,8 +145,8 @@ func start_spin():
     #print(target_rad)
     seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement
     
-    wheelSound.pitch_scale = 9.2 / seconds_to_spin #just a temp thing to make it less sad
-    wheelSound.play()
+    tickerSound.pitch_scale = 9.2 / seconds_to_spin #just a temp thing to make it less sad
+    tickerSound.play()
     
 func compute_spin_time(target_angle):
     return pow((48.0 * target_angle) / spin_speed, 1.0/3.0)
@@ -227,13 +229,11 @@ func set_slices(new_slices):
 func rebuild_spinner():
     var arrayMesh = ArrayMesh.new()
     arrayMesh.clear_surfaces()
-    print("rebuild")
 
     var odds = get_machine_odds(machine_curve)
     for slice in slices:
         var label = slice.label
         if odds.has(label):
-            print(label + " " + str(odds[label]))
             slice.weight = odds[label]
         else:
             slice.weight = slice.base_weight #just in case idk
@@ -241,10 +241,6 @@ func rebuild_spinner():
     total_buckets = 60.0
     allocate_buckets()
 
-        
-    for s in slices:
-        print(s.label, " → buckets: ", s.buckets)
-    print("Total buckets: " + str(total_buckets))
     var radius = 1.0
     var segments = 16
 
@@ -277,18 +273,31 @@ func rebuild_spinner():
             
         var uvs = PackedVector2Array()
 
-        # Center UV
-        uvs.append(Vector2(0.5, 0.5))
+        #full circle is the UV
+        #uvs.append(Vector2(0.5, 0.5))
+#
+        #for i in range(segments + 1):
+            #var t = float(i) / segments
+            #var a = angle + t * slice_angle
+#
+            ## Project onto square UV space
+            #var ux = cos(a) * 0.5 + 0.5
+            #var uy = sin(a) * 0.5 + 0.5
+#
+            #uvs.append(Vector2(ux, uy))
+            
+        #per slice UV
+        uvs.append(Vector2(0.5, 0.0))
 
         for i in range(segments + 1):
             var t = float(i) / segments
-            var a = angle + t * slice_angle
 
-            # Project onto square UV space
-            var ux = cos(a) * 0.5 + 0.5
-            var uy = sin(a) * 0.5 + 0.5
+            # Arc goes from left-bottom to right-bottom of texture
+            var ux = t
+            var uy = 1.0
 
             uvs.append(Vector2(ux, uy))
+
 
 
 

@@ -11,6 +11,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     position = get_viewport().get_mouse_position()
+    position.x -= 32
+    position.y -= 32
     if(Globals.mouse_dragging):
         texture = closed_hand
     elif(Globals.mouse_fudging):

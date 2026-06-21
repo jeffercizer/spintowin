@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjr8305vw0t1m"]
 
 [ext_resource type="PackedScene" uid="uid://lgb7wiq72unh" path="res://imports/disc.blend" id="1_45f4f"]
-[ext_resource type="Material" uid="uid://ch4kr4dkuw4p3" path="res://shaders/lolipop.tres" id="2_8e3k0"]
+[ext_resource type="Material" uid="uid://dslca1mj83m5n" path="res://shaders/jackpotShader.tres" id="2_8e3k0"]
 
 [node name="disc" unique_id=1693227549 instance=ExtResource("1_45f4f")]
 
-[node name="Cylinder" parent="." index="0" unique_id=367520493]
+[node name="Cylinder" parent="." index="0" unique_id=1127361032]
 surface_material_override/0 = ExtResource("2_8e3k0")

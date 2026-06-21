@@ -10,7 +10,8 @@ func _process(_delta: float) -> void:
     text = "Cheat
 $ "+str(cost)+"
 Lvl -1"
-
+var cheat_money = 10000
 func _on_button_up() -> void:
-    Globals.update_money(10000)
+    Globals.update_money(cheat_money)
+    cheat_money *= 10
         
