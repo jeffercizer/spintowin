@@ -106,16 +106,34 @@ func add_experience(amount):
         experience -= experience_to_level_up
         level += 1
         experience_to_level_up = base_experience_to_level_up * (level * level)
-        fish1Label.text = "= Win " + str(int(100 * pow(1.1, level-1))) + "$"
-        fish2Label.text = "= Win " + str(int(500 * pow(1.1, level-1))) + "$"
-        fish3Label.text = "= Win " + str(int(5000 * pow(1.1, level-1))) + "$"
-        fish4Label.text = "= Win " + str(int(20000 * pow(1.1, level-1))) + "$"
-        junk1Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
-        junk2Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
+        fish1Label.text = "= Win " + Globals.format_number(get_fish1_win_reward()) + "$"
+        fish2Label.text = "= Win " + Globals.format_number(get_fish2_win_reward()) + "$"
+        fish3Label.text = "= Win " + Globals.format_number(get_fish3_win_reward()) + "$"
+        fish4Label.text = "= Win " + Globals.format_number(get_fish4_win_reward()) + "$"
+        junk1Label.text = "= Lose " + Globals.format_number(get_junk1_win_reward()) + "$"
+        junk2Label.text = "= Lose " + Globals.format_number(get_junk2_win_reward()) + "$"
+
+func get_fish1_win_reward():
+    return 100 * pow(Globals.level_effect, level-1)
+    
+func get_fish2_win_reward():
+    return 500 * pow(Globals.level_effect, level-1)
+    
+func get_fish3_win_reward():
+    return 5000 * pow(Globals.level_effect, level-1)
+    
+func get_fish4_win_reward():
+    return 20000 * pow(Globals.level_effect, level-1)
+    
+func get_junk1_win_reward():
+    return -500
+    
+func get_junk2_win_reward():
+    return -500
 
 #wheel specific callbacks
 func fish1_win():
-    var reward = int(100 * pow(1.1, level-1))
+    var reward = get_fish1_win_reward()
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
@@ -123,7 +141,7 @@ func fish1_win():
     wheelSound.play()
     
 func fish2_win():
-    var reward = int(500 * pow(1.1, level-1))
+    var reward = get_fish2_win_reward()
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
@@ -131,7 +149,7 @@ func fish2_win():
     wheelSound.play()
     
 func fish3_win():
-    var reward = int(5000 * pow(1.1, level-1))
+    var reward = get_fish3_win_reward()
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
@@ -139,7 +157,7 @@ func fish3_win():
     wheelSound.play()
     
 func fish4_win():
-    var reward = int(20000 * pow(1.1, level-1))
+    var reward = get_fish4_win_reward()
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
@@ -147,7 +165,7 @@ func fish4_win():
     wheelSound.play()
     
 func junk1_lose():
-    var reward = int(-500 * pow(0.9, level-1))
+    var reward = get_junk1_win_reward()
     add_money(reward)
     wheelSound.stream = loseSound
     tickerSound.stop()
@@ -155,7 +173,7 @@ func junk1_lose():
     pass
     
 func junk2_lose():
-    var reward = int(-500 * pow(0.9, level-1))
+    var reward = get_junk2_win_reward()
     add_money(reward)
     wheelSound.stream = loseSound
     tickerSound.stop()

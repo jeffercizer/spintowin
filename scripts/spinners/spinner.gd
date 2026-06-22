@@ -25,6 +25,10 @@ func _ready() -> void:
     add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
     add_slice("Jackpot", jackpotMaterial, 1.0, Callable(self, "default_jackpot")) 
     add_slice("Lose", loseMaterial, 1.0, Callable(self, "default_lose"))
+    
+    winLabel.text = "= Win " + str(get_win_amount()) + "$"
+    jackpotLabel.text = "= Win " + str(get_jackpot_amount()) + "$"
+        
     super._ready()
     
     
@@ -80,10 +84,10 @@ func add_experience(amount):
 
 
 func get_win_amount():
-    return ((20 * pow(1.5, level-1)))
+    return ((20 * pow(Globals.level_effect, level-1)))
     
 func get_jackpot_amount():
-    return (400 * pow(1.5, level-1))
+    return (400 * pow(Globals.level_effect, level-1))
     
 #wheel specific callbacks
 func default_win():

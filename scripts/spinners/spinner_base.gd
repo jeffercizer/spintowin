@@ -16,6 +16,14 @@ var _rebuild_luck_store = 0
 var seconds_to_adjust = 0
 var rotated_clockwise = false
 
+var last_rotation_y := 0.0
+var active_spin_angular_velocity := 0.0
+
+func update_spinner_velocity(delta: float):
+    var current_rot = rotation.y
+    active_spin_angular_velocity = wrapf(current_rot - last_rotation_y, -PI, PI) / delta
+    last_rotation_y = current_rot
+
 
 var wheel_angular_velocity = 0.0
 var damping = 0.98
@@ -25,6 +33,7 @@ var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not
 func _process(delta: float) -> void:
     if(want_spin): #we spin
         wheel_angular_velocity = 0.0
+        update_spinner_velocity(delta)
         #friction calculation
         if fudging:
             var force = 0.0
@@ -35,6 +44,7 @@ func _process(delta: float) -> void:
                 var diff = wrapf(angle - last_mouse_angle, -PI, PI)
                 force = diff * torque_multi #increase by mouse
             last_mouse_angle = angle
+            
             
             var fudging_spin = false
             if((force < 0 and rotated_clockwise) or (force > 0 and not rotated_clockwise)):
@@ -139,6 +149,7 @@ var result_bucket = 0
 func start_spin():    
     chosen_angle = randi() % 360 #pick somewhere on the circle
     want_spin = true
+    Globals.total_spins += 1
     var full_spin_rads = TAU*8 * pow(0.9, Globals.spin_percision) #8 full spins + our target
     target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
     #print(target_rad)

@@ -8,7 +8,7 @@ var debug_mode = false
 var viewing_spinner = 1
 var max_viewable_spinner = 1
 var spinner_unlocks = [true, false, false, false]
-var spinner_buy_costs = [0, 25000, 6000000, 1000000000]
+var spinner_buy_costs = [0.0, 25000.0, 6000000.0, 1000000000.0]
     
 
 #spinner helpers
@@ -21,6 +21,9 @@ var luck = 1
 var spin_percision = 1
 var spin_friction = 1
 
+#15 -> each level makes it 50% larger, 1 -> 1.5 -> 2.25 etc
+var level_effect = 1.5 
+
 
 var mouse_fudging
 var mouse_dragging
@@ -31,6 +34,7 @@ func get_money():
     
 func update_money(value):
     money += value
+    total_earnings += value
     
     
 func format_number(n: float) -> String:
