@@ -16,14 +16,8 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
     if active_spinner and active_spinner.want_spin:
         mouse_pos = get_viewport().get_mouse_position()
-        if holding_m1 and raycast_hits_spinner(mouse_pos):
-            active_spinner.fudging = true
-            Globals.mouse_fudging = true
-        else:
-            active_spinner.stop_fudging()
 
-        
-            
+
     if (want_click):
         raycast_from_screen(mouse_pos)
         want_click = false

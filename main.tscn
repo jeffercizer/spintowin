@@ -23,7 +23,7 @@
 [ext_resource type="StyleBox" uid="uid://brccuutf40n4g" path="res://assets/moneyBG.tres" id="12_ycdy4"]
 [ext_resource type="Script" uid="uid://dp04qy1lvf2fo" path="res://scripts/upgrades/percise_button.gd" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://ca1clinko1ryp" path="res://scripts/upgrades/friction_button.gd" id="14_2cqfq"]
-[ext_resource type="Script" uid="uid://bs5goqvrvjs7s" path="res://spinner_buybutton.gd" id="15_xuqvo"]
+[ext_resource type="Script" uid="uid://bs5goqvrvjs7s" path="res://scripts/spinner_buybutton.gd" id="15_xuqvo"]
 [ext_resource type="ArrayMesh" uid="uid://bxjsjfvdd2a2o" path="res://assets/particles/coin.blend" id="16_abqjc"]
 [ext_resource type="Texture2D" uid="uid://bel2agisptisf" path="res://assets/fish/fishing_icons_64x64_4.png" id="16_come4"]
 [ext_resource type="Texture2D" uid="uid://x8ntk187mise" path="res://assets/CursorOutline/hand_thin_open.png" id="16_yaehf"]
@@ -613,6 +613,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_5vw27")
 
 [node name="coinrain" type="CPUParticles3D" parent="BasicSpinner" unique_id=1745945854]
 transform = Transform3D(0.0645704, -0.9978924, -0.0064336015, 0.9978174, 0.064652175, -0.013432666, 0.013820306, -0.005552175, 0.9998891, -0.008105844, -0.059821844, -1.7805597)
+visible = false
 material_override = SubResource("StandardMaterial3D_d24k0")
 amount = 500
 lifetime = 5.0
@@ -628,6 +629,7 @@ scale_amount_min = 0.1
 
 [node name="COINADO" type="CPUParticles3D" parent="BasicSpinner" unique_id=333429695]
 transform = Transform3D(0.92791855, -0.372783, 1.6294862e-08, 0.372783, 0.92791855, 3.150781e-09, -1.6294862e-08, 3.150781e-09, 1, 0.06932545, -0.022103786, -0.11891222)
+visible = false
 material_override = SubResource("StandardMaterial3D_d24k0")
 amount = 5002
 mesh = ExtResource("16_abqjc")

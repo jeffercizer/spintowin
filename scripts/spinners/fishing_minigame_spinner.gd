@@ -54,8 +54,8 @@ func _process(delta: float) -> void:
             var angle = get_mouse_angle()
             if angle != null and last_mouse_angle != null:
                 var diff = wrapf(angle - last_mouse_angle, -PI, PI)
-                drag_angular_velocity = diff / delta  # radians/sec
-                rotation.y += wheel_angular_velocity * delta
+                drag_angular_velocity = abs(diff) / delta  # radians/sec
+                rotate_y(wheel_angular_velocity * delta)
                 wheel_angular_velocity *= damping #natural slow
                 wheel_angular_velocity += diff * torque_multi #increase by mouse
             last_mouse_angle = angle   
@@ -68,6 +68,8 @@ func _process(delta: float) -> void:
         
         degrees_of_rotation_for_fish -= wheel_angular_velocity
         
+        if(degrees_of_rotation_for_fish >= max_degrees_for_fish):
+            degrees_of_rotation_for_fish = max_degrees_for_fish
         update_line()
         if(degrees_of_rotation_for_fish <= 0.0):
             #pull fish

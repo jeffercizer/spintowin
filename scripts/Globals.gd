@@ -3,6 +3,7 @@ extends Node
 
 #misc
 var total_spins = 0
+var total_earnings = 0 
 var debug_mode = false
 var viewing_spinner = 1
 var max_viewable_spinner = 1
@@ -15,7 +16,7 @@ var want_fishing_minigame = false
 
 
 #upgrades and info
-var money = 10
+var money: float = 10.0
 var luck = 1
 var spin_percision = 1
 var spin_friction = 1

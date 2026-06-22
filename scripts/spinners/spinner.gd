@@ -68,7 +68,7 @@ func add_experience(amount):
     experience += amount
     var mat := level_up_bar.get_active_material(0)
 
-    if(experience >= experience_to_level_up):
+    while(experience >= experience_to_level_up):
         experience -= experience_to_level_up
         level += 1
         experience_to_level_up = base_experience_to_level_up * (level * level)
@@ -81,10 +81,10 @@ func add_experience(amount):
 
 
 func get_win_amount():
-    return int(5 * pow(1.5, level-1))
+    return int(20 * pow(1.5, level-1))
     
 func get_jackpot_amount():
-    return int(500 * pow(1.5, level-1))
+    return int(400 * pow(1.5, level-1))
     
 #wheel specific callbacks
 func default_win():

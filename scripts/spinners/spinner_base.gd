@@ -16,7 +16,6 @@ var _rebuild_luck_store = 0
 var seconds_to_adjust = 0
 var rotated_clockwise = false
 
-var spin_threshold = 5.0
 
 var wheel_angular_velocity = 0.0
 var damping = 0.98
@@ -191,10 +190,11 @@ func stop_fudging():
         Globals.mouse_fudging = false
         fudging = false
 
+var spin_threshold = 20.0
 
 func check_for_spin():
     print(drag_angular_velocity)
-    if abs(wheel_angular_velocity) > spin_threshold:
+    if abs(wheel_angular_velocity) > spin_threshold - min(spin_threshold-5,(1 * Globals.spin_friction)):
         if(wheel_angular_velocity > 0.0):
             rotated_clockwise = true
         else:

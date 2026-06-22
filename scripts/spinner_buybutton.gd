@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    if(able_to_buy == false and Globals.money >= Globals.spinner_buy_costs[spinner_id-1]/2.0):
+    if(able_to_buy == false and Globals.total_earnings >= Globals.spinner_buy_costs[spinner_id-1]/2.0):
         able_to_buy = true
         buy_button_ui.visible = true
         if(Globals.max_viewable_spinner < spinner_id):

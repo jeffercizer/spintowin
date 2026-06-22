@@ -3,7 +3,7 @@ extends upgrade_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_cost = 15
+    base_cost = 15.0
     exponential = 4
     super._ready()
 
