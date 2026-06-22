@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://dp04qy1lvf2fo" path="res://scripts/upgrades/percise_button.gd" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://ca1clinko1ryp" path="res://scripts/upgrades/friction_button.gd" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://bs5goqvrvjs7s" path="res://spinner_buybutton.gd" id="15_xuqvo"]
-[ext_resource type="ArrayMesh" uid="uid://bxjsjfvdd2a2o" path="res://assets/particles/coin.blend" id="16_abqjc"]
 [ext_resource type="Texture2D" uid="uid://bel2agisptisf" path="res://assets/fish/fishing_icons_64x64_4.png" id="16_come4"]
 [ext_resource type="Texture2D" uid="uid://x8ntk187mise" path="res://assets/CursorOutline/hand_thin_open.png" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://ccsvssk1exda6" path="res://mouse_cursor.gd" id="17_074og"]
@@ -168,30 +167,9 @@ shader_parameter/edge_softness = 2.0
 shader_parameter/noise_strength = 0.2
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_0xm2m")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ggmtb"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1xv6c"]
-noise = SubResource("FastNoiseLite_ggmtb")
-seamless = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_61nou"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bhiy2"]
-noise = SubResource("FastNoiseLite_61nou")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d24k0"]
-albedo_color = Color(0.59605724, 0.59441817, 0, 1)
-metallic = 1.0
-metallic_specular = 1.0
-metallic_texture = SubResource("NoiseTexture2D_bhiy2")
-emission_enabled = true
-emission = Color(0.14901961, 0.14901961, 0.007843138, 1)
-emission_energy_multiplier = 2.0
-clearcoat_enabled = true
-clearcoat_roughness = 1.0
-clearcoat_texture = SubResource("NoiseTexture2D_1xv6c")
-refraction_enabled = true
-disable_receive_shadows = true
+[sub_resource type="SphereMesh" id="SphereMesh_7qi08"]
+radius = 0.01
+height = 0.02
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ok6jj"]
 size = Vector2(1.41, 2.04)
@@ -610,39 +588,20 @@ visible = false
 mesh = SubResource("CylinderMesh_272bh")
 surface_material_override/0 = SubResource("ShaderMaterial_5vw27")
 
-[node name="coinrain" type="CPUParticles3D" parent="BasicSpinner" unique_id=1745945854]
-transform = Transform3D(0.0645704, -0.9978924, -0.0064336015, 0.9978174, 0.064652175, -0.013432666, 0.013820306, -0.005552175, 0.9998891, -0.008105844, -0.059821844, -1.7805597)
-material_override = SubResource("StandardMaterial3D_d24k0")
-amount = 500
-lifetime = 5.0
-preprocess = 1.0
-mesh = ExtResource("16_abqjc")
-emission_shape = 3
-emission_box_extents = Vector3(3, 4, 1)
-particle_flag_rotate_y = true
-gravity = Vector3(0, -2.5, 0)
-angular_velocity_min = 20.0
-angular_velocity_max = 20.0
-scale_amount_min = 0.1
-
-[node name="COINADO" type="CPUParticles3D" parent="BasicSpinner" unique_id=333429695]
-transform = Transform3D(0.92791855, -0.372783, 1.6294862e-08, 0.372783, 0.92791855, 3.150781e-09, -1.6294862e-08, 3.150781e-09, 1, 0.06932545, -0.022103786, -0.11891222)
-material_override = SubResource("StandardMaterial3D_d24k0")
-amount = 5002
-mesh = ExtResource("16_abqjc")
+[node name="CPUParticles3D" type="CPUParticles3D" parent="BasicSpinner" unique_id=333429695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.011936426, -1.530835)
+amount = 1000
+mesh = SubResource("SphereMesh_7qi08")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
 emission_ring_radius = 2.0
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
-spread = 179.45
-gravity = Vector3(0, -0.145, 0)
-tangential_accel_min = 17.57
-tangential_accel_max = 17.57
-angle_min = -527.0
-angle_max = 105.4
-scale_amount_min = 0.1
+spread = 180.0
+gravity = Vector3(0, -5.515, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
 
 [node name="FishSpinner" type="Node3D" parent="." unique_id=1033122556]
 transform = Transform3D(-4.3711385e-08, -0.99999994, 4.371139e-08, 0, -4.3711385e-08, -1, 0.99999994, -4.3711385e-08, 1.9106855e-15, 3.0001025, 1.6549999, -0.026924938)
