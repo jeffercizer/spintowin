@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://dvy58mldtl2g3"]
 
-[ext_resource type="Script" uid="uid://b2vkkperxheg3" path="res://scripts/Globals.gd" id="1_4w656"]
 [ext_resource type="Script" uid="uid://bllumecclay1e" path="res://scripts/camera_controls.gd" id="1_7mycd"]
 [ext_resource type="Shader" uid="uid://cpfm744omjavh" path="res://shaders/light_fog.gdshader" id="1_ig7tw"]
 [ext_resource type="AudioStream" uid="uid://deqlq3ioty8yd" path="res://assets/audio/success.wav" id="2_0odxb"]
 [ext_resource type="Script" uid="uid://bf7f3rctc75sj" path="res://scripts/spinners/spinner.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://kbb82l6jim2f" path="res://scenes/floating_text.tscn" id="2_e71vb"]
 [ext_resource type="AudioStream" uid="uid://c0ab5op74irqq" path="res://imports/Spinning Wheel.mp3" id="3_5vw27"]
 [ext_resource type="AudioStream" uid="uid://csa8r6lvnf1he" path="res://assets/audio/fail.wav" id="3_lswn8"]
 [ext_resource type="Script" uid="uid://cdrunegnlh335" path="res://opening_text.gd" id="4_6iyjs"]
@@ -64,9 +62,6 @@ size = Vector3(2, 2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3e6k"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v8acg"]
-size = Vector3(2.6809692, 3.3134766, 1)
 
 [sub_resource type="Environment" id="Environment_1bvp3"]
 background_mode = 1
@@ -468,8 +463,6 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_getpj")
 
 [node name="Node3D" type="Node3D" unique_id=1543989762]
-script = ExtResource("1_4w656")
-floating_text = ExtResource("2_e71vb")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("ui_player", "area_light", "omni_light", "next_machine_box", "prev_machine_box")]
 transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.10452846, 0, -0.10452846, 0.9945219, 0, 1.7, -0.33787847)
@@ -494,32 +487,21 @@ light_color = Color(0.14767182, 0.14767182, 0.14767176, 1)
 max_polyphony = 2
 
 [node name="Intro" type="Node3D" parent="Camera3D" unique_id=268935590]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/Intro" unique_id=135245799]
 mesh = SubResource("BoxMesh_v8acg")
 surface_material_override/0 = SubResource("StandardMaterial3D_j3e6k")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Intro/MeshInstance3D" unique_id=858682862]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Intro/MeshInstance3D/StaticBody3D" unique_id=520148972]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16018677, -0.29133487, -1.1723154)
-shape = SubResource("BoxShape3D_v8acg")
-
-[node name="Label3D" type="Label3D" parent="Camera3D/Intro" unique_id=108966038 node_paths=PackedStringArray("camera", "intro", "collision_blocker", "ui")]
+[node name="Label3D" type="Label3D" parent="Camera3D/Intro" unique_id=108966038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94834673, 0.552498, -0.9427649)
-text = "Subject \"Humans\"
-Obsession #4: \"Gambling\"
-Variant #22: \"Wheels\"
+text = "Subject \"Humans\".
+Test 6: \"Gambling\"
+Variant 92: \"Wheels\"
 Begin Simulation..."
 font_size = 27
 horizontal_alignment = 0
 vertical_alignment = 0
 script = ExtResource("4_6iyjs")
-camera = NodePath("../..")
-intro = NodePath("..")
-collision_blocker = NodePath("../MeshInstance3D/StaticBody3D/CollisionShape3D")
-ui = NodePath("../../../FullScreenControl")
 
 [node name="World+Lighting" type="Node3D" parent="." unique_id=909221017]
 
@@ -1275,50 +1257,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="FullScreenControl" unique_id=1024375865]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 56.0
-grow_horizontal = 2
-
-[node name="Control" type="Control" parent="FullScreenControl/HBoxContainer3" unique_id=1566744844]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="MarginContainer" type="MarginContainer" parent="FullScreenControl/HBoxContainer3" unique_id=1405394001]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="MoneyPanel" type="PanelContainer" parent="FullScreenControl/HBoxContainer3/MarginContainer" unique_id=719059284]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_styles/panel = ExtResource("12_ycdy4")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel" unique_id=1512365729]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel/HBoxContainer" unique_id=693636396]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.82907015, 0.6221823, 7.70092e-07, 1)
-text = "Money: "
-vertical_alignment = 1
-
-[node name="MoneyLabel" type="Label" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel/HBoxContainer" unique_id=2077027660]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.827451, 0.62352943, 0, 1)
-text = "-1"
-vertical_alignment = 1
-script = ExtResource("10_4c57u")
-
 [node name="FullHBox" type="HBoxContainer" parent="FullScreenControl" unique_id=1332413225]
 layout_mode = 1
 anchors_preset = 15
@@ -1394,6 +1332,38 @@ text = "= Lose 5$"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.8
+
+[node name="MarginContainer" type="MarginContainer" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1405394001]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MoneyPanel" type="PanelContainer" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer" unique_id=719059284]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("12_ycdy4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel" unique_id=1512365729]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel/HBoxContainer" unique_id=693636396]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82907015, 0.6221823, 7.70092e-07, 1)
+text = "Money: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="FullScreenControl/FullHBox/RightSideVBox/MarginContainer/MoneyPanel/HBoxContainer" unique_id=2077027660]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.62352943, 0, 1)
+text = "-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_4c57u")
 
 [node name="Control" type="Control" parent="FullScreenControl/FullHBox/RightSideVBox" unique_id=1018789146]
 custom_minimum_size = Vector2(0, 55.485)

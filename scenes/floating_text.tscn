@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://kbb82l6jim2f"]
+
+[ext_resource type="Script" uid="uid://ck6sydroji2ej" path="res://scenes/floating_text.gd" id="1_45khh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_45khh"]
+
+[node name="Control" type="Control" unique_id=1809405412]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_45khh")
+
+[node name="Label" type="Label" parent="." unique_id=1278038577]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_45khh")
+horizontal_alignment = 1
+vertical_alignment = 1

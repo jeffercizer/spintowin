@@ -3,7 +3,7 @@ extends SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_experience_to_level_up = 25
+    base_experience_to_level_up = 100
     experience_to_level_up = base_experience_to_level_up * (level * level * level)
     machine_curve = {
         "luck_cap": 10,

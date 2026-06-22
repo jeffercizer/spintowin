@@ -9,8 +9,9 @@ var viewing_spinner = 1
 var max_viewable_spinner = 1
 var spinner_unlocks = [true, false, false, false]
 var spinner_buy_costs = [0, 25000, 6000000, 1000000000]
-
-
+    
+@export var money_box: Control
+@export var floating_text: PackedScene
 #spinner helpers
 var want_fishing_minigame = false
 
@@ -31,3 +32,8 @@ func get_money():
     
 func update_money(value):
     money += value
+    var text := floating_text.instantiate()
+    money_box.add_child(text)
+
+    text.position = Vector2(0, 0)
+    text.show_value(value)
