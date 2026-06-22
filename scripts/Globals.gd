@@ -10,8 +10,7 @@ var max_viewable_spinner = 1
 var spinner_unlocks = [true, false, false, false]
 var spinner_buy_costs = [0, 25000, 6000000, 1000000000]
     
-@export var money_box: Control
-@export var floating_text: PackedScene
+
 #spinner helpers
 var want_fishing_minigame = false
 
@@ -32,8 +31,36 @@ func get_money():
     
 func update_money(value):
     money += value
-    var text := floating_text.instantiate()
-    money_box.add_child(text)
+    
+    
+func format_number(n: float) -> String:
+    var abs_n = abs(n)
+    var suffixes = {
+        1e3: "K",
+        1e6: "M",
+        1e9: "B",
+        1e12: "T",
+        1e15: "qT",
+        1e18: "Q",
+        1e21: "s",
+        1e24: "o",
+        1e27: "n",
+        1e30: "d",
+    }
+    
+    var chosen_suffix = ""
+    var chosen_value = 1.0
 
-    text.position = Vector2(0, 0)
-    text.show_value(value)
+    for value in suffixes.keys():
+        if abs_n >= value:
+            chosen_value = value
+            chosen_suffix = suffixes[value]
+
+    if chosen_suffix == "":
+        return str(n)
+
+    var short = n / chosen_value
+    if(n > 0):
+        return "%.2f%s" % [short, chosen_suffix]
+    else:
+        return "-%.2f%s" % [short, chosen_suffix]

@@ -371,3 +371,15 @@ func allocate_buckets():
         slices[idx].buckets += 1
         fractional[idx] = 0
         sum_buckets += 1
+        
+        
+@export var money_box: Control
+@export var floating_text: PackedScene   
+
+func add_money(value):
+    Globals.update_money(value)
+    var text = floating_text.instantiate()
+    money_box.add_child(text)
+
+    text.position = Vector2(0, 0)
+    text.show_value(value)

@@ -57,14 +57,13 @@ func start_spin():
 func _on_spin_requested() -> void:
     if(want_spin):
         return #we are already spinning
-    #if(Globals.get_money() < 5):
-        #return
-    #Globals.update_money(-5)
     emit_signal("spin_started")
     start_spin()
     
     
 func add_experience(amount):
+    if(amount <= 0):
+        return
     experience += amount
     var mat := level_up_bar.get_active_material(0)
 
@@ -81,15 +80,15 @@ func add_experience(amount):
 
 
 func get_win_amount():
-    return int(20 * pow(1.5, level-1))
+    return ((20 * pow(1.5, level-1)))
     
 func get_jackpot_amount():
-    return int(400 * pow(1.5, level-1))
+    return (400 * pow(1.5, level-1))
     
 #wheel specific callbacks
 func default_win():
     var reward = get_win_amount()
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
     tickerSound.stop()
@@ -103,7 +102,7 @@ func default_lose():
     
 func default_jackpot():
     var reward = get_jackpot_amount()
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = jackpotSound
     tickerSound.stop()

@@ -4,7 +4,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_45khh"]
 
-[node name="Control" type="Control" unique_id=1809405412]
+[node name="Control" type="Control" unique_id=1809405412 node_paths=PackedStringArray("label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_45khh")
+label = NodePath("Label")
 
 [node name="Label" type="Label" parent="." unique_id=1278038577]
 layout_mode = 0

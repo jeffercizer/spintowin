@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c7gyljbr1y2h4"]
+
+[ext_resource type="Shader" uid="uid://ban1g80wqmqnx" path="res://shaders/color_texture_combo.gdshader" id="1_ol3qt"]
+[ext_resource type="Texture2D" uid="uid://t0e3wact6rc" path="res://assets/fish/fishing_rod_fix.png" id="2_mcgud"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ol3qt")
+shader_parameter/albedo_tex = ExtResource("2_mcgud")
+shader_parameter/noise_color = Color(0.70161384, 0.80143553, 0.26934695, 1)
+shader_parameter/strength = 0.0
+shader_parameter/noise_scale = 4.0
+shader_parameter/noise_amount = 0.25
+shader_parameter/blank_threshold = 0.05

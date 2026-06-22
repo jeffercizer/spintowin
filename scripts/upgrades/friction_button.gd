@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     super._process(delta)
     text = "Finger Strength
-$ "+str(cost)+"
+$ "+str(Globals.format_number(cost))+"
 Lvl "+str(Globals.spin_friction)
 
 func _on_button_up() -> void:

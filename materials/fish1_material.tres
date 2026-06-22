@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://7p8jara8ceqe"]
+
+[ext_resource type="Shader" uid="uid://ban1g80wqmqnx" path="res://shaders/color_texture_combo.gdshader" id="1_f23kx"]
+[ext_resource type="Texture2D" uid="uid://w85y8euxsfwr" path="res://assets/fish/fish1_fix.png" id="2_rsku7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_f23kx")
+shader_parameter/albedo_tex = ExtResource("2_rsku7")
+shader_parameter/noise_color = Color(0.35979387, 0.48337865, 1, 1)
+shader_parameter/strength = 0.1320000537699999
+shader_parameter/noise_scale = 9.445
+shader_parameter/noise_amount = 0.475
+shader_parameter/blank_threshold = 0.09

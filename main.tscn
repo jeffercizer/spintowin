@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://dvy58mldtl2g3"]
 
-[ext_resource type="Script" uid="uid://b2vkkperxheg3" path="res://scripts/Globals.gd" id="1_4w656"]
 [ext_resource type="Script" uid="uid://bllumecclay1e" path="res://scripts/camera_controls.gd" id="1_7mycd"]
 [ext_resource type="Shader" uid="uid://cpfm744omjavh" path="res://shaders/light_fog.gdshader" id="1_ig7tw"]
 [ext_resource type="AudioStream" uid="uid://deqlq3ioty8yd" path="res://assets/audio/success.wav" id="2_0odxb"]
@@ -28,28 +27,23 @@
 [ext_resource type="Script" uid="uid://ca1clinko1ryp" path="res://scripts/upgrades/friction_button.gd" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://bs5goqvrvjs7s" path="res://scripts/spinner_buybutton.gd" id="15_xuqvo"]
 [ext_resource type="ArrayMesh" uid="uid://bxjsjfvdd2a2o" path="res://assets/particles/coin.blend" id="16_abqjc"]
-[ext_resource type="Texture2D" uid="uid://bel2agisptisf" path="res://assets/fish/fishing_icons_64x64_4.png" id="16_come4"]
 [ext_resource type="Texture2D" uid="uid://x8ntk187mise" path="res://assets/CursorOutline/hand_thin_open.png" id="16_yaehf"]
 [ext_resource type="Script" uid="uid://ccsvssk1exda6" path="res://scripts/mouse_cursor.gd" id="17_074og"]
-[ext_resource type="Texture2D" uid="uid://uh3kejcwrsph" path="res://assets/fish/fishing_icons_64x64_2.png" id="17_h8e4i"]
 [ext_resource type="Script" uid="uid://bihe5wqbbnbw7" path="res://scripts/spinners/anglerspinner.gd" id="17_jq2sk"]
-[ext_resource type="Texture2D" uid="uid://bw15i4dfi5kus" path="res://assets/fish/fishing_icons_64x64_28.png" id="18_4lmeg"]
 [ext_resource type="Texture2D" uid="uid://bm71rq3brkuyh" path="res://assets/CursorOutline/hand_thin_small_open.png" id="18_82xsv"]
-[ext_resource type="Texture2D" uid="uid://3lyymkiax61k" path="res://assets/fish/fishing_icons_64x64_15.png" id="19_0cp0l"]
 [ext_resource type="Texture2D" uid="uid://dipc4hssarvo6" path="res://assets/CursorOutline/hand_thin_closed.png" id="19_getpj"]
-[ext_resource type="Texture2D" uid="uid://c1a4aas7156i5" path="res://assets/fish/fishing_icons_64x64_96.png" id="20_d2t1y"]
+[ext_resource type="Material" uid="uid://7p8jara8ceqe" path="res://materials/fish1_material.tres" id="19_hrvbo"]
 [ext_resource type="Texture2D" uid="uid://547tcos5negw" path="res://assets/CursorOutline/hand_thin_point.png" id="20_ryguw"]
+[ext_resource type="Material" uid="uid://bancy2g5nedjl" path="res://materials/fish2_mat.tres" id="20_uypp3"]
 [ext_resource type="Texture2D" uid="uid://dj615xe0gwlnl" path="res://assets/Cursor/arrow_e.png" id="21_a6jrf"]
-[ext_resource type="Texture2D" uid="uid://dmhjnra2t27y3" path="res://assets/fish/fishing_icons_64x64_105.png" id="21_gngh3"]
 [ext_resource type="Texture2D" uid="uid://cjcyukf2a7g82" path="res://assets/Cursor/arrow_w.png" id="22_xuqvo"]
+[ext_resource type="Material" uid="uid://db2hyuwtlt4dx" path="res://materials/fish3_mat.tres" id="23_blkrb"]
 [ext_resource type="Shader" uid="uid://ban1g80wqmqnx" path="res://shaders/color_texture_combo.gdshader" id="24_0cp0l"]
-[ext_resource type="Texture2D" uid="uid://w85y8euxsfwr" path="res://assets/fish/fish1_fix.png" id="24_wnkbs"]
+[ext_resource type="Material" uid="uid://km68xcith58" path="res://materials/fish4_mat.tres" id="24_abqjc"]
 [ext_resource type="Texture2D" uid="uid://br1x8c8i61anh" path="res://assets/woodplanks.jpg" id="25_4lmeg"]
-[ext_resource type="Texture2D" uid="uid://iintkdklb5n7" path="res://assets/fish/junk1_fix.png" id="25_f6a44"]
-[ext_resource type="Texture2D" uid="uid://csel7eg2g6dlp" path="res://assets/fish/fish2_fix.png" id="26_0cbny"]
-[ext_resource type="Texture2D" uid="uid://ucqcx7dyv626" path="res://assets/fish/junk2_fix.png" id="27_hrvbo"]
-[ext_resource type="Texture2D" uid="uid://dpl86thjikdo3" path="res://assets/fish/fish3_fix.png" id="28_uypp3"]
-[ext_resource type="Texture2D" uid="uid://br5ynq8sfmqfc" path="res://assets/fish/fish4_fix.png" id="29_blkrb"]
+[ext_resource type="Material" uid="uid://bl7av31g60qlq" path="res://materials/junk1_mat.tres" id="25_6iyjs"]
+[ext_resource type="Material" uid="uid://co3keq2gn6apy" path="res://materials/junk2_mat.tres" id="26_4w656"]
+[ext_resource type="Material" uid="uid://c7gyljbr1y2h4" path="res://materials/fishing_game_mat.tres" id="28_e71vb"]
 [ext_resource type="Texture2D" uid="uid://t0e3wact6rc" path="res://assets/fish/fishing_rod_fix.png" id="30_abqjc"]
 [ext_resource type="Script" uid="uid://c6xctww8rh6ic" path="res://scripts/spinners/fishing_minigame_spinner.gd" id="34_f6a44"]
 [ext_resource type="AudioStream" uid="uid://cg63miovosv6g" path="res://assets/audio/random_fishing.wav" id="35_0cbny"]
@@ -213,95 +207,7 @@ size = Vector2(1.41, 2.04)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_facbu"]
 albedo_color = Color(0.61941475, 0.37479275, 0.010118143, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k2k6"]
-albedo_texture = ExtResource("16_come4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rl1p"]
-albedo_texture = ExtResource("17_h8e4i")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wnkbs"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("30_abqjc")
-shader_parameter/noise_color = Color(0.70161384, 0.80143553, 0.26934695, 1)
-shader_parameter/strength = 0.0
-shader_parameter/noise_scale = 4.0
-shader_parameter/noise_amount = 0.25
-shader_parameter/blank_threshold = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1qrp"]
-albedo_texture = ExtResource("18_4lmeg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_come4"]
-albedo_texture = ExtResource("19_0cp0l")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8e4i"]
-albedo_texture = ExtResource("20_d2t1y")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lmeg"]
-albedo_texture = ExtResource("21_gngh3")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("24_wnkbs")
-shader_parameter/noise_color = Color(0.35979387, 0.48337865, 1, 1)
-shader_parameter/strength = 0.1320000537699999
-shader_parameter/noise_scale = 9.445
-shader_parameter/noise_amount = 0.475
-shader_parameter/blank_threshold = 0.09
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq2sk"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("25_f6a44")
-shader_parameter/noise_color = Color(0.6244108, 0.46754545, 0.25378835, 1)
-shader_parameter/strength = -0.16499996033749997
-shader_parameter/noise_scale = 2.905
-shader_parameter/noise_amount = 0.25
-shader_parameter/blank_threshold = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4k2k6"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("26_0cbny")
-shader_parameter/noise_color = Color(0, 0.6152957, 0.61546326, 1)
-shader_parameter/strength = 0.1320000537699999
-shader_parameter/noise_scale = 10.125
-shader_parameter/noise_amount = 0.815
-shader_parameter/blank_threshold = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rl1p"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("27_hrvbo")
-shader_parameter/noise_color = Color(0.56869704, 0.35974687, 0.073220484, 1)
-shader_parameter/strength = 0.154000054815
-shader_parameter/noise_scale = 4.0
-shader_parameter/noise_amount = 0.25
-shader_parameter/blank_threshold = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok6jj"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("28_uypp3")
-shader_parameter/noise_color = Color(0.4392157, 0, 1, 1)
-shader_parameter/strength = 0.23100005847250005
-shader_parameter/noise_scale = 5.105
-shader_parameter/noise_amount = 0.565
-shader_parameter/blank_threshold = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
-render_priority = 0
-shader = ExtResource("24_0cp0l")
-shader_parameter/albedo_tex = ExtResource("29_blkrb")
-shader_parameter/noise_color = Color(0.8666667, 0.5294118, 1, 1)
-shader_parameter/strength = -0.0769999561575
-shader_parameter/noise_scale = 6.33
-shader_parameter/noise_amount = 0.525
-shader_parameter/blank_threshold = 0.005
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
 render_priority = 0
 shader = ExtResource("24_0cp0l")
 shader_parameter/albedo_tex = ExtResource("30_abqjc")
@@ -468,8 +374,6 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_getpj")
 
 [node name="Node3D" type="Node3D" unique_id=1543989762]
-script = ExtResource("1_4w656")
-floating_text = ExtResource("2_e71vb")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("ui_player", "area_light", "omni_light", "next_machine_box", "prev_machine_box")]
 transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.10452846, 0, -0.10452846, 0.9945219, 0, 1.7, -0.33787847)
@@ -542,7 +446,7 @@ mesh = SubResource("PlaneMesh_pet1e")
 
 [node name="Label3D" type="Label3D" parent="BasicSpinner/win_board" unique_id=877474657]
 transform = Transform3D(1, 0, 0, 0, -2.9802322e-08, 1.0000002, 0, -1.0000002, -2.9802322e-08, 0.055963635, 0.038000107, -0.5)
-text = "= Win 5$"
+text = "= Win 20$"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BasicSpinner/win_board" unique_id=932778169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46403635, 0.05699992, -0.5)
@@ -560,7 +464,7 @@ surface_material_override/0 = ExtResource("6_kek77")
 
 [node name="Label3D3" type="Label3D" parent="BasicSpinner/win_board" unique_id=1748419990]
 transform = Transform3D(1, 0, 0, 0, -1.4901161e-08, 1.0000004, 0, -1.0000004, -1.4901161e-08, -0.29840326, 0.052000523, 0.100000024)
-text = "= Win 500$"
+text = "= Win 400$"
 horizontal_alignment = 0
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="BasicSpinner/win_board" unique_id=378916903]
@@ -583,7 +487,7 @@ stream = ExtResource("7_htxhm")
 [node name="Ticker1Sound" type="AudioStreamPlayer3D" parent="BasicSpinner" unique_id=127044417]
 stream = ExtResource("7_htxhm")
 
-[node name="Spinner" type="MeshInstance3D" parent="BasicSpinner" unique_id=434319779 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "level_label", "wheelSound", "tickerSound", "level_up_bar")]
+[node name="Spinner" type="MeshInstance3D" parent="BasicSpinner" unique_id=434319779 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "level_label", "wheelSound", "tickerSound", "level_up_bar", "money_box")]
 transform = Transform3D(-0.05233594, 0, 0.9986296, 0, 1.0000001, 0, -0.9986295, 0, -0.052335948, 0, 0, 0)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("2_0xm2m")
@@ -600,6 +504,8 @@ jackpotSound = ExtResource("11_jq2sk")
 wheelSound = NodePath("../Wheel1Sound")
 tickerSound = NodePath("../Ticker1Sound")
 level_up_bar = NodePath("../spinnerStand/Node3D/MeshInstance3D/LevelupBar")
+money_box = NodePath("../../FullScreenControl")
+floating_text = ExtResource("2_e71vb")
 
 [node name="SpinnerCollision" type="StaticBody3D" parent="BasicSpinner/Spinner" unique_id=2028052762]
 transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
@@ -720,14 +626,14 @@ text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=860154815]
-transform = Transform3D(1, 2.1316282e-14, 7.1054274e-15, -3.5527137e-15, 1, 7.234353e-16, 3.5527137e-15, 1.8626458e-09, 1, -0.48768997, 0.010796785, -0.7928071)
+transform = Transform3D(-0.00043862866, -0.020937825, 0.99978065, 0.020937826, 0.9995613, 0.02094242, -0.99978065, 0.020942418, -4.37018e-08, -0.48768997, 0.010796547, -0.7928071)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_4k2k6")
+surface_material_override/0 = ExtResource("19_hrvbo")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=815704731]
-transform = Transform3D(1, 2.842171e-14, 1.0658141e-14, -7.1054274e-15, 1, 7.234351e-16, 5.3290705e-15, 3.725291e-09, 1, -0.4843464, 0.018707037, -0.5311272)
+transform = Transform3D(-4.371139e-08, 3.725291e-09, 1, -7.1054274e-15, 1, -3.725291e-09, -1, -7.268265e-15, -4.371139e-08, -0.4843464, 0.018707037, -0.5311272)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_0rl1p")
+surface_material_override/0 = ExtResource("20_uypp3")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1351652611]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.4894619, 0.0165658, 0.7780663)
@@ -735,24 +641,24 @@ mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = SubResource("ShaderMaterial_wnkbs")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=446873218]
-transform = Transform3D(1, 3.5527137e-14, 1.0658141e-14, -3.5527137e-15, 1, 7.234351e-16, 5.3290705e-15, 1.8626458e-09, 1, -0.4861095, 0.029764414, -0.2882576)
+transform = Transform3D(-4.371139e-08, 1.8626458e-09, 1, -3.5527137e-15, 1, -1.8626458e-09, -1, -3.6341326e-15, -4.371139e-08, -0.4861095, 0.029764414, -0.2882576)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_b1qrp")
+surface_material_override/0 = ExtResource("23_blkrb")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1242183691]
-transform = Transform3D(1, 4.2632564e-14, 1.4210855e-14, -7.1054274e-15, 1, 7.2343496e-16, 7.1054274e-15, 3.725291e-09, 1, -0.4861095, 0.008440018, -0.030829191)
+transform = Transform3D(-4.371139e-08, 3.725291e-09, 1, -7.1054274e-15, 1, -3.725291e-09, -1, -7.268265e-15, -4.371139e-08, -0.4861095, 0.008440018, -0.030829191)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_come4")
+surface_material_override/0 = ExtResource("24_abqjc")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1879550053]
-transform = Transform3D(1, 5.684342e-14, 1.9539925e-14, -1.0658141e-14, 1, 7.2343475e-16, 9.769963e-15, 5.5879363e-09, 1, -0.4861095, 0.005646229, 0.24902976)
+transform = Transform3D(-4.371139e-08, 5.5879363e-09, 1, -1.0658141e-14, 1, -5.5879363e-09, -1, -1.0902397e-14, -4.371139e-08, -0.4861095, 0.005646229, 0.24902976)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_h8e4i")
+surface_material_override/0 = ExtResource("25_6iyjs")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1105486941]
-transform = Transform3D(1, 5.684342e-14, 2.3092639e-14, -1.7763568e-14, 1, 7.234346e-16, 1.15463195e-14, 9.313227e-09, 1, -0.4861095, 0.026703596, 0.5150921)
+transform = Transform3D(-4.371139e-08, 9.313227e-09, 1, -1.7763568e-14, 1, -9.313227e-09, -1, -1.8170663e-14, -4.371139e-08, -0.4861095, 0.026703596, 0.5150921)
 mesh = SubResource("PlaneMesh_c5vbb")
-surface_material_override/0 = SubResource("StandardMaterial3D_4lmeg")
+surface_material_override/0 = ExtResource("26_4w656")
 
 [node name="junk1" type="Label3D" parent="FishSpinner/win_board" unique_id=1636058506]
 transform = Transform3D(1, -2.3092639e-14, 8.526513e-14, -1.7763568e-14, 3.9115548e-08, 1.0000012, 1.687539e-14, -1.0000011, 1.6391277e-07, -0.32542193, 0.013962746, 0.23481822)
@@ -784,13 +690,13 @@ stream = ExtResource("7_htxhm")
 transform = Transform3D(-0.052335937, 0, 0.99862957, -1.110223e-15, 1, -3.5527137e-15, -0.9986295, 3.5527137e-15, -0.052335948, 0, 0, 0.3204658)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("17_jq2sk")
-fish1Material = SubResource("ShaderMaterial_seu75")
-junk1Material = SubResource("ShaderMaterial_jq2sk")
-fish2Material = SubResource("ShaderMaterial_4k2k6")
-junk2Material = SubResource("ShaderMaterial_0rl1p")
-fish3Material = SubResource("ShaderMaterial_ok6jj")
-fish4Material = SubResource("ShaderMaterial_facbu")
-fishingGameMaterial = SubResource("ShaderMaterial_b1qrp")
+fish1Material = ExtResource("19_hrvbo")
+junk1Material = ExtResource("25_6iyjs")
+fish2Material = ExtResource("20_uypp3")
+junk2Material = ExtResource("26_4w656")
+fish3Material = ExtResource("23_blkrb")
+fish4Material = ExtResource("24_abqjc")
+fishingGameMaterial = ExtResource("28_e71vb")
 fish1Label = NodePath("../win_board/fish1")
 fish2Label = NodePath("../win_board/fish2")
 fish3Label = NodePath("../win_board/fish3")
@@ -1288,31 +1194,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="MarginContainer" type="MarginContainer" parent="FullScreenControl/HBoxContainer3" unique_id=1405394001]
+[node name="MoneyMargin" type="MarginContainer" parent="FullScreenControl/HBoxContainer3" unique_id=1405394001]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.75
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 18
 
-[node name="MoneyPanel" type="PanelContainer" parent="FullScreenControl/HBoxContainer3/MarginContainer" unique_id=719059284]
+[node name="MoneyPanel" type="PanelContainer" parent="FullScreenControl/HBoxContainer3/MoneyMargin" unique_id=719059284]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = ExtResource("12_ycdy4")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel" unique_id=1512365729]
+[node name="VBoxContainer" type="VBoxContainer" parent="FullScreenControl/HBoxContainer3/MoneyMargin/MoneyPanel" unique_id=744531216]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel/HBoxContainer" unique_id=693636396]
+[node name="Label" type="Label" parent="FullScreenControl/HBoxContainer3/MoneyMargin/MoneyPanel/VBoxContainer" unique_id=693636396]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.82907015, 0.6221823, 7.70092e-07, 1)
-text = "Money: "
+text = "Money"
 vertical_alignment = 1
 
-[node name="MoneyLabel" type="Label" parent="FullScreenControl/HBoxContainer3/MarginContainer/MoneyPanel/HBoxContainer" unique_id=2077027660]
+[node name="MoneyLabel" type="Label" parent="FullScreenControl/HBoxContainer3/MoneyMargin/MoneyPanel/VBoxContainer" unique_id=2077027660]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.827451, 0.62352943, 0, 1)
 text = "-1"

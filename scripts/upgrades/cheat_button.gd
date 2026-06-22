@@ -8,7 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
     text = "Cheat
-$ "+str(cost)+"
+$ "+str(Globals.format_number(cost))+"
 Lvl -1"
 var cheat_money = 10000.0
 func _on_button_up() -> void:

@@ -93,14 +93,13 @@ func start_spin():
 func _on_spin_requested() -> void:
     if(want_spin):
         return #we are already spinning
-    #if(Globals.get_money() < 5):
-        #return
-    #Globals.update_money(-5)
     emit_signal("spin_started")
     start_spin()
     
 
 func add_experience(amount):
+    if(amount <= 0):
+        return
     experience += amount
     #level_up_bar.material_override.set("shader_parameter/progress", experience)
     if(experience >= experience_to_level_up):
@@ -117,7 +116,7 @@ func add_experience(amount):
 #wheel specific callbacks
 func fish1_win():
     var reward = int(100 * pow(1.1, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
     tickerSound.stop()
@@ -125,7 +124,7 @@ func fish1_win():
     
 func fish2_win():
     var reward = int(500 * pow(1.1, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
     tickerSound.stop()
@@ -133,7 +132,7 @@ func fish2_win():
     
 func fish3_win():
     var reward = int(5000 * pow(1.1, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
     tickerSound.stop()
@@ -141,7 +140,7 @@ func fish3_win():
     
 func fish4_win():
     var reward = int(20000 * pow(1.1, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
     tickerSound.stop()
@@ -149,7 +148,7 @@ func fish4_win():
     
 func junk1_lose():
     var reward = int(-500 * pow(0.9, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     wheelSound.stream = loseSound
     tickerSound.stop()
     wheelSound.play()
@@ -157,7 +156,7 @@ func junk1_lose():
     
 func junk2_lose():
     var reward = int(-500 * pow(0.9, level-1))
-    Globals.update_money(reward)
+    add_money(reward)
     wheelSound.stream = loseSound
     tickerSound.stop()
     wheelSound.play()

@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     super._process(delta)
     text = "Spin Power Percision
-$ "+str(cost)+"
+$ "+str(Globals.format_number(cost))+"
 Lvl "+str(Globals.spin_percision)
 
 func _on_button_up() -> void:

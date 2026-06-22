@@ -2,8 +2,8 @@ extends Control
 
 
 
-@export var float_distance = 40.0
-@export var duration = 0.8
+var target_y = 50.0
+var duration = 0.8
 @export var label : Label
 func show_value(amount: float) -> void:
     if(amount > 0):
@@ -17,10 +17,11 @@ func show_value(amount: float) -> void:
         label.modulate = Color(0.7,0.7,0.7)
 
     modulate.a = 1.0
-    position.y = 0
+    position.y = 70
+    position.x = 20
 
     var tween = create_tween()
-    tween.tween_property(self, "position:y", -float_distance, duration).set_trans(Tween.TRANS_SINE)
+    tween.tween_property(self, "position:y", target_y, duration).set_trans(Tween.TRANS_SINE)
     tween.parallel().tween_property(self, "modulate:a", 0.0, duration)
 
     tween.finished.connect(queue_free)

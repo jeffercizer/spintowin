@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     super._process(delta)
     text = "Wheel Luck
-$ "+str(cost)+"
+$ "+str(Globals.format_number(cost))+"
 Lvl "+str(Globals.luck)
 
 
