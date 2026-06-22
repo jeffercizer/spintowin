@@ -13,8 +13,10 @@ var upgrade_level = 1
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
     disabled = Globals.money < cost or upgrade_level >= max_level
+    if(!visible):
+        visible = Globals.get_money() >= cost / 2
 
 func _on_button_up() -> void:
     if(Globals.money >= cost):
         Globals.update_money(-cost)
-        cost = int(base_cost * pow(upgrade_level,exponential))
+        cost = int(base_cost * pow(upgrade_level,upgrade_level))

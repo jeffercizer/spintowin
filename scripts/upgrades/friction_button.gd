@@ -14,8 +14,6 @@ func _process(delta: float) -> void:
     text = "Finger Friction Power
 $ "+str(cost)+"
 Lvl "+str(Globals.spin_friction)
-    if(!visible):
-        visible = Globals.get_money() >= cost
 
 func _on_button_up() -> void:
     if(Globals.money >= cost):
