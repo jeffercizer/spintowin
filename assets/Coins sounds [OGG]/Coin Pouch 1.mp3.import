@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5jc5x2yq7r4s"
+path="res://.godot/imported/Coin Pouch 1.mp3-f7e5c15ff1b8632beda55c8388bbec80.mp3str"
+
+[deps]
+
+source_file="res://assets/Coins sounds [OGG]/Coin Pouch 1.mp3"
+dest_files=["res://.godot/imported/Coin Pouch 1.mp3-f7e5c15ff1b8632beda55c8388bbec80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
