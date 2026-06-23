@@ -697,13 +697,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c5vbb")
 [node name="Wheel2Sound" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=964155962]
 stream = ExtResource("7_htxhm")
 
-[node name="ticker_high_player" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=1910307294]
-stream = ExtResource("15_6iyjs")
+[node name="Ticker2Sound" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=1910307294]
+stream = ExtResource("7_htxhm")
 
-[node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=137802808]
-stream = ExtResource("16_4w656")
-
-[node name="AnglerSpinner" type="MeshInstance3D" parent="FishSpinner" unique_id=1334335898 node_paths=PackedStringArray("fish1Label", "fish2Label", "fish3Label", "fish4Label", "junk1Label", "junk2Label", "fishingGameLabel", "fishing_minigame", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "money_box")]
+[node name="AnglerSpinner" type="MeshInstance3D" parent="FishSpinner" unique_id=1334335898 node_paths=PackedStringArray("fish1Label", "fish2Label", "fish3Label", "fish4Label", "junk1Label", "junk2Label", "fishingGameLabel", "fishing_minigame", "wheelSound", "level_up_bar", "money_box")]
 transform = Transform3D(-0.052335937, 0, 0.99862957, -1.110223e-15, 1, -3.5527137e-15, -0.9986295, 3.5527137e-15, -0.052335948, 0, 0, 0.3204658)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("17_jq2sk")
@@ -726,8 +723,6 @@ winSound = ExtResource("10_htxhm")
 jackpotSound = ExtResource("11_jq2sk")
 fishing_minigame = NodePath("../FishingMiniGame/FishingRodSpinner")
 wheelSound = NodePath("../Wheel2Sound")
-ticker_low_player = NodePath("../ticker_low_player2")
-ticker_high_player = NodePath("../ticker_high_player")
 level_up_bar = NodePath("../spinnerStand/Node3D/MeshInstance3D/LevelupBar")
 money_box = NodePath("../../FullScreenControl")
 floating_text = ExtResource("2_e71vb")
@@ -949,13 +944,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c5vbb")
 [node name="Wheel3Sound" type="AudioStreamPlayer3D" parent="RainbowSpinner" unique_id=1782361242]
 stream = ExtResource("3_5vw27")
 
-[node name="ticker_high_player" type="AudioStreamPlayer3D" parent="RainbowSpinner" unique_id=1646386198]
-stream = ExtResource("15_6iyjs")
+[node name="Ticker3Sound" type="AudioStreamPlayer3D" parent="RainbowSpinner" unique_id=1646386198]
+stream = ExtResource("3_5vw27")
 
-[node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="RainbowSpinner" unique_id=468377497]
-stream = ExtResource("16_4w656")
-
-[node name="Spinner" type="MeshInstance3D" parent="RainbowSpinner" unique_id=46746200 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar")]
+[node name="Spinner" type="MeshInstance3D" parent="RainbowSpinner" unique_id=46746200 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "wheelSound", "level_up_bar")]
 transform = Transform3D(-0.05233594, 0, 0.9986296, 0, 1.0000001, 0, -0.9986295, 0, -0.052335948, 0, 0, 0)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("2_0xm2m")
@@ -966,8 +958,6 @@ winLabel = NodePath("../win_board/Label3D")
 loseLabel = NodePath("../win_board/Label3D2")
 jackpotLabel = NodePath("../win_board/Label3D3")
 wheelSound = NodePath("../Wheel3Sound")
-ticker_low_player = NodePath("../../FishSpinner/ticker_low_player2")
-ticker_high_player = NodePath("../../FishSpinner/ticker_high_player")
 level_up_bar = NodePath("../spinnerStand/Node3D/MeshInstance3D/LevelupBar")
 
 [node name="SpinnerCollision" type="StaticBody3D" parent="RainbowSpinner/Spinner" unique_id=1704152470]
@@ -1098,13 +1088,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_c5vbb")
 [node name="Wheel4Sound" type="AudioStreamPlayer3D" parent="SpinnerSpinner" unique_id=1856816845]
 stream = ExtResource("3_5vw27")
 
-[node name="ticker_low_player" type="AudioStreamPlayer3D" parent="SpinnerSpinner" unique_id=1145112297]
-stream = ExtResource("16_4w656")
+[node name="Ticker4Sound" type="AudioStreamPlayer3D" parent="SpinnerSpinner" unique_id=1145112297]
+stream = ExtResource("3_5vw27")
 
-[node name="ticker_high_player" type="AudioStreamPlayer3D" parent="SpinnerSpinner" unique_id=1814772306]
-stream = ExtResource("15_6iyjs")
-
-[node name="Spinner" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=301552973 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar")]
+[node name="Spinner" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=301552973 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "wheelSound", "level_up_bar")]
 transform = Transform3D(-0.05233594, 0, 0.9986296, 0, 1.0000001, 0, -0.9986295, 0, -0.052335948, 0, 0, 0)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("2_0xm2m")
@@ -1115,8 +1102,6 @@ winLabel = NodePath("../win_board/Label3D")
 loseLabel = NodePath("../win_board/Label3D2")
 jackpotLabel = NodePath("../win_board/Label3D3")
 wheelSound = NodePath("../Wheel4Sound")
-ticker_low_player = NodePath("../ticker_low_player")
-ticker_high_player = NodePath("../ticker_high_player")
 level_up_bar = NodePath("../spinnerStand/Node3D/MeshInstance3D/LevelupBar")
 
 [node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerSpinner/Spinner" unique_id=2026730940]

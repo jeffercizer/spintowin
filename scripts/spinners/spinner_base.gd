@@ -3,13 +3,17 @@ class_name SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    pass
+    prev_wheel_y = rotation_degrees.y
+    
 var machine_curve
 
 @export var wheelSound: AudioStreamPlayer3D
-@export var tickerSound: AudioStreamPlayer3D
+@export var ticker_low_player: AudioStreamPlayer3D
+@export var ticker_high_player: AudioStreamPlayer3D
+
 @export var level_up_bar: MeshInstance3D
 
+var ticker_high_next = true
 var spin_speed = 4.0
 var want_to_rebuild
 var _rebuild_luck_store = 0
@@ -26,9 +30,10 @@ func update_spinner_velocity(delta: float):
 
 
 var wheel_angular_velocity = 0.0
-var damping = 0.98
+var damping = 0.90
 var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not this (base * level)
 
+var prev_wheel_y = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if(want_spin): #we spin
@@ -89,7 +94,7 @@ func _process(delta: float) -> void:
         if angle != null and last_mouse_angle != null:
             var diff = wrapf(angle - last_mouse_angle, -PI, PI)
             drag_angular_velocity = diff / delta  # radians/sec
-            rotation.y += wheel_angular_velocity * delta
+            rotate_y(wheel_angular_velocity * delta)
             wheel_angular_velocity *= damping #natural slow
             wheel_angular_velocity += diff * torque_multi #increase by mouse
         last_mouse_angle = angle   
@@ -97,11 +102,33 @@ func _process(delta: float) -> void:
         rotate_y(wheel_angular_velocity * delta)
         wheel_angular_velocity *= damping
             
-            
     if(Globals.luck != _rebuild_luck_store): #rebuild wheel when luck gets updated
         rebuild_spinner()
         _rebuild_luck_store = Globals.luck
-             
+    #always do this per frame]
+    if(ticker_crossed()):
+        if(ticker_high_next):
+            ticker_high_player.play()
+        else:
+            ticker_low_player.play()
+        ticker_high_next = not ticker_high_next
+        prev_wheel_y = rotation_degrees.y
+
+
+func ticker_crossed():
+    var diff = rotation_degrees.y - prev_wheel_y
+    var clockwise = diff > 0.0        
+    var boundary = snapped(prev_wheel_y, 6) #find closest pin
+    
+    if (clockwise and boundary < prev_wheel_y):
+        boundary += 6
+    elif(not clockwise and boundary > prev_wheel_y):
+        boundary -= 6
+        
+    return (clockwise and boundary <= rotation_degrees.y) \
+    or (not clockwise and boundary >= rotation_degrees.y)
+    
+    
 func bias_angle(angle_deg):
     var biased_angle = angle_deg
     if(rotated_clockwise): #give the ticker a bit of a snapback effect based on the way it spinned
@@ -154,10 +181,7 @@ func start_spin():
     target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
     #print(target_rad)
     seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement
-    
-    tickerSound.pitch_scale = 9.2 / seconds_to_spin #just a temp thing to make it less sad
-    tickerSound.play()
-    
+        
 func compute_spin_time(target_angle):
     return pow((48.0 * target_angle) / spin_speed, 1.0/3.0)
       
@@ -204,7 +228,6 @@ func stop_fudging():
 var spin_threshold = 20.0
 
 func check_for_spin():
-    print(drag_angular_velocity)
     if abs(wheel_angular_velocity) > spin_threshold - min(spin_threshold-5,(1 * Globals.spin_friction)):
         if(wheel_angular_velocity > 0.0):
             rotated_clockwise = true

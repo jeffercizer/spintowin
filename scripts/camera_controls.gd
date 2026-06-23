@@ -30,7 +30,6 @@ func get_dust_intensity(delta: float) -> float:
     var spin_speed = abs(active_spinner.active_spin_angular_velocity) * 0.1
     var mouse_speed = get_mouse_speed(delta) * 1.0
     var total_speed = (spin_speed + mouse_speed) * (Globals.spin_friction/20)
-    print(str(spin_speed) + " " + str(mouse_speed))
     return clamp(spin_speed + mouse_speed/1000.0, 0.0, 10.0)
     
 func apply_dust_intensity(intensity: float):
@@ -180,7 +179,6 @@ func raycast_from_screen(screen_pos: Vector2):
         else:
             if(collider is SpinnerBuyButton):
                 collider.attempt_buy()
-                print(collider.name)
     else:
         print("no hit")
     

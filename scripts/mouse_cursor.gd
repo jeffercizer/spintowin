@@ -17,5 +17,7 @@ func _process(delta: float) -> void:
         texture = closed_hand
     elif(Globals.mouse_fudging):
         texture = finger_hand
+        position.x += 16
+        position.y += 16
     else:
         texture = open_hand

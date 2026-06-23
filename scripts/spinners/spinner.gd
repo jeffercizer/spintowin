@@ -95,12 +95,10 @@ func default_win():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
-    tickerSound.stop()
     wheelSound.play()
 
 func default_lose():
     wheelSound.stream = loseSound
-    tickerSound.stop()
     wheelSound.play()
     pass
     
@@ -109,7 +107,6 @@ func default_jackpot():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = jackpotSound
-    tickerSound.stop()
     wheelSound.play()
     
 func _on_luck_button_button_up() -> void:

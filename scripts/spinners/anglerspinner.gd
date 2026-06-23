@@ -137,7 +137,6 @@ func fish1_win():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
-    tickerSound.stop()
     wheelSound.play()
     
 func fish2_win():
@@ -145,7 +144,6 @@ func fish2_win():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
-    tickerSound.stop()
     wheelSound.play()
     
 func fish3_win():
@@ -153,7 +151,6 @@ func fish3_win():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
-    tickerSound.stop()
     wheelSound.play()
     
 func fish4_win():
@@ -161,14 +158,12 @@ func fish4_win():
     add_money(reward)
     add_experience(reward)
     wheelSound.stream = winSound
-    tickerSound.stop()
     wheelSound.play()
     
 func junk1_lose():
     var reward = get_junk1_win_reward()
     add_money(reward)
     wheelSound.stream = loseSound
-    tickerSound.stop()
     wheelSound.play()
     pass
     
@@ -176,13 +171,11 @@ func junk2_lose():
     var reward = get_junk2_win_reward()
     add_money(reward)
     wheelSound.stream = loseSound
-    tickerSound.stop()
     wheelSound.play()
     pass
     
 func fishing_game():
     Globals.want_fishing_minigame = true
-    tickerSound.stop()
     wheelSound.stop()
     pass
     

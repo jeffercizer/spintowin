@@ -63,7 +63,6 @@ func _process(delta: float) -> void:
             rotate_y(wheel_angular_velocity * delta)
             wheel_angular_velocity *= damping
         
-        print(str(fish_strength * fish_variance * delta))
         wheel_angular_velocity -= fish_strength * fish_variance * delta
         
         degrees_of_rotation_for_fish -= wheel_angular_velocity
@@ -73,9 +72,7 @@ func _process(delta: float) -> void:
         update_line()
         if(degrees_of_rotation_for_fish <= 0.0):
             #pull fish
-            print("FISH")
             wheelSound.play() #victory sound
-            tickerSound.stop()
             music_player.stop()
             game_running = false
             minigame_parent.visible = false
