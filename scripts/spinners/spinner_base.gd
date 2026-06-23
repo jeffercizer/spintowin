@@ -119,7 +119,7 @@ func _process(delta: float) -> void:
     prev_wheel_y = rotation_degrees.y
     var mat = ticker.get_active_material(0) as ShaderMaterial
     var fake_rotation_y = rotation_degrees.y
-    if(deg_per_sec > 10):
+    if(deg_per_sec > 40):
         fake_rotation_y = 72.0
         print(clockwise)
     mat.set_shader_parameter("wheel_angle_deg", fake_rotation_y)

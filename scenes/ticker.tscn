@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://6rpd3dj7dtfs"]
+
+[ext_resource type="PackedScene" uid="uid://ds8fri7cpo21s" path="res://assets/models/ticker.blend" id="1_bdnu0"]
+[ext_resource type="Material" uid="uid://cvq3e60bmklp5" path="res://materials/ticker_mat.tres" id="2_30jig"]
+
+[node name="ticker" unique_id=1736140430 instance=ExtResource("1_bdnu0")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1130819259]
+surface_material_override/0 = ExtResource("2_30jig")
