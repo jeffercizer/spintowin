@@ -5,5 +5,5 @@
 
 [node name="coins_real" unique_id=1768101801 instance=ExtResource("1_ul0bc")]
 
-[node name="Cylinder" parent="." index="0" unique_id=1043748003]
+[node name="Cylinder" parent="." index="0" unique_id=1350525228]
 surface_material_override/0 = ExtResource("2_hsfyo")
