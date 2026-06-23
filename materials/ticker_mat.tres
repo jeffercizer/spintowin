@@ -6,7 +6,8 @@
 render_priority = 0
 shader = ExtResource("1_n5228")
 shader_parameter/wheel_angle_deg = 0.0
+shader_parameter/clockwise = 1.0
 shader_parameter/peg_step_deg = 6.0
-shader_parameter/snap_range_deg = 1.0
-shader_parameter/bend_amount = 0.345
+shader_parameter/snap_range_deg = 1.2
+shader_parameter/bend_amount = 0.175
 shader_parameter/tip_height = 0.22
