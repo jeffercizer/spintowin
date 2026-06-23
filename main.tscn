@@ -699,6 +699,7 @@ stream = ExtResource("7_htxhm")
 
 [node name="ticker_high_player" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=1910307294]
 stream = ExtResource("15_6iyjs")
+pitch_scale = 2.25
 
 [node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=137802808]
 stream = ExtResource("16_4w656")

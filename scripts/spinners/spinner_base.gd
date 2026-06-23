@@ -107,12 +107,16 @@ func _process(delta: float) -> void:
         _rebuild_luck_store = Globals.luck
     #always do this per frame]
     if(ticker_crossed()):
+        var diff = abs(rotation_degrees.y - prev_wheel_y)
+        var deg_per_sec = diff / delta
+        var time_per_peg = 6.0 / deg_per_sec
+        var playback_speed = clamp((0.2 / time_per_peg)/5, 1, 2)
         if(ticker_high_next):
             ticker_high_player.play()
         else:
             ticker_low_player.play()
         ticker_high_next = not ticker_high_next
-        prev_wheel_y = rotation_degrees.y
+    prev_wheel_y = rotation_degrees.y
 
 
 func ticker_crossed():
