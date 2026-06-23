@@ -12,7 +12,7 @@ var machine_curve
 @export var ticker_high_player: AudioStreamPlayer3D
 
 @export var level_up_bar: MeshInstance3D
-
+@export var ticker: MeshInstance3D
 var ticker_high_next = true
 var spin_speed = 4.0
 var want_to_rebuild
@@ -105,10 +105,10 @@ func _process(delta: float) -> void:
     if(Globals.luck != _rebuild_luck_store): #rebuild wheel when luck gets updated
         rebuild_spinner()
         _rebuild_luck_store = Globals.luck
-    #always do this per frame]
+    #always do this per frame
+    var diff = abs(rotation_degrees.y - prev_wheel_y)
+    var deg_per_sec = diff / delta
     if(ticker_crossed()):
-        var diff = abs(rotation_degrees.y - prev_wheel_y)
-        var deg_per_sec = diff / delta
         var time_per_peg = 6.0 / deg_per_sec
         var playback_speed = clamp((0.2 / time_per_peg)/5, 1, 2)
         if(ticker_high_next):
@@ -117,11 +117,22 @@ func _process(delta: float) -> void:
             ticker_low_player.play()
         ticker_high_next = not ticker_high_next
     prev_wheel_y = rotation_degrees.y
+    var mat = ticker.get_active_material(0) as ShaderMaterial
+    var fake_rotation_y = rotation_degrees.y
+    if(deg_per_sec > 10):
+        fake_rotation_y = 72.0
+        print(clockwise)
+    mat.set_shader_parameter("wheel_angle_deg", fake_rotation_y)
+    var clockwise_shader_val = -1.0 if clockwise else 1.0
+    
+    mat.set_shader_parameter("clockwise", clockwise_shader_val)
 
-
+var clockwise = false
 func ticker_crossed():
-    var diff = rotation_degrees.y - prev_wheel_y
-    var clockwise = diff > 0.0        
+    var raw = rotation_degrees.y - prev_wheel_y
+    var diff = fposmod(raw + 180.0, 360.0) - 180.0
+
+    clockwise = diff > 0.0        
     var boundary = snapped(prev_wheel_y, 6) #find closest pin
     
     if (clockwise and boundary < prev_wheel_y):
