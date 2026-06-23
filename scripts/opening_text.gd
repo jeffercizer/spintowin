@@ -36,7 +36,7 @@ func _process(delta):
         reveal_text()
     
         
-var speed = 0.1  #seconds between character
+var speed = 0.06  #seconds between character
 func reveal_text() -> void:
     for i in intro_text.length():
         text = intro_text.substr(0, i + 1)

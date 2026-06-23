@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kbb82l6jim2f" path="res://scenes/floating_text.tscn" id="2_e71vb"]
 [ext_resource type="AudioStream" uid="uid://c0ab5op74irqq" path="res://imports/Spinning Wheel.mp3" id="3_5vw27"]
 [ext_resource type="AudioStream" uid="uid://csa8r6lvnf1he" path="res://assets/audio/fail.wav" id="3_lswn8"]
-[ext_resource type="Script" uid="uid://cdrunegnlh335" path="res://opening_text.gd" id="4_6iyjs"]
+[ext_resource type="Script" uid="uid://cdrunegnlh335" path="res://scripts/opening_text.gd" id="4_6iyjs"]
 [ext_resource type="PackedScene" uid="uid://ltpy6vohf7s0" path="res://scenes/finger_dust.tscn" id="4_uypp3"]
 [ext_resource type="Material" uid="uid://c70p2p75fm1p1" path="res://shaders/winSliceShader.tres" id="5_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ywttdoqf1a3j" path="res://assets/models/spinnerStand.tscn" id="5_lquwl"]
@@ -51,6 +51,7 @@
 [ext_resource type="AudioStream" uid="uid://c7s0rghn8hchw" path="res://assets/audio/fishing_win.wav" id="35_hrvbo"]
 [ext_resource type="AudioStream" uid="uid://dn0d2nso1rjes" path="res://assets/audio/fishgame_best.wav" id="36_uypp3"]
 [ext_resource type="Texture2D" uid="uid://bbg3yoluvju1a" path="res://assets/fish/Hollow Dolphin Fishing Icon Pack/fishing_icons_64x64_3.png" id="37_blkrb"]
+[ext_resource type="PackedScene" uid="uid://cy67vk302iscv" path="res://scenes/rainbowtext.tscn" id="52_blkrb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v8acg"]
 flip_faces = true
@@ -376,7 +377,7 @@ gradient = SubResource("Gradient_getpj")
 
 [node name="Node3D" type="Node3D" unique_id=1543989762]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "area_light", "omni_light", "next_machine_box", "prev_machine_box")]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box")]
 transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.10452846, 0, -0.10452846, 0.9945219, 0, 1.7, -0.33787847)
 fov = 60.0
 script = ExtResource("1_7mycd")
@@ -384,19 +385,15 @@ dust_instance = NodePath("FingerDust")
 ui_player = NodePath("AudioStreamPlayer3D")
 good_sound = ExtResource("2_0odxb")
 bad_sound = ExtResource("3_lswn8")
-area_light = NodePath("AreaLight3D")
 omni_light = NodePath("OmniLight3D")
 next_machine_box = NodePath("../FullScreenControl/HBoxContainer")
 prev_machine_box = NodePath("../FullScreenControl/HBoxContainer2")
 
 [node name="FingerDust" parent="Camera3D" unique_id=1526419048 instance=ExtResource("4_uypp3")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 4.440892e-16, 1, 0, -4.3711392e-08, 0, 0.27508438, -2.6172516)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=288587808]
 light_energy = 1.912
-
-[node name="AreaLight3D" type="AreaLight3D" parent="Camera3D" unique_id=1112598894]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.1419071, 0, 0)
-light_color = Color(0.14767182, 0.14767182, 0.14767176, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1518906253]
 max_polyphony = 2
@@ -416,13 +413,15 @@ shape = SubResource("BoxShape3D_v8acg")
 
 [node name="Label3D" type="Label3D" parent="Camera3D/Intro" unique_id=108966038 node_paths=PackedStringArray("camera", "intro", "collision_blocker", "ui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94834673, 0.552498, -0.9427649)
+pixel_size = 0.0005
 text = "Subject \"Humans\"
 Obsession #4: \"Gambling\"
 Variant #22: \"Wheels\"
 Begin Simulation..."
-font_size = 27
+font_size = 307
 horizontal_alignment = 0
 vertical_alignment = 0
+width = 2000.0
 script = ExtResource("4_6iyjs")
 camera = NodePath("../..")
 intro = NodePath("..")
@@ -437,9 +436,12 @@ camera_attributes = SubResource("CameraAttributesPractical_lquwl")
 compositor = SubResource("Compositor_7mycd")
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=1134405060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019400269, 0.012652516, -0.007316053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01928702, 0.019000173, -0.012497842)
 mesh = SubResource("PlaneMesh_0xm2m")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+
+[node name="rainbowtext" parent="." unique_id=1656742358 instance=ExtResource("52_blkrb")]
+transform = Transform3D(-0.12, 1.0490733e-08, 0, 4.585645e-16, 5.2453664e-09, -0.12, -1.0490733e-08, -0.12, -5.2453664e-09, 1.3531326, 2.2632165, 3.0520031)
 
 [node name="BasicSpinner" type="Node3D" parent="." unique_id=31207460]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.655, -3.142975)
@@ -556,8 +558,8 @@ font_size = 20
 horizontal_alignment = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="BasicSpinner" unique_id=1941860387]
-transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, -0.4157133, -3.4141827)
-light_energy = 14.38
+transform = Transform3D(1, 0, 0, 0, -0.9484238, 0.31700513, 0, -0.31700513, -0.9484238, 0, 1.5352737, -3.4141827)
+light_energy = 7.0
 spot_range = 7.021844
 spot_angle = 26.91444
 
@@ -584,7 +586,7 @@ angular_velocity_max = 20.0
 scale_amount_min = 0.1
 
 [node name="COINADO" type="CPUParticles3D" parent="BasicSpinner" unique_id=333429695]
-transform = Transform3D(0.92791855, -0.372783, 1.6294862e-08, 0.372783, 0.92791855, 3.150781e-09, -1.6294862e-08, 3.150781e-09, 1, 0.06932545, -0.022103786, -0.11891222)
+transform = Transform3D(0.92791855, -0.372783, 1.6294862e-08, 0.372783, 0.92791855, 3.150781e-09, -1.6294862e-08, 3.150781e-09, 1, 5.6458898, -0.022103786, -0.11891222)
 visible = false
 material_override = SubResource("StandardMaterial3D_d24k0")
 amount = 5002

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cy67vk302iscv"]
+
+[ext_resource type="PackedScene" uid="uid://c6kc4kuquhga8" path="res://imports/rainbowtext.blend" id="1_bds6c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4dph"]
+albedo_color = Color(0.41675407, 8.4830447e-07, 2.1658838e-07, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts8ra"]
+albedo_color = Color(0.4895861, 0.2567925, 2.8878452e-07, 1)
+emission_enabled = true
+emission = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yqfd"]
+albedo_color = Color(0.3373677, 0.33736783, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ea0jv"]
+albedo_color = Color(1.5883148e-06, 0.3384186, 2.4065375e-07, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xncb4"]
+albedo_color = Color(4.0911138e-07, 0, 0.2790268, 1)
+emission_enabled = true
+emission = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_defuo"]
+albedo_color = Color(2.4065375e-07, 0.35897717, 0.35897714, 1)
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s51n3"]
+albedo_color = Color(1, 0, 1, 1)
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+
+[node name="rainbowtext" unique_id=1656742358 instance=ExtResource("1_bds6c")]
+
+[node name="Text" parent="." index="0" unique_id=1139910524]
+surface_material_override/0 = SubResource("StandardMaterial3D_c4dph")
+surface_material_override/1 = SubResource("StandardMaterial3D_ts8ra")
+surface_material_override/2 = SubResource("StandardMaterial3D_6yqfd")
+surface_material_override/3 = SubResource("StandardMaterial3D_ea0jv")
+surface_material_override/4 = SubResource("StandardMaterial3D_xncb4")
+surface_material_override/5 = SubResource("StandardMaterial3D_defuo")
+surface_material_override/6 = SubResource("StandardMaterial3D_s51n3")
