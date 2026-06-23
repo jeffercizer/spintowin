@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b56ryq8q2imn5"]
+
+[ext_resource type="PackedScene" uid="uid://blackduymh5vt" path="res://assets/models/coins_real.blend" id="1_ul0bc"]
+[ext_resource type="Material" uid="uid://cyixql4fjn6ph" path="res://materials/coin_mat.tres" id="2_hsfyo"]
+
+[node name="coins_real" unique_id=1768101801 instance=ExtResource("1_ul0bc")]
+
+[node name="Cylinder" parent="." index="0" unique_id=1043748003]
+surface_material_override/0 = ExtResource("2_hsfyo")
