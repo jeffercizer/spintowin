@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkcen08gfil2q"
+path="res://.godot/imported/Won!.wav-9c7ce9b39d194491480865b4bb87d9e6.sample"
+
+[deps]
+
+source_file="res://assets/Coins sounds [OGG]/Won!.wav"
+dest_files=["res://.godot/imported/Won!.wav-9c7ce9b39d194491480865b4bb87d9e6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
