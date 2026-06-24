@@ -12,7 +12,7 @@ func _ready() -> void:
     junk1Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
     junk2Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
     machine_curve = {
-        "luck_cap": 20,
+        "luck_cap": 13,
         "thresholds": [
             { "luck": 1,
                 "fish1": 0.5,  "fish2": 0.5,  "fish3": 0.5,  "fish4": 0.5,
@@ -23,10 +23,10 @@ func _ready() -> void:
             { "luck": 6,
                 "fish1": 10.0,  "fish2": 2.5,  "fish3": 1.0,  "fish4": 1.0,
                 "junk1": 7.5, "junk2": 7.5, "fishinggame": 0.0 },
-            { "luck": 10,
+            { "luck": 9,
                 "fish1": 12.0,  "fish2": 10.0,  "fish3": 5.5,  "fish4": 2.5,
                 "junk1": 3.75,  "junk2": 3.75,  "fishinggame": 5.0 },
-            { "luck": 20,
+            { "luck": 13,
                 "fish1": 5.0, "fish2": 5.0, "fish3": 12.5, "fish4": 12.5,
                 "junk1": 0.0,  "junk2": 0.0,  "fishinggame": 15.0 }
         ]

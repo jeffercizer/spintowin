@@ -98,7 +98,7 @@ func _physics_process(delta: float) -> void:
             
     elif dragging: #we spin the wheel with the mouse
         var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0)
-        torque_multi = torque_multi * 600 *  pow(1.2, Globals.spin_percision)
+        torque_multi = torque_multi * 600 *  pow(1.1, Globals.spin_friction)
         var angle = get_mouse_angle()
         if angle != null and last_mouse_angle != null:
             var diff = wrapf(angle - last_mouse_angle, -PI, PI)
