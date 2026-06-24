@@ -1476,6 +1476,15 @@ albedo_texture = ExtResource("53_rqtf5")
 uv1_scale = Vector3(1.78, 1.78, 1.78)
 uv1_offset = Vector3(0.005, -0.865, 0)
 
+[sub_resource type="BoxMesh" id="BoxMesh_uatky"]
+size = Vector3(1.0824432, 0.16778564, 0.45355225)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5vbb"]
+size = Vector3(0.6052246, 0.20513916, 0.10058594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vchc8"]
+size = Vector3(0.59472656, 0.20632935, 0.114868164)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_pet1e"]
 size = Vector2(1.4, 1.445)
 
@@ -2234,15 +2243,35 @@ transform = Transform3D(1, 1.4210855e-14, -3.8870278e-16, 0, 1.0000005, -6.06562
 mesh = SubResource("PlaneMesh_tt1o4")
 surface_material_override/0 = SubResource("StandardMaterial3D_xuqvo")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RainbowSpinner" unique_id=1306394202]
+transform = Transform3D(0.99996424, 3.4034997e-12, 6.733912e-20, -3.4034997e-12, 0.9999643, 2.1280755e-12, -4.3622197e-20, 4.2632564e-13, 0.99999994, -1.5373279, 0.15897465, -0.26156616)
+mesh = SubResource("BoxMesh_uatky")
+
 [node name="Label3D" type="Label3D" parent="RainbowSpinner" unique_id=36845105]
 transform = Transform3D(0.99999976, -1.4964065e-21, 2.1316282e-14, -2.1316282e-14, -4.371139e-08, 0.99999976, -4.2351647e-22, -1, -4.3711385e-08, -1.5120938, 0.24842644, -0.39066935)
-text = "Current Payout: "
+text = "Current Winnings: "
 font_size = 24
 
 [node name="payout" type="Label3D" parent="RainbowSpinner" unique_id=1206930737]
 transform = Transform3D(0.9999994, -4.0375053e-21, 5.684342e-14, -5.684342e-14, -4.371139e-08, 0.9999994, -4.2351647e-22, -1, -4.371138e-08, -1.5472544, 0.24842525, -0.1740154)
 text = "19.12T"
 font_size = 24
+
+[node name="cashout_label" type="Label3D" parent="RainbowSpinner" unique_id=1563634569]
+transform = Transform3D(0.9999996, -2.766956e-21, 3.5527137e-14, -3.5527137e-14, -4.371139e-08, 0.9999996, -8.4703295e-22, -1, -4.371138e-08, -1.5669955, 0.24842572, 0.4288875)
+text = "Cashout?"
+font_size = 24
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RainbowSpinner/cashout_label" unique_id=1746483386]
+transform = Transform3D(0.99999994, 0, 0, 1.009742e-28, 1, 1.6940659e-21, 0, 0, 0.99999994, 0.001926899, -0.003095746, -0.06201172)
+mesh = SubResource("BoxMesh_c5vbb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RainbowSpinner/cashout_label/MeshInstance3D" unique_id=65801729]
+transform = Transform3D(0.99999964, -2.5410996e-21, 3.5527137e-14, 1.5529411e-21, 1, 1.0658148e-14, -3.5527137e-14, 0, 0.99999964, -0.03708768, -0.21355808, 0.062010765)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RainbowSpinner/cashout_label/MeshInstance3D/StaticBody3D" unique_id=1566914859]
+transform = Transform3D(1, 0, -4.106937e-12, -1.1672617e-25, 1, 0, 4.106937e-12, 0, 1, 0.04248047, 0.21372986, -0.054504395)
+shape = SubResource("BoxShape3D_vchc8")
 
 [node name="SpinnerSpinner" type="Node3D" parent="." unique_id=924442121]
 transform = Transform3D(-4.371138e-08, 0.9999998, -4.371139e-08, 0, -4.371138e-08, -1, -0.9999998, -4.371138e-08, 1.9106855e-15, -2.9524121, 1.6549999, -0.0023281574)
