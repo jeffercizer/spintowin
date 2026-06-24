@@ -3,15 +3,15 @@ extends SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_experience_to_level_up = 100
-    experience_to_level_up = base_experience_to_level_up * (level * level * level)
+    base_experience_to_level_up = 20
+    experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
         "luck_cap": 10,
         "thresholds": [
             { "luck": 1,  "Win": 10.0, "Lose": 15.0, "Jackpot": 2.0},
-            { "luck": 5,  "Win": 40.0, "Lose": 40.0, "Jackpot": 20.0},
-            { "luck": 7, "Win": 70.0, "Lose": 10.0, "Jackpot": 30.0},
-            { "luck": 10, "Win": 16.0, "Lose": 0.0,  "Jackpot": 84.0}
+            { "luck": 5,  "Win": 30.0, "Lose": 15.0, "Jackpot": 20.0},
+            { "luck": 7, "Win": 30.0, "Lose": 7.0, "Jackpot": 40.0},
+            { "luck": 9, "Win": 16.0, "Lose": 0.0,  "Jackpot": 84.0}
         ]
     }
     #goodness can be used to have certain slices grow faster than their base weight would encourage
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
     super._process(delta)
     
 func _physics_process(_delta: float) -> void:
-    pass
+    super._physics_process(_delta)
 
 func start_spin():
     super.start_spin()
@@ -87,7 +87,7 @@ func get_win_amount():
     return ((20 * pow(Globals.level_effect, level-1)))
     
 func get_jackpot_amount():
-    return (400 * pow(Globals.level_effect, level-1))
+    return (200 * pow(Globals.level_effect, level-1))
     
 #wheel specific callbacks
 func default_win():

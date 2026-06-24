@@ -10,23 +10,13 @@ mat2 rotate2D(float r) {
 
 void fragment( )
 {
-    
 	vec2 cuv = (UV-.5)*2.0;
-//	cuv /= TIME / 8.0;
-	float ang = atan(cuv.y,cuv.x)*float(segments)/(2.*TAU);
-	float lograd = log(length(cuv))-float(shear)*atan(cuv.y, cuv.x)/TAU;
-	float u = ang;
-	float v = 4.0*lograd;
-	
-	vec2 finalUv = vec2(u + TIME,v+TIME);
-	
-    vec2 uv = finalUv;
     vec3 col = vec3(0);
     float t = TIME;
     
     vec2 n = vec2(0),q;
     vec2 N = vec2(0);
-    vec2 p = uv;
+    vec2 p = UV;
     float S = 10.0;
     mat2 m = rotate2D(1.0);
 

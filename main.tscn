@@ -87,8 +87,8 @@ size = Vector2(100, 100)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_pet1e"]
-size = Vector2(1.4, 1.445)
+[sub_resource type="BoxMesh" id="BoxMesh_pet1e"]
+size = Vector3(1.4650421, 0.61572266, 2.1180115)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c5vbb"]
 size = Vector2(0.2, 0.2)
@@ -162,10 +162,61 @@ frequency = 0.0023
 noise = SubResource("FastNoiseLite_htxhm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seu75"]
-albedo_color = Color(0.27387273, 0.27387273, 0.27387273, 1)
+albedo_color = Color(0.7043426, 0.5449439, 0, 1)
 metallic = 1.0
 metallic_specular = 1.0
 metallic_texture = SubResource("NoiseTexture2D_seu75")
+
+[sub_resource type="TorusMesh" id="TorusMesh_pet1e"]
+inner_radius = 0.99
+outer_radius = 1.07
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjyto"]
+albedo_color = Color(0.7058824, 0.54509807, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04p15"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a4lq6"]
+_surfaces = [{
+"aabb": AABB(-1.7825094, 0.012101922, -1.7825094, 3.565019, 4.162068, 3.565019),
+"format": 34359742465,
+"index_count": 564,
+"index_data": PackedByteArray("AAABAAIAHQACAAEAHgACAB0AGwAdAAEAEgAeAB0AEgAdABsAEgAQAB4AEAACAB4ACgASABsACgAQABIAGwABABoAAAAaAAEAHAAbABoACgAbABwAHAAaABEAAAARABoAEwAcABEAEQAAABMAEwAKABwAEwAAAC0AEAAKACAACgATACsAFAATAC0AFAArABMALQAAADEAMQAAAAUAMAAUAC0AMAAtADEABgAFAAAAMgAxAAUAMgAwADEABgAyAAUALwAwADIABgAvADIALgAUADAALwAuADAALgAJABQAKwAUAAkALwAsAC4ALgAsAAkACQAzACsALAAvABUALwAGABUALAA0AAkACQA0ADMAKwAzADUAKwA1AAoAFQAGACoACgA1ADYAFgAVACoAKgAGACkAKQAWACoAKQAGAAcAFQAWAAgAFQAIACwAKQAoABYABwAoACkAKAAIABYABAAHAAYABwAnACgABAAnAAcAJwAmACgAKAAmAAgAJwAXACYABAAXACcAJQAmABcAFwAEACUAJgAkAAgAJgAlACQAJQAEABgAGAAkACUAGAAEACMAIwAEAAMAAgADAAQAIwADADcAAgA3AAMAIwA3ACIAGAAjACIAAgAfADcAIgA3AB8AHwACABAAGAAiABkAJAAYABkAIgAfACEAGQAiACEAIAAfABAAIAAhAB8AGQAhAAsAIQAgAAsAJAAZAAsAIAA4AAsACwA5ACQACwA4ADkAIAA2ADgACgA2ACAAJAA5ADoAJAA6AAgAOAA7ADkANgA8ADgAOAA8ADsANgA9ADwANQA9ADYACAA6AD4ACAA+ACwALAA+ADQANQA/AD0AMwA/ADUANABAADMAMwBAAD8APgBBADQANABBAEAAPgBCAEEAOgBCAD4AQQBDAEAAOgBEAEIAOQBEADoAOQA7AEQAQgBFAEEAQQBFAEMARABGAEIAQgBGAEUAOwBHAEQARABHAEYAOwBIAEcAPABIADsARwBJAEYAPABKAEgAPQBKADwASABLAEcARwBLAEkASgBMAEgASABMAEsAPQBNAEoAPwBNAD0ASgBOAEwATQBOAEoAPwBPAE0AQABPAD8AQABDAE8ATwBQAE0ATQBQAE4AQwBRAE8ATwBRAFAAQwBSAFEARQBSAEMAUQBTAFAARQBUAFIARgBUAEUARgBJAFQAUgBVAFEAUQBVAFMAVABWAFIAUgBWAFUASQBXAFQAVABXAFYASQBYAFcASwBYAEkAWAANAFcASwBZAFgATABZAEsAWABaAA0AWQBaAFgAVwANAFsAWgBbAA0AVwBbAFYAVgBbAA8AVgAPAFUAWgBcAFsAXAAPAFsAWQAMAFoADABcAFoAVQAPAF0AXABdAA8AVQBdAFMADABeAFwAXgBdAFwAXwAMAFkAXwBeAAwATABfAFkATgBfAEwAUwBdAA4AXgAOAF0AUwAOAGAAYAAOAF4AYABeAF8ATgBgAF8AUABTAGAAUABgAE4A"),
+"lods": [0.08251253, PackedByteArray("AAABAAIAAAAaAAEAGwABABoAAAARABoAHAAaABEAHAAbABoAEwAcABEAEQAAABMACgAbABwAEwAKABwAGwAdAAEAHQACAAEAEgAdABsACgASABsAEgAeAB0AHgACAB0AEgAQAB4AEAACAB4ACgAQABIAHwACABAAEAAKACAAIAAfABAAAgAfAAMAAgADAAQAIAAhAB8AIgADAB8AIgAfACEAIwADACIAIwAEAAMAGAAjACIAGAAEACMAGQAiACEAGAAiABkAIQAgAAsAGQAhAAsAJAAYABkAJAAZAAsAJQAEABgAGAAkACUAFwAEACUAIAAOAAsAJQAmABcAJgAlACQABAAXACcAJwAXACYABAAnAAcABAAHAAYAJwAmACgABwAnACgAJgAkAAgAKAAmAAgACwAMACQAJAAMAAgACwAOAAwACgAOACAABwAoACkAKQAGAAcACgAPAA4AKQAoABYAKAAIABYAKQAWACoAKgAGACkADQAOAA8ADQAPAAoADAAOAA0AFgAVACoAFQAGACoAFQAWAAgAKwANAAoACgATACsADAANAAkACQANACsACAAMACwALAAMAAkAFQAIACwAFAArABMAKwAUAAkAFAATAC0AEwAAAC0ALgAJABQALgAsAAkALAAvABUALwAsAC4ALwAGABUALgAUADAALwAuADAAMAAUAC0ABgAvAAUALwAwAAUABgAFAAAAMAAtADEABQAwADEALQAAADEAMQAAAAUA"), 0.27353308, PackedByteArray("AAABAAIAEAACAAEAAAARAAEAEgABABEAEgAQAAEACgASABEACgAQABIAEQAAABMAEwAKABEAEwAAAAUABgAFAAAAFAATAAUAFAAKABMABgAVAAUAFQAUAAUAAgAQAAMAAgADAAQABAAHAAYAFQAGAAcABwAWABUABAAXAAcABwAXABYAGAAEAAMAFwAEABgAGQADABAAGAADABkAGAAIABcAFwAIABYACAAYABkAFQAWAAgAGQAQAAsACAAZAAsAEAAKAAsAFQAIAAkAFQAJABQACgAUAAkACAAMAAkACwAMAAgACQANAAoADAANAAkACwAOAAwADAAOAA0ACgAOAAsADQAOAA8ACgAPAA4ADQAPAAoA"), 1.5882602, PackedByteArray("AAABAAIAAwACAAEAAgADAAQAAQAAAAUABgAFAAAABAAHAAYABQAGAAcABAADAAcABwAIAAUABwADAAgACQABAAUABQAIAAkACgADAAEACQAKAAEACAADAAsAAwAKAAsACAAMAAkACwAMAAgACQANAAoADAANAAkACwAOAAwADAAOAA0ACgAOAAsADQAOAA8ACgAPAA4ADQAPAAoA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 97,
+"vertex_data": PackedByteArray("RSnkvyRHRjxFKeS/RSnkv0grnz5FKeQ/RSnkvyRHRjxFKeQ/RSnkP0grnz5FKeQ/RSnkPyRHRjxFKeQ/RSnkv0grnz5FKeS/RSnkPyRHRjxFKeS/RSnkP0grnz5FKeS/RuibPgAAgD/uzZi+RuibvgAAgD/uzZi+RuibvgAAgD/uzZg+RuibPgAAgD/uzZg+RuibPs2ShUDuzZi+Ruibvs2ShUDuzZi+RuibPs2ShUDuzZg+Ruibvs2ShUDuzZg+nvBksUgrnz5FKeQ/RSnkv0grnz4KMAg/RuibvgRwLz98MyY/RSnkv0grnz4AAACAEvomvwRwLz/uzZi+nvBksUgrnz5FKeS/RuibPgRwLz98Mya/RSnkP0grnz4KMAi/RSnkP0grnz4KMAg/EvomPwRwLz/uzZg+RSnkv0grnz6lIJQ/EvomvwYoBz98MyY/EvomvwRwLz/uzZg+o9GUv0grnz5FKeQ/AfQKv0grnz5FKeQ/AfQKP0grnz5FKeQ/AAAAAAAAgD/uzZg+RuibPgRwLz98MyY/EvomPwYoBz98MyY/RSnkP0grnz6lIJQ/RuibPgAAgD8AAACARSnkP0grnz4AAACAEvomPwRwLz/uzZi+RSnkP0grnz6lIJS/EvomPwYoBz98Mya/o9GUP0grnz5FKeS/AfQKP0grnz5FKeS/RuibvgAAgD8AAACAAAAAAAAAgD/uzZi+RSnkv0grnz4KMAi/RuibvgRwLz98Mya/AfQKv0grnz5FKeS/EvomvwYoBz98Mya/RSnkv0grnz6lIJS/o9GUv0grnz5FKeS/RuibvicXtT8AAACARuibvicXtT/uzZi+RuibvicXtT/uzZg+AAAAACcXtT/uzZg+o9GUP0grnz5FKeQ/RuibPicXtT/uzZg+RuibPicXtT8AAACARuibPicXtT/uzZi+RuibPs2S5T8AAACARuibPs2S5T/uzZg+AAAAAM2S5T/uzZg+AAAAACcXtT/uzZi+Ruibvs2S5T/uzZg+Ruibvs2S5T8AAACARuibvs2S5T/uzZi+AAAAAM2S5T/uzZi+Ruibvs2SJUAAAACARuibPs2S5T/uzZi+Ruibvs2SJUDuzZi+AAAAAM2SJUDuzZi+RuibPs2SJUDuzZi+RuibPs2SJUAAAACAAAAAADRcWEDuzZi+RuibPs2SJUDuzZg+RuibPjRcWEDuzZi+RuibPjRcWEAAAACAAAAAAM2SJUDuzZg+RuibPjRcWEDuzZg+Ruibvs2SJUDuzZg+AAAAADRcWEDuzZg+RuibvjRcWEDuzZg+RuibvjRcWEAAAACAAAAAAOfAcUDuzZg+RuibvjRcWEDuzZi+RuibvufAcUDuzZg+RuibvufAcUAAAACARuibvufAcUDuzZi+AAAAAOfAcUDuzZi+RuibPufAcUDuzZi+AAAAAM2ShUDuzZi+Ruibvs2ShUAAAACAAAAAAM2ShUAAAACAAAAAAM2ShUDuzZg+RuibPs2ShUAAAACARuibPufAcUAAAACARuibPufAcUDuzZg+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_glpqv"]
+resource_name = "spinnerStand_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1.7825094, 0.012101922, -1.7825094, 3.565019, 4.162068, 3.565019),
+"attribute_data": PackedByteArray("AAAAPwAAQD8AACA/AACAPwAAAD8AAIA/AAAgPwAAQD8AAAA/AAAAPwAAID8AAEA/AAAAPwAAQD8AACA/AAAAPwAAAD8AAIA+AAAgPwAAAD8AAAA/AAAAPwAAID8AAIA+AAAAPwAAAAAAACA/AACAPgAAAD8AAIA+AAAgPwAAAAAAADA/AADgPgAAID8AAIA+AAAwPwAAoD4AAFA/AACgPgAAID8AAAA/AABgPwAAgD4AAGA/AAAAPwAAUD8AAOA+AAAwPwAA4D4AADA/AACgPgAAUD8AAOA+AABQPwAAoD4AAFA/AADgPgAAUD8AAKA+AABQPwAAoD4AAFA/AADgPgAAMD8AAOA+AABQPwAA4D4AAFA/AADgPgAAMD8AAOA+AABQPwAAoD4AAFA/AACgPgAAMD8AAKA+AAAwPwAAoD4AADA/AACgPgAAMD8AAOA+AAAwPwAA4D4AADA/AACgPgAAID8AAHA/AAAgPwAAYD8AACA/AAAgPwAAID8AAOA+AAAgPwAAoD4AACA/AAAAPgAAKD8AAKA+AABAPwAAgD4AACA/AACgPgAAID8AAOA+AAAwPwAA8D4AAEA/AAAAPwAAWD8AAOA+AABgPwAAwD4AAGA/AACgPgAAUD8AAJA+AAAgPwAAeD8AACA/AABQPwAAID8AAEg/AAAgPwAAMD8AACA/AAAQPwAAID8AAAg/AAAgPwAA8D4AACA/AADAPgAAID8AAJA+AAAgPwAAQD4AACA/AACAPQAAID8AAAA9AAAwPwAAwD4AACA/AADAPgAAKD8AAOA+AAAgPwAA8D4AACg/AADwPgAAKD8AAAA/AAAwPwAAAD8AAEA/AADgPgAAUD8AAAA/AABQPwAA8D4AAFg/AADwPgAAYD8AAPA+AABgPwAA4D4AAFA/AADAPgAAWD8AAKA+AABgPwAAkD4AAFg/AACQPgAAWD8AAIA+AABQPwAAgD4AAEA/AACgPgAAMD8AAIA+AAAwPwAAkD4AACg/AACQPgAAID8AAJA+AABQPwAAwD4AAEA/AADgPgAAQD8AAKA+AAAwPwAAwD4AACA/AAA4PwAAID8AAGA+AABYPwAAAD8AACg/AACAPgAAUD8AAKA+AABAPwAAoD4AAEA/AACgPgAAUD8AAKA+AAAwPwAAoD4AAEA/AACgPgAAUD8AAKA+AAAwPwAAoD4AAEA/AACgPgEAUD8AAKA+AAAwPwAAoD4AAEA/AACgPgAAUD8AAKA+AAAwPwAAoD4AAEA/AACgPgAAMD8AAKA+AAAwPwAA4D4AAEA/AADgPgAAQD8AAOA+AAAwPwAA4D4AAFA/AADgPgAAQD8AAOA+AAAwPwAA4D4AAFA/AADgPgAAQD8AAOA+AAAwPwAA4D4AAFA/AADgPgAAQD8AAOA+AAAwPwAA4D4AAFA/AADgPgAAQD8AAOA+AABQPwAA4D4AAFA/AADAPgAAUD8AAKA+AABQPwAAwD4AAFA/AADgPgAAUD8AAOA+AABQPwAAwD4AAFA/AACgPgAAUD8AAOA+AABQPwAAwD4AAFA/AACgPgAAUD8AAOA+AABQPwAAwD4BAFA/AACgPgAAUD8AAOA+AABQPwAAwD4AAFA/AACgPgAAMD8AAMA+AAAwPwAA4D4AADA/AADAPgAAMD8AAKA+AAAwPwAAoD4AADA/AADAPgAAMD8AAOA+AAAwPwAAoD4AADA/AADAPgAAMD8AAOA+AAAwPwAAoD4AADA/AADAPgAAMD8AAOA+AAAwPwAAoD4AADA/AADAPgAAMD8AAOA+AABAPwAAwD4AAEA/AADgPgAAMD8AAMA+AABQPwAAwD4AAEA/AACgPg=="),
+"format": 34359742487,
+"index_count": 564,
+"index_data": PackedByteArray("AAABAAIAAAA8AAEAAAAsADwALAAAAC0ALQAAAD0APQAAAD4APgAAAAMABAAFAAYABABkAAUABAA/AGQAPwAEAC4ALgAEAEAAQAAEAEEAQQAEAAcACAAJAAoACABCAAkACAAvAEIALwAIAEMAQwAIADAAMAAIAEQARAAIAAsADAANAA4ADABlAA0ADABFAGUARQAMADEAMQAMAEYARgAMAEcARwAMAA8ANABIAEkASgBJAEgASQBKADUASwA1AEoASwBKAEwAFABLAEwAFABMAE0ATABKABAASgBIABAATQBMADYATAAQADYATQA2AE4ANgA3AE4ANwA2ABAANwAQAE8ATwBQADcAUABPAFEAUQBPABcAUABRAFIAUABSAGYAUQAXADgAUQA4AFIAVQA4ABcAZgBSAFMAZgBTABYAUgBUAFMAUgA4AFQAOAA5AFQAOABVADkAEwA5AFUAOQATAFYAOQBWADoAVgBXADoAVgBYAFcAEwBYAFYAWAAVAFcAWABZABUAOwBZAFgAEwA7AFgAOwBaAFkAOwAzAFoAEwAzADsAMwATAFsAWwBcADMAWwBdAFwAXQBbABIAXgBcAF0AMgBdABIAMgBeAF0ASAAyABIASAA0ADIANABeADIAXgBnAFwANABfAF4AXwBnAF4AXwARAGcAaABpAGoAaAAlAGkAagBpACYAawBoAGoAagAmAGwAawBqAG0AbQBqAGwAbgBrAG0AbQBsAG8AbgBtAHAAcABtAG8AcQBuAHAAcABvAHIAcQBwAHMAcwBwAHIAdABxAHMAcwByAHUAdABzAHYAdgBzAHUAJAB0AHYAdgB1AHcAJAB2AGIAYgB2AHcAYgB3ACcAeAB5AHoAeAAgAHkAegB5ACEAewB4AHoAegAhAHwAewB6AH0AfQB6AHwAfgB7AH0AfQB8AH8AfgB9AIAAgAB9AH8AgQB+AIAAgAB/AIIAgQCAAIMAgwCAAIIAhACBAIMAgwCCAIUAhACDAIYAhgCDAIUAIwCEAIYAhgCFAIcAIwCGAGEAYQCGAIcAYQCHACIAiAAdAIkAiACKAB0AiwCKAIgAiwAcAIoAjACLAIgAjQCIAIkAjACIAI0AjQCJAI4AjwCMAI0AkACNAI4AjwCNAJAAkACOAJEAkgCPAJAAkwCQAJEAkgCQAJMAkwCRAJQAlQCSAJMAlgCTAJQAlQCTAJYAHwCVAJYAlgCUAJcAHwCWAGAAYACWAJcAYACXAB4AmAApAJkAmACaACkAmwCaAJgAmwArAJoAnACbAJgAnQCYAJkAnACYAJ0AnQCZAJ4AnwCcAJ0AoACdAJ4AnwCdAKAAoACeAKEAogCfAKAAowCgAKEAogCgAKMAowChAKQApQCiAKMApgCjAKQApQCjAKYAKAClAKYApgCkAKcAKACmAGMAYwCmAKcAYwCnACoAGACoAKkAGACqAKgAqQCoAKsAqQCrABoAqAAbAKsAqACsABsAqgCsAKgAqgAZAKwA"),
+"lods": [0.08251253, PackedByteArray("AAABAAIAAAA8AAEAAAAsADwALAAAAC0ALQAAAD0APQAAAD4APgAAAAMABAAFAAYABAA/AAUAPwAEAC4ALgAEAEAAQAAEAEEAQQAEAAcACAAJAAoACABCAAkACAAvAEIALwAIAEMAQwAIADAAMAAIAEQARAAIAAsADAANAA4ADABFAA0ARQAMADEAMQAMAEYARgAMAEcARwAMAA8ANABIAEkASgBJAEgASQBKADUASwA1AEoASwBKAEwAFABLAEwAFABMAE0ATABKABAASgBIABAATQBMADYATAAQADYATQA2AE4ANgA3AE4ANwA2ABAANwAQAE8ATwBQADcAUABPAFEAUQBPABcAUABRAFIAUABSABYAFgBSAFMAUgBUAFMAUQA4AFIAUgA4AFQAUQAXADgAVQA4ABcAOAA5AFQAOABVADkAEwA5AFUAOQATAFYAOQBWADoAVgBXADoAVgBYAFcAEwBYAFYAWAAVAFcAWABZABUAOwBZAFgAEwA7AFgAOwBaAFkAOwAzAFoAEwAzADsAMwATAFsAWwBcADMAWwBdAFwAXQBbABIAXgBcAF0AXgARAFwAXwARAF4ANABfAF4AMgBeAF0ANABeADIAMgBdABIASAA0ADIASAAyABIAGAAZABoAGgAZABsAHAAdAB4AYAAcAB4AHwAcAGAAIAAhACIAYQAgACIAIwAgAGEAJAAlACYAJAAmAGIAYgAmACcAKAApAGMAYwApACoAKAArACkA"), 0.27353308, PackedByteArray("AAABAAIAAAAsAAEALAAAAC0ALQAAAAMABAAFAAYABAAuAAUALgAEAAcACAAJAAoACAAvAAkALwAIADAAMAAIAAsADAANAA4ADAAxAA0AMQAMAA8AEAAyABIAMgAzABIAMgARADMANAARADIAEAA0ADIANAAQADUANQAQADYAFAA1ADYAFAA2ADcANwA2ABAANwAQABcANwAXADgANwA4ABYAOAA5ABYAEwA4ABcAOAATADkAMwATABIAOQATADoAEwAzADsAEwA7ADoAOwAzABUAOwAVADoAGAAZABoAGgAZABsAHAAdAB4AHwAcAB4AIAAhACIAIwAgACIAJAAlACYAJAAmACcAKAApACoAKAArACkA"), 1.5882602, PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACAALAAkADAANAA4ADQAMAA8AEAARABIAEQATABIAFAARABAAEwARABUAFAAQABYAFwATABUAFgAQABcAFwAVABYAGAAZABoAGgAZABsAHAAdAB4AHwAcAB4AIAAhACIAIwAgACIAJAAlACYAJAAmACcAKAApACoAKAArACkA")],
+"material": SubResource("StandardMaterial3D_04p15"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 173,
+"vertex_data": PackedByteArray("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RuibvicXtT8AAACARuibvicXtT/uzZg+RuibPufAcUAAAACARuibPufAcUDuzZi+RuibPs2ShUAAAACARuibPufAcUDuzZg+RuibPjRcWEDuzZg+RuibPjRcWEAAAACARuibPjRcWEDuzZi+RuibPs2SJUDuzZg+RuibPs2SJUAAAACARuibPs2SJUDuzZi+RuibPs2S5T/uzZg+RuibPs2S5T8AAACARuibPs2S5T/uzZi+RuibPicXtT/uzZg+RuibPicXtT8AAACARuibPicXtT/uzZi+AAAAAM2ShUAAAACAAAAAAM2ShUDuzZi+RuibPs2ShUAAAACARuibvs2ShUAAAACAAAAAAM2ShUDuzZg+AAD/f/9/uP0AAP9/mob//wAA/3//f///AAD/f/9/////////Pnue/f////+YhrL8//////9//////////3///////3+MhP//////f/9/sfz///9//3///////3//f////3//f8CEnv3/f/9/Znmy/P9//3//f////3//f/9///9luM3jXiLE0laKZuscDIbFMZyZxykkftPNY5nHpSCQrJeUp/V+H5zFqHVm634fYrpna6f1HAx4uplHzeMpJICs/3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/78AAP9/////vwAA/3////+/AAD/f////78AAP9/////v/////////+//////////7//////////v/////////+//3//f////z//f/9/////P/9//3////8//3//f////z////9/////v////3////+/////f////7////9/////vwAA/3+55///AAD/f/9/ytL/////aCYz0////3//fyLM////fybV////f/9/ltkz01igsch9JmvY/39I2fwAocFNmnXW/Rt/14ipseU2LRbOLLcI6U8GT9i1pv///ABdvrFIpt/kJp+pL1kv2c8ml6yxZXXWNi3nsQhp0chPBq+nAAD/f/fp//8AAP9//39r1QAA/3//f////////yLnbcz/////oyvQ1f//////f/7/////f/9/A8v///9/Z9r//////3//f////3//f9wYbcz/f/9/W9TQ1f9//3//f/7/z6Yv2VAm+NPPpi/ZDCxD0k23pt+FL07THZoJ8gAud8cBrObpbSpQzRqavPNwDWTHXKnV8PoQDcu1pv//Tw4pwqJW1fAXGC+40kgI6RAy0b39U+bpoxpNrOFlCfL9Dpiqdlax5YQbU6YvWS/ZzyaXrKZfsci0McusCnLh5QAuhrjmaf3TbSqusrxz4+VwDZm41nCi1voQ8LT/f0jZTw7VvSiPotYXGM7H9pbRyBAyLcIYlv3Toxqx0/SN4eX9DmbVAAD/f////7//////////v/9//3////8/////f////7//////Z+lLy/9//3+XFkvL5GW88/UNdrFCjOPl9Q2Izv9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//////////7//////////v/////////+//////////7//////////v/////////+//////////7//////////v/////////+//////////7//////////v/////////+//////////7//////////v/////////+//////////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9/////vwAA/3////+/AAD/f////78AAP9//38AgAAA/3////+/AAD/f/9/AIAAAP9//38AgAAA/3////+/AAD/f/9/AAAAAP9//38AAP///3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+/////f////7////9/////v////3////+//3///wAA/7//f///AAD/v/9///8AAP+//3///wAA/7//f///AAD/vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a4lq6")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fa8fu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cugr6"]
+noise = SubResource("FastNoiseLite_fa8fu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2235i"]
+albedo_color = Color(0.5211406, 0.5211406, 0.5211405, 1)
+metallic = 0.37
+roughness_texture = SubResource("NoiseTexture2D_cugr6")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4x2dv"]
 size = Vector2(1.155, 0.11)
@@ -925,8 +976,8 @@ streams_count = 1
 stream_0/stream = ExtResource("28_ntx8l")
 stream_0/weight = 3.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ok6jj"]
-size = Vector2(1.41, 2.04)
+[sub_resource type="BoxMesh" id="BoxMesh_b17eg"]
+size = Vector3(1.26177, 0.175, 1.8720703)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_facbu"]
 albedo_color = Color(0.61941475, 0.37479275, 0.010118143, 1)
@@ -1080,6 +1131,9 @@ albedo_color = Color(0.4509804, 0.24313726, 0, 1)
 albedo_texture = SubResource("NoiseTexture2D_rluq3")
 uv1_scale = Vector3(0.18, 1, 1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_pet1e"]
+size = Vector2(1.4, 1.445)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
 bg_color = Color(0, 0, 0, 0)
 
@@ -1169,8 +1223,11 @@ transform = Transform3D(-0.12, 1.0490733e-08, 0, 4.585645e-16, 5.2453664e-09, -0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.655, -3.142975)
 
 [node name="win_board" type="MeshInstance3D" parent="BasicSpinner" unique_id=1281261778]
-transform = Transform3D(1, 0, 0, 0, 0.97606933, 0.21745971, 0, -0.21745971, 0.97606933, -1.4878381, -0.06302571, 0.91974705)
-mesh = SubResource("PlaneMesh_pet1e")
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -1.8433188, -0.06302571, 0.10203707)
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="BasicSpinner/win_board" unique_id=523461604]
+transform = Transform3D(1, 0, 0, 0, 0.9999636, 2.8954616e-13, 0, -5.7909233e-13, 0.4899818, 0.040098906, -0.28641963, -0.20047379)
+mesh = SubResource("BoxMesh_pet1e")
 
 [node name="Label3D" type="Label3D" parent="BasicSpinner/win_board" unique_id=877474657]
 transform = Transform3D(1, 0, 0, 0, -1.4901161e-08, 1.0000004, 0, -1.0000004, -1.4901161e-08, -0.28573203, 0.038000345, -0.5)
@@ -1193,7 +1250,7 @@ surface_material_override/0 = ExtResource("6_kek77")
 
 [node name="Label3D3" type="Label3D" parent="BasicSpinner/win_board" unique_id=1748419990]
 transform = Transform3D(1, 0, 0, 0, -1.4901161e-08, 1.0000004, 0, -1.0000004, -1.4901161e-08, -0.29840326, 0.052000523, 0.100000024)
-text = "= Win 400$"
+text = "= Win 200$"
 horizontal_alignment = 0
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="BasicSpinner/win_board" unique_id=378916903]
@@ -1202,7 +1259,7 @@ mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("8_2cqfq")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="BasicSpinner/win_board" unique_id=865909554]
-transform = Transform3D(1, 0, 0, 0, 0.8380919, -0.5455292, 0, 0.5455292, 0.8380919, 0, -0.40623593, -0.11225307)
+transform = Transform3D(1, 0, 0, 0, 0.9999997, 1.7763568e-15, 0, -3.5527137e-15, 0.48999986, 0.84874916, -0.29744077, -0.11225307)
 mesh = SubResource("PlaneMesh_vchc8")
 
 [node name="Ticker" type="MeshInstance3D" parent="BasicSpinner" unique_id=1206464607]
@@ -1215,9 +1272,11 @@ stream = ExtResource("7_htxhm")
 
 [node name="ticker_high_player" type="AudioStreamPlayer3D" parent="BasicSpinner" unique_id=127044417]
 stream = ExtResource("38_pjyto")
+volume_db = -6.0
 
 [node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="BasicSpinner" unique_id=868324343]
 stream = ExtResource("38_pjyto")
+volume_db = -6.0
 
 [node name="Spinner" type="MeshInstance3D" parent="BasicSpinner" unique_id=1806935424 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "level_label", "coin_animator", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
 transform = Transform3D(-0.05233594, 0, 0.9986295, 0, 1, 0, -0.9986295, 0, -0.05233594, 0, 0, 0)
@@ -1263,13 +1322,23 @@ transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
 mesh = SubResource("ArrayMesh_6ug14")
 surface_material_override/0 = SubResource("StandardMaterial3D_seu75")
 
-[node name="spinnerStand" parent="BasicSpinner" unique_id=1397979777 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.3308365)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BasicSpinner/Spinner" unique_id=577572440]
+transform = Transform3D(1, 0, 0, 0, 0.255, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("TorusMesh_pet1e")
+surface_material_override/0 = SubResource("StandardMaterial3D_pjyto")
+
+[node name="spinnerStand" type="Node3D" parent="BasicSpinner" unique_id=1397979777]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.305385)
+
+[node name="Cube" type="MeshInstance3D" parent="BasicSpinner/spinnerStand" unique_id=1544807594]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, -0.24446058)
+mesh = SubResource("ArrayMesh_glpqv")
+surface_material_override/0 = SubResource("StandardMaterial3D_2235i")
 
 [node name="Node3D" type="Node3D" parent="BasicSpinner/spinnerStand" unique_id=863962928]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BasicSpinner/spinnerStand/Node3D" unique_id=1904127463]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.12248886, 0.06763047, 0.72433186)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.12248886, 0.06763047, 0.47383332)
 mesh = SubResource("PlaneMesh_4x2dv")
 surface_material_override/0 = SubResource("StandardMaterial3D_3vcib")
 
@@ -1286,9 +1355,9 @@ font_size = 20
 horizontal_alignment = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="BasicSpinner" unique_id=1941860387]
-transform = Transform3D(1, 0, 0, 0, -0.9484238, 0.31700513, 0, -0.31700513, -0.9484238, 0, 1.5352737, -3.4141827)
+transform = Transform3D(1, 0, 0, 0, -0.9484238, 0.31700513, 0, -0.31700513, -0.9484238, 0, 1.5352736, -4.5441675)
 light_energy = 7.0
-spot_range = 7.021844
+spot_range = 9.708849
 spot_angle = 26.91444
 
 [node name="Conefog" type="MeshInstance3D" parent="BasicSpinner/SpotLight3D" unique_id=883512700]
@@ -1379,77 +1448,77 @@ text = "$0"
 transform = Transform3D(-4.3711385e-08, -0.99999994, 4.371139e-08, 0, -4.3711385e-08, -1, 0.99999994, -4.3711385e-08, 1.9106855e-15, 3.0001025, 1.6549999, -0.026924938)
 
 [node name="win_board" type="MeshInstance3D" parent="FishSpinner" unique_id=1028116317]
-transform = Transform3D(0.99999946, -2.8766546e-08, -1.6007478e-08, -8.4981977e-10, 0.9997641, 0.021700507, 8.577364e-09, -0.021700589, 0.99976456, -1.7944678, -0.14098382, 0.42918468)
-mesh = SubResource("PlaneMesh_ok6jj")
+transform = Transform3D(0.9999739, -2.8764614e-08, -1.6006762e-08, -8.5022833e-10, 0.9997385, 0.021699708, 8.577364e-09, -0.021700589, 0.99976456, -1.9620222, -0.22714424, 0.21292698)
+mesh = SubResource("BoxMesh_b17eg")
 surface_material_override/0 = SubResource("StandardMaterial3D_facbu")
 
 [node name="fish1" type="Label3D" parent="FishSpinner/win_board" unique_id=544673549]
-transform = Transform3D(1, -3.5527137e-15, 7.1054274e-15, -1.7763568e-14, -7.234357e-16, 1.0000005, 6.217249e-15, -1.0000005, 6.8883896e-16, -0.31910408, 0.05328369, -0.77910924)
+transform = Transform3D(1, -1.7763568e-15, 7.1054274e-15, -1.7763568e-14, -7.2343543e-16, 1.0000005, 5.3290705e-15, -1.0000005, 6.8883896e-16, -0.31910384, 0.13473082, -0.77734137)
 text = "= Win 5$"
 horizontal_alignment = 0
 
 [node name="fish2" type="Label3D" parent="FishSpinner/win_board" unique_id=1238589534]
-transform = Transform3D(1, -1.2434498e-14, 4.2632564e-14, -1.0658141e-14, 3.5390258e-08, 1.0000011, 9.769963e-15, -1.0000011, 9.49949e-08, -0.3306116, 0.05213213, -0.55199754)
+transform = Transform3D(1, -1.0658141e-14, 4.2632564e-14, -1.0658141e-14, 3.7252903e-08, 1.0000011, 8.881784e-15, -1.0000011, 9.685755e-08, -0.33061135, 0.13357925, -0.5502298)
 text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="fish3" type="Label3D" parent="FishSpinner/win_board" unique_id=1286954328]
-transform = Transform3D(1, -1.5987212e-14, 4.973799e-14, -1.7763568e-14, 3.9115548e-08, 1.0000011, 1.2434498e-14, -1.0000011, 1.13621354e-07, -0.32830393, 0.035109997, -0.28627753)
+transform = Transform3D(1, -1.5987212e-14, 4.973799e-14, -1.7763568e-14, 4.0978193e-08, 1.0000011, 1.15463195e-14, -1.0000011, 1.15484e-07, -0.3283037, 0.11655712, -0.28450966)
 text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="fish4" type="Label3D" parent="FishSpinner/win_board" unique_id=39761975]
-transform = Transform3D(1, -2.1316282e-14, 6.3948846e-14, -2.1316282e-14, 4.0978193e-08, 1.0000011, 1.5987212e-14, -1.0000011, 1.4528632e-07, -0.3671583, 0.016178846, -0.018491387)
+transform = Transform3D(1, -2.1316282e-14, 6.3948846e-14, -2.1316282e-14, 4.284084e-08, 1.0000011, 1.5987212e-14, -1.0000011, 1.4714897e-07, -0.3671583, 0.09762597, -0.016723633)
 text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=860154815]
-transform = Transform3D(-0.00043862866, -0.020937825, 0.99978065, 0.020937826, 0.9995613, 0.02094242, -0.99978065, 0.020942418, -4.37018e-08, -0.48768997, 0.010796547, -0.7928071)
+transform = Transform3D(-0.0004386287, -0.020937825, 0.9997807, 0.020937825, 0.99956137, 0.02094242, -0.9997807, 0.02094242, -4.3729486e-08, -0.48768985, 0.09224367, -0.791039)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("19_hrvbo")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=815704731]
-transform = Transform3D(-4.371139e-08, 3.725291e-09, 1, -7.1054274e-15, 1, -3.725291e-09, -1, -7.268265e-15, -4.371139e-08, -0.4843464, 0.018707037, -0.5311272)
+transform = Transform3D(-4.3711392e-08, 3.7252903e-09, 1, 1.1415258e-15, 1, -3.7252903e-09, -1, 6.5342806e-16, -4.3711385e-08, -0.48434627, 0.1001544, -0.5293596)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("20_uypp3")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1351652611]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.4894619, 0.0165658, 0.7780663)
+transform = Transform3D(-4.3711392e-08, 0, 1, 1.1415258e-15, 1, 3.5527137e-15, -1, 6.888387e-16, -4.3711392e-08, -0.48946178, 0.098012924, 0.7798341)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = SubResource("ShaderMaterial_wnkbs")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=446873218]
-transform = Transform3D(-4.371139e-08, 1.8626458e-09, 1, -3.5527137e-15, 1, -1.8626458e-09, -1, -3.6341326e-15, -4.371139e-08, -0.4861095, 0.029764414, -0.2882576)
+transform = Transform3D(-4.3711392e-08, 1.8626594e-09, 0.99999994, -1.862644e-09, 1, -1.8626416e-09, -1, 6.711213e-16, -4.3711378e-08, -0.48610938, 0.09955764, -0.28674293)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("23_blkrb")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1242183691]
-transform = Transform3D(-4.371139e-08, 3.725291e-09, 1, -7.1054274e-15, 1, -3.725291e-09, -1, -7.268265e-15, -4.371139e-08, -0.4861095, 0.008440018, -0.030829191)
+transform = Transform3D(-4.3711392e-08, 3.7252903e-09, 1, 1.1415258e-15, 1, -3.7252903e-09, -1, 6.5342806e-16, -4.3711385e-08, -0.48610938, 0.08988738, -0.029061437)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("24_abqjc")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1879550053]
-transform = Transform3D(-4.371139e-08, 5.5879363e-09, 1, -1.0658141e-14, 1, -5.5879363e-09, -1, -1.0902397e-14, -4.371139e-08, -0.4861095, 0.005646229, 0.24902976)
+transform = Transform3D(-4.3711392e-08, 5.5879426e-09, 0.99999994, -1.862644e-09, 1, -5.5879354e-09, -1, 6.357107e-16, -4.371139e-08, -0.48610938, 0.09257984, 0.25091648)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("25_6iyjs")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="FishSpinner/win_board" unique_id=1105486941]
-transform = Transform3D(-4.371139e-08, 9.313227e-09, 1, -1.7763568e-14, 1, -9.313227e-09, -1, -1.8170663e-14, -4.371139e-08, -0.4861095, 0.026703596, 0.5150921)
+transform = Transform3D(-4.3711392e-08, 9.31324e-09, 0.99999994, -1.862644e-09, 1, -9.313226e-09, -1, 6.0030014e-16, -4.371138e-08, -0.48610938, 0.102045536, 0.51672727)
 mesh = SubResource("PlaneMesh_c5vbb")
 surface_material_override/0 = ExtResource("26_4w656")
 
 [node name="junk1" type="Label3D" parent="FishSpinner/win_board" unique_id=1636058506]
-transform = Transform3D(1, -2.3092639e-14, 8.526513e-14, -1.7763568e-14, 3.9115548e-08, 1.0000012, 1.687539e-14, -1.0000011, 1.6391277e-07, -0.32542193, 0.013962746, 0.23481822)
+transform = Transform3D(1, -2.3092639e-14, 8.526513e-14, -1.7763568e-14, 4.0978193e-08, 1.0000012, 1.5987212e-14, -1.0000011, 1.6391277e-07, -0.3254217, 0.09541011, 0.23658597)
 text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="junk2" type="Label3D" parent="FishSpinner/win_board" unique_id=1427700273]
-transform = Transform3D(1, -2.3092639e-14, 8.526513e-14, -1.7763568e-14, 3.9115548e-08, 1.0000012, 1.687539e-14, -1.0000011, 1.6391277e-07, -0.3228209, 0.03528428, 0.48868692)
+transform = Transform3D(1, -2.3092639e-14, 8.526513e-14, -1.7763568e-14, 4.0978193e-08, 1.0000012, 1.5987212e-14, -1.0000011, 1.6391277e-07, -0.32282078, 0.116731405, 0.49045473)
 text = "= Lose 5$"
 horizontal_alignment = 0
 
 [node name="fishinggame" type="Label3D" parent="FishSpinner/win_board" unique_id=1914769135]
-transform = Transform3D(1, -3.5527137e-15, 2.1316282e-14, -3.5527137e-15, 1.490116e-08, 1.0000008, 4.440892e-15, -1.0000008, 4.4703484e-08, -0.3238287, 0.016566038, 0.7780663)
+transform = Transform3D(1, -3.5527137e-15, 2.1316282e-14, -3.5527137e-15, 1.490116e-08, 1.0000008, 3.5527137e-15, -1.0000008, 4.4703484e-08, -0.32382858, 0.09801316, 0.7798341)
 text = "= Go Fish"
 horizontal_alignment = 0
 
@@ -1523,8 +1592,13 @@ transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
 mesh = SubResource("ArrayMesh_6ug14")
 surface_material_override/0 = ExtResource("12_d13ii")
 
-[node name="spinnerStand" parent="FishSpinner" unique_id=761729556 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.655)
+[node name="spinnerStand" type="Node3D" parent="FishSpinner" unique_id=761729556]
+transform = Transform3D(0.9999999, 9.882986e-23, 3.5527137e-15, -3.5527137e-15, -4.371138e-08, 0.9999999, 2.1175824e-22, -1, -4.3711385e-08, -1.4901161e-08, -0.58030653, 1.5078617)
+
+[node name="Cube" type="MeshInstance3D" parent="FishSpinner/spinnerStand" unique_id=1858618412]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("ArrayMesh_glpqv")
+surface_material_override/0 = SubResource("StandardMaterial3D_2235i")
 
 [node name="Node3D" type="Node3D" parent="FishSpinner/spinnerStand" unique_id=1519395780]
 
@@ -1555,7 +1629,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_5vw27")
 
 [node name="Spinner2BuyButtonUI" type="MeshInstance3D" parent="FishSpinner" unique_id=652570570]
 transform = Transform3D(0.9999998, -2.1642776e-10, 4.3444306e-09, -2.1643487e-10, 0.99504846, 0.09938899, -4.3444306e-09, -0.099388994, 0.99504864, 2.7939677e-08, 0.6389158, 0)
-visible = false
 mesh = SubResource("PlaneMesh_3vcib")
 surface_material_override/0 = SubResource("StandardMaterial3D_a6jrf")
 

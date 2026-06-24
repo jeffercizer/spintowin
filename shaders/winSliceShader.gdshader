@@ -1,15 +1,21 @@
 shader_type spatial;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
+uniform vec3 tint_color : source_color = vec3(0.4, 0.4, 0.4);
+uniform float noise_strength = 0.15;
+
+float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-    ALBEDO = vec3(0,0.2+UV.x+UV.y,0);
-}
+    vec2 uv = UV;
 
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
+    // Base dull color
+    vec3 col = tint_color * 0.8;
+
+    // Subtle static noise
+    float n = hash(uv * 40.0);
+    col += (n - 0.5) * noise_strength;
+
+    ALBEDO = col;
+}

@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
     super._process(delta)
     
 func _physics_process(_delta: float) -> void:
-    pass
+    super._physics_process(_delta)
 
 func start_spin():
     super.start_spin()

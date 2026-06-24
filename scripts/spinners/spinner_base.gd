@@ -4,6 +4,7 @@ class_name SpinnerBase
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     prev_wheel_y = rotation_degrees.y
+    readied = true
     
 var machine_curve
 
@@ -37,8 +38,13 @@ var ticker_min_cooldown = 0.016
 var ticker_cooldown = ticker_min_cooldown
 
 var prev_wheel_y = 0.0
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var readied = false
 func _process(delta: float) -> void:
+    pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+    if(not readied):
+        return
     if(want_spin): #we spin
         wheel_angular_velocity = 0.0
         update_spinner_velocity(delta)
@@ -46,7 +52,7 @@ func _process(delta: float) -> void:
         if fudging:
             var force = 0.0
             var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0) #more torque the further from center up to a point
-            torque_multi = torque_multi * 4000
+            torque_multi = torque_multi * 600
             var angle = get_mouse_angle()
             if angle != null and last_mouse_angle != null:
                 var diff = wrapf(angle - last_mouse_angle, -PI, PI)
@@ -92,7 +98,7 @@ func _process(delta: float) -> void:
             
     elif dragging: #we spin the wheel with the mouse
         var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0)
-        torque_multi = torque_multi * 4000
+        torque_multi = torque_multi * 600 *  pow(1.2, Globals.spin_percision)
         var angle = get_mouse_angle()
         if angle != null and last_mouse_angle != null:
             var diff = wrapf(angle - last_mouse_angle, -PI, PI)
@@ -129,7 +135,6 @@ func _process(delta: float) -> void:
     var fake_rotation_y = rotation_degrees.y
     if(deg_per_sec > 40):
         fake_rotation_y = 72.0
-        print(clockwise)
     mat.set_shader_parameter("wheel_angle_deg", fake_rotation_y)
     var clockwise_shader_val = -1.0 if clockwise else 1.0
     
@@ -200,7 +205,7 @@ func start_spin():
     chosen_angle = randi() % 360 #pick somewhere on the circle
     want_spin = true
     Globals.total_spins += 1
-    var full_spin_rads = TAU*8 * pow(0.9, Globals.spin_percision) #8 full spins + our target
+    var full_spin_rads = TAU*8 * pow(0.8, Globals.spin_percision) #8 full spins + our target
     target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
     #print(target_rad)
     seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement
@@ -253,7 +258,7 @@ func stop_fudging():
         Globals.mouse_fudging = false
         fudging = false
 
-var spin_threshold = 15.0
+var spin_threshold = 12.0
 
 func check_for_spin():
     if abs(wheel_angular_velocity) > spin_threshold - min(spin_threshold-5,(1 * Globals.spin_friction)):
@@ -334,21 +339,6 @@ func rebuild_spinner():
             normals.append(Vector3.UP) # or compute real normals
             
         var uvs = PackedVector2Array()
-
-        #full circle is the UV
-        #uvs.append(Vector2(0.5, 0.5))
-#
-        #for i in range(segments + 1):
-            #var t = float(i) / segments
-            #var a = angle + t * slice_angle
-#
-            ## Project onto square UV space
-            #var ux = cos(a) * 0.5 + 0.5
-            #var uy = sin(a) * 0.5 + 0.5
-#
-            #uvs.append(Vector2(ux, uy))
-            
-        #per slice UV
         uvs.append(Vector2(0.5, 0.0))
 
         for i in range(segments + 1):
@@ -359,11 +349,7 @@ func rebuild_spinner():
             var uy = 1.0
 
             uvs.append(Vector2(ux, uy))
-
-
-
-
-
+            
         var arrays = []
         arrays.resize(Mesh.ARRAY_MAX)
         arrays[Mesh.ARRAY_VERTEX] = verts

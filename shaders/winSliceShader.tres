@@ -5,3 +5,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_mtnc0")
+shader_parameter/tint_color = Color(0.20199087, 0.9775614, 1.1551381e-06, 1)
+shader_parameter/noise_strength = 0.015
