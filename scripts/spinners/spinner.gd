@@ -81,7 +81,7 @@ func add_experience(amount):
     mat.set_shader_parameter("progress", experience/experience_to_level_up)
     level_label.text = str(level)
 
-
+@export var coin_animator: AnimationPlayer
 
 func get_win_amount():
     return ((20 * pow(Globals.level_effect, level-1)))
@@ -106,6 +106,7 @@ func default_jackpot():
     var reward = get_jackpot_amount()
     add_money(reward)
     add_experience(reward)
+    coin_animator.play("coinfountain-lvl1")
     wheelSound.stream = jackpotSound
     wheelSound.play()
     

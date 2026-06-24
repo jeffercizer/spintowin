@@ -18,3 +18,7 @@ void vertex() {
     float curve_factor = clamp(VERTEX.y / tip_height, 0.0, 1.0);
     VERTEX.x += bend * curve_factor * curve_factor * clockwise;
 }
+
+void fragment(){
+    ALBEDO = vec3(1.0,1.0,0.0);
+}

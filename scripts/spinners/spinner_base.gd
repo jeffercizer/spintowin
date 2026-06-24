@@ -30,8 +30,11 @@ func update_spinner_velocity(delta: float):
 
 
 var wheel_angular_velocity = 0.0
-var damping = 0.90
+var damping = 0.98
 var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not this (base * level)
+
+var ticker_min_cooldown = 0.016
+var ticker_cooldown = ticker_min_cooldown
 
 var prev_wheel_y = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +46,7 @@ func _process(delta: float) -> void:
         if fudging:
             var force = 0.0
             var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0) #more torque the further from center up to a point
-            torque_multi = torque_multi * 8
+            torque_multi = torque_multi * 4000
             var angle = get_mouse_angle()
             if angle != null and last_mouse_angle != null:
                 var diff = wrapf(angle - last_mouse_angle, -PI, PI)
@@ -56,8 +59,8 @@ func _process(delta: float) -> void:
                 fudging_spin = true
         
             #we now use force to adjust seconds_to_spin
-            var effective_time = max(seconds_to_spin, 1.0)
-            var fudge = abs(force * fudging_base_strength * Globals.spin_friction * effective_time * delta)
+            var effective_time = clamp(seconds_to_spin, 1.0, 3.0)
+            var fudge = abs(force * fudging_base_strength * (Globals.spin_friction*0.25) * effective_time * delta)
             if(fudging_spin):
                 seconds_to_spin = max(seconds_to_spin - fudge, 0.0)
             else:
@@ -89,7 +92,7 @@ func _process(delta: float) -> void:
             
     elif dragging: #we spin the wheel with the mouse
         var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0)
-        torque_multi = torque_multi * 8
+        torque_multi = torque_multi * 4000
         var angle = get_mouse_angle()
         if angle != null and last_mouse_angle != null:
             var diff = wrapf(angle - last_mouse_angle, -PI, PI)
@@ -108,14 +111,19 @@ func _process(delta: float) -> void:
     #always do this per frame
     var diff = abs(rotation_degrees.y - prev_wheel_y)
     var deg_per_sec = diff / delta
-    if(ticker_crossed()):
-        var time_per_peg = 6.0 / deg_per_sec
-        var playback_speed = clamp((0.2 / time_per_peg)/5, 1, 2)
-        if(ticker_high_next):
-            ticker_high_player.play()
-        else:
-            ticker_low_player.play()
-        ticker_high_next = not ticker_high_next
+    ticker_cooldown -= delta
+    if(ticker_cooldown <= 0.0):
+        if(ticker_crossed()):
+            ticker_cooldown = ticker_min_cooldown
+            var time_per_peg = 6.0 / deg_per_sec
+            var playback_speed = clamp((0.2 / time_per_peg)/5, 1, 1)
+            if(ticker_high_next):
+                ticker_high_player.pitch_scale = playback_speed
+                ticker_high_player.play()
+            else:
+                ticker_low_player.pitch_scale = playback_speed
+                ticker_low_player.play()
+            ticker_high_next = not ticker_high_next
     prev_wheel_y = rotation_degrees.y
     var mat = ticker.get_active_material(0) as ShaderMaterial
     var fake_rotation_y = rotation_degrees.y
@@ -131,8 +139,8 @@ var clockwise = false
 func ticker_crossed():
     var raw = rotation_degrees.y - prev_wheel_y
     var diff = fposmod(raw + 180.0, 360.0) - 180.0
-
-    clockwise = diff > 0.0        
+    if(seconds_to_adjust <= 0.0 and seconds_to_spin <= 0.0): #to prevent the ticker flip at the end of a spin
+        clockwise = diff > 0.0
     var boundary = snapped(prev_wheel_y, 6) #find closest pin
     
     if (clockwise and boundary < prev_wheel_y):
@@ -222,12 +230,17 @@ var last_mouse_angle = null
 var drag_angular_velocity = 0.0
 var cam_ref
 var mouse_distance = 0.0
+
 func get_mouse_angle() -> float:
+    var viewport_size = get_viewport().get_visible_rect().size
     var mouse_pos = get_viewport().get_mouse_position()
     var wheel_screen_pos = cam_ref.unproject_position(global_transform.origin)
-    var v = mouse_pos - wheel_screen_pos
+
+    var v = (mouse_pos - wheel_screen_pos) / viewport_size
     mouse_distance = v.length()
+
     return atan2(v.x, v.y)
+
 
 func stop_dragging():
     if(dragging):
@@ -240,7 +253,7 @@ func stop_fudging():
         Globals.mouse_fudging = false
         fudging = false
 
-var spin_threshold = 20.0
+var spin_threshold = 15.0
 
 func check_for_spin():
     if abs(wheel_angular_velocity) > spin_threshold - min(spin_threshold-5,(1 * Globals.spin_friction)):

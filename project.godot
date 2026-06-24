@@ -19,6 +19,12 @@ config/icon="res://assets/icon.svg"
 
 Globals="*uid://b2vkkperxheg3"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/aspect="keep_width"
+
 [dotnet]
 
 project/assembly_name="spintowin"

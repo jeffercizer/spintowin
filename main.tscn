@@ -60,6 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://c7s0rghn8hchw" path="res://assets/audio/fishing_win.wav" id="35_hrvbo"]
 [ext_resource type="AudioStream" uid="uid://dn0d2nso1rjes" path="res://assets/audio/fishgame_best.wav" id="36_uypp3"]
 [ext_resource type="Texture2D" uid="uid://bbg3yoluvju1a" path="res://assets/fish/Hollow Dolphin Fishing Icon Pack/fishing_icons_64x64_3.png" id="37_blkrb"]
+[ext_resource type="AudioStream" uid="uid://di8sdkpmddfvi" path="res://assets/audio/oop.mp3" id="38_pjyto"]
 [ext_resource type="PackedScene" uid="uid://cy67vk302iscv" path="res://scenes/rainbowtext.tscn" id="52_blkrb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v8acg"]
@@ -458,10 +459,10 @@ tracks/7/path = NodePath("coinspawn:playing")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.0333333, 0.10000038, 0.13333334, 0.16666698, 0.20000076, 0.26666737, 0.33333397, 0.40000057, 0.4666667, 0.5333338, 0.6000004, 0.6999999, 0.76666737, 0.83333397, 0.9333333, 1, 1.0666666, 1.1333333, 1.2000008, 1.2666664, 1.3666667, 1.4333334, 1.5, 1.6, 1.666667, 1.7333336, 1.8999996, 1.9666667, 1.9999995, 2.0333333, 2.066667, 2.1333337, 2.2000003, 2.266667, 2.333333, 2.4, 2.4666667, 2.5666661, 2.6333337, 2.7000003, 2.7999997, 2.8666663, 2.933333, 2.9999995, 3.066667, 3.1333327, 3.233333, 3.2999997, 3.3666663, 3.4666662, 3.5333333, 3.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.0333333, 0.10000038, 0.13333334, 0.16666698, 0.20000076, 0.26666737, 0.33333397, 0.40000057, 0.4666667, 0.5333338, 0.76666737, 0.8333333, 0.9333333, 1, 1.0666666, 1.1333333, 1.2000008, 1.2666664, 1.3666667, 1.4333334, 1.5, 1.6, 1.666667, 1.7333336, 1.8999996, 1.9666667, 1.9999995, 2.0333333, 2.066667, 2.1333337, 2.2000003, 2.266667, 2.333333, 2.4, 2.4666667, 2.5666661, 2.6333337, 2.7000003, 2.7999997, 2.8666663, 2.933333, 2.9999995, 3.066667, 3.1, 3.1333327, 3.233333, 3.2999997, 3.3666663, 3.4666662, 3.5333333, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1099,7 +1100,7 @@ gradient = SubResource("Gradient_getpj")
 [node name="Node3D" type="Node3D" unique_id=1543989762]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box")]
-transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.10452846, 0, -0.10452846, 0.9945219, 0, 1.7, -0.33787847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.33787847)
 fov = 60.0
 script = ExtResource("1_7mycd")
 dust_instance = NodePath("FingerDust")
@@ -1213,13 +1214,13 @@ surface_material_override/0 = SubResource("ShaderMaterial_e71vb")
 stream = ExtResource("7_htxhm")
 
 [node name="ticker_high_player" type="AudioStreamPlayer3D" parent="BasicSpinner" unique_id=127044417]
-stream = ExtResource("15_6iyjs")
+stream = ExtResource("38_pjyto")
 
 [node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="BasicSpinner" unique_id=868324343]
-stream = ExtResource("16_4w656")
+stream = ExtResource("38_pjyto")
 
-[node name="Spinner" type="MeshInstance3D" parent="BasicSpinner" unique_id=1806935424 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "level_label", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
-transform = Transform3D(-0.05233594, 0, 0.9986296, 0, 1.0000001, 0, -0.9986295, 0, -0.052335948, 0, 0, 0)
+[node name="Spinner" type="MeshInstance3D" parent="BasicSpinner" unique_id=1806935424 node_paths=PackedStringArray("winLabel", "loseLabel", "jackpotLabel", "level_label", "coin_animator", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
+transform = Transform3D(-0.05233594, 0, 0.9986295, 0, 1, 0, -0.9986295, 0, -0.05233594, 0, 0, 0)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("2_0xm2m")
 winMaterial = ExtResource("5_5vw27")
@@ -1232,6 +1233,7 @@ level_label = NodePath("../spinnerStand/Node3D/MeshInstance3D/LevelUpLabelBasicS
 loseSound = ExtResource("9_seu75")
 winSound = ExtResource("10_htxhm")
 jackpotSound = ExtResource("11_jq2sk")
+coin_animator = NodePath("../juiceZone/BasicSpinnerCoinAnimationPlayer")
 wheelSound = NodePath("../Wheel1Sound")
 ticker_low_player = NodePath("../ticker_low_player2")
 ticker_high_player = NodePath("../ticker_high_player")
@@ -1262,7 +1264,7 @@ mesh = SubResource("ArrayMesh_6ug14")
 surface_material_override/0 = SubResource("StandardMaterial3D_seu75")
 
 [node name="spinnerStand" parent="BasicSpinner" unique_id=1397979777 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.655)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.2520249, 1.3308365)
 
 [node name="Node3D" type="Node3D" parent="BasicSpinner/spinnerStand" unique_id=863962928]
 
@@ -1353,17 +1355,18 @@ angle_min = -527.0
 angle_max = 105.4
 scale_amount_min = 0.1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BasicSpinner/juiceZone" unique_id=1037006831]
+[node name="BasicSpinnerCoinAnimationPlayer" type="AnimationPlayer" parent="BasicSpinner/juiceZone" unique_id=1037006831]
 libraries/ = SubResource("AnimationLibrary_0dhbp")
 
 [node name="coinspawn" type="AudioStreamPlayer3D" parent="BasicSpinner/juiceZone" unique_id=1250634993]
 stream = SubResource("AudioStreamRandomizer_jx0wj")
+volume_db = -3.0
 max_polyphony = 200
 
 [node name="coindrop" type="AudioStreamPlayer3D" parent="BasicSpinner/juiceZone" unique_id=63049208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.531644, 1.1967912)
 stream = SubResource("AudioStreamRandomizer_7qi08")
-volume_db = -20.0
+volume_db = -24.0
 max_polyphony = 100
 
 [node name="ComboCOunter" type="Label3D" parent="BasicSpinner/juiceZone" unique_id=1184468257]
@@ -1459,11 +1462,11 @@ surface_material_override/0 = ExtResource("32_e71vb")
 stream = ExtResource("7_htxhm")
 
 [node name="ticker_high_player" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=1910307294]
-stream = ExtResource("15_6iyjs")
+stream = ExtResource("38_pjyto")
 pitch_scale = 2.25
 
 [node name="ticker_low_player2" type="AudioStreamPlayer3D" parent="FishSpinner" unique_id=137802808]
-stream = ExtResource("16_4w656")
+stream = ExtResource("38_pjyto")
 
 [node name="AnglerSpinner" type="MeshInstance3D" parent="FishSpinner" unique_id=1334335898 node_paths=PackedStringArray("fish1Label", "fish2Label", "fish3Label", "fish4Label", "junk1Label", "junk2Label", "fishingGameLabel", "fishing_minigame", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
 transform = Transform3D(-0.052335937, 0, 0.99862957, -1.110223e-15, 1, -3.5527137e-15, -0.9986295, 3.5527137e-15, -0.052335948, 0, 0, 0.3204658)
