@@ -143,16 +143,12 @@ func raycast_hits_spinner(screen_pos: Vector2) -> bool:
 
     return false
 
-
+@export var rainbow_spinner: SpinnerBase
 var active_spinner : SpinnerBase
 var cam
 func raycast_from_screen(screen_pos: Vector2):
     if cam == null:
         return
-
-    var origin = cam.project_ray_origin(screen_pos)
-    var direction = cam.project_ray_normal(screen_pos)
-
 
     var result = fat_raycast(screen_pos, 16.0, 12)
 
@@ -179,6 +175,9 @@ func raycast_from_screen(screen_pos: Vector2):
         else:
             if(collider is SpinnerBuyButton):
                 collider.attempt_buy()
+            if(collider is StaticBody3D):
+                if(collider.name == "rainbow_cashout"):
+                    rainbow_spinner.cash_out()
     else:
         print("no hit")
     

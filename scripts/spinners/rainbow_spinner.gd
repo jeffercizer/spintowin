@@ -188,8 +188,7 @@ func violet_win():
 func rainbow_win():
     set_all(true)
     cash_out()
-    wheelSound.stream = jackpotSound
-    wheelSound.play()
+
 
 func black_lose():
     set_all(false)
@@ -198,6 +197,11 @@ func black_lose():
     pass
     
 func cash_out():
+    var payout_count = lights.values().count(true) 
+    if(payout_count <= 0):
+        return
+    wheelSound.stream = jackpotSound
+    wheelSound.play()
     var payout =  get_payout()#so its 5mil * 2/8/32/128/512/2048/8192 or 1/4/16/64/256/1024/4096
     Globals.update_money(payout)
     

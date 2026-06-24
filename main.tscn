@@ -1507,7 +1507,7 @@ gradient = SubResource("Gradient_getpj")
 
 [node name="Node3D" type="Node3D" unique_id=1543989762]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box")]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box", "rainbow_spinner")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.33787847)
 fov = 60.0
 script = ExtResource("1_7mycd")
@@ -1518,6 +1518,7 @@ bad_sound = ExtResource("3_lswn8")
 omni_light = NodePath("OmniLight3D")
 next_machine_box = NodePath("../FullScreenControl/HBoxContainer")
 prev_machine_box = NodePath("../FullScreenControl/HBoxContainer2")
+rainbow_spinner = NodePath("../RainbowSpinner/RainbowSpinner")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=1941860387]
 transform = Transform3D(1, 0, 0, 0, 0.31700516, 0.9484238, 0, -0.9484238, 0.31700516, 0, 4.4991674, 0.11731529)
@@ -2262,14 +2263,14 @@ transform = Transform3D(0.9999996, -2.766956e-21, 3.5527137e-14, -3.5527137e-14,
 text = "Cashout?"
 font_size = 24
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RainbowSpinner/cashout_label" unique_id=1746483386]
+[node name="rainbow_cashout" type="MeshInstance3D" parent="RainbowSpinner/cashout_label" unique_id=1746483386]
 transform = Transform3D(0.99999994, 0, 0, 1.009742e-28, 1, 1.6940659e-21, 0, 0, 0.99999994, 0.001926899, -0.003095746, -0.06201172)
 mesh = SubResource("BoxMesh_c5vbb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="RainbowSpinner/cashout_label/MeshInstance3D" unique_id=65801729]
+[node name="rainbow_cashout" type="StaticBody3D" parent="RainbowSpinner/cashout_label/rainbow_cashout" unique_id=65801729]
 transform = Transform3D(0.99999964, -2.5410996e-21, 3.5527137e-14, 1.5529411e-21, 1, 1.0658148e-14, -3.5527137e-14, 0, 0.99999964, -0.03708768, -0.21355808, 0.062010765)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RainbowSpinner/cashout_label/MeshInstance3D/StaticBody3D" unique_id=1566914859]
+[node name="rainbow_cashout" type="CollisionShape3D" parent="RainbowSpinner/cashout_label/rainbow_cashout/rainbow_cashout" unique_id=1566914859]
 transform = Transform3D(1, 0, -4.106937e-12, -1.1672617e-25, 1, 0, 4.106937e-12, 0, 1, 0.04248047, 0.21372986, -0.054504395)
 shape = SubResource("BoxShape3D_vchc8")
 

@@ -201,6 +201,9 @@ var target_rad = 0
 var result_slice = 0
 var result_bucket = 0
 
+func cash_out():
+    pass #lazy solution to method visability
+    
 func start_spin():    
     chosen_angle = randi() % 360 #pick somewhere on the circle
     want_spin = true
