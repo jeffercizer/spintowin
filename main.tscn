@@ -46,6 +46,7 @@
 [ext_resource type="Shader" uid="uid://ban1g80wqmqnx" path="res://shaders/color_texture_combo.gdshader" id="24_0cp0l"]
 [ext_resource type="Material" uid="uid://km68xcith58" path="res://materials/fish4_mat.tres" id="24_abqjc"]
 [ext_resource type="ArrayMesh" uid="uid://blackduymh5vt" path="res://assets/models/coins_real.blend" id="24_pjyto"]
+[ext_resource type="AudioStream" uid="uid://1br2i6idph16" path="res://assets/Coins sounds [OGG]/69686__lukaso__cashfalling.wav" id="24_sm6fg"]
 [ext_resource type="Texture2D" uid="uid://br1x8c8i61anh" path="res://assets/woodplanks.jpg" id="25_4lmeg"]
 [ext_resource type="Material" uid="uid://bl7av31g60qlq" path="res://materials/junk1_mat.tres" id="25_6iyjs"]
 [ext_resource type="Material" uid="uid://co3keq2gn6apy" path="res://materials/junk2_mat.tres" id="26_4w656"]
@@ -59,11 +60,16 @@
 [ext_resource type="AudioStream" uid="uid://c7s0rghn8hchw" path="res://assets/audio/fishing_win.wav" id="35_hrvbo"]
 [ext_resource type="AudioStream" uid="uid://dn0d2nso1rjes" path="res://assets/audio/fishgame_best.wav" id="36_uypp3"]
 [ext_resource type="Texture2D" uid="uid://bbg3yoluvju1a" path="res://assets/fish/Hollow Dolphin Fishing Icon Pack/fishing_icons_64x64_3.png" id="37_blkrb"]
+[ext_resource type="ArrayMesh" uid="uid://eufaqs3frl1c" path="res://assets/fish/Coryphaena_hippurus/Coryphaena_hippurus.fbx" id="47_jx0wj"]
+[ext_resource type="AudioStream" uid="uid://bkcen08gfil2q" path="res://assets/Coins sounds [OGG]/Won!.wav" id="48_kkkcx"]
+[ext_resource type="ArrayMesh" uid="uid://b1eoesldmug5a" path="res://assets/fish/Salmo_trutta_fario/Salmo_trutta_fario.fbx" id="49_34ol3"]
 [ext_resource type="Shader" uid="uid://cab6dmtrk0ak" path="res://shaders/genericcolor.gdshader" id="49_b17eg"]
 [ext_resource type="Shader" uid="uid://cr7u317w77qrc" path="res://shaders/rainbowShader.gdshader" id="49_rqtf5"]
 [ext_resource type="Script" uid="uid://dfujyir8wv5yx" path="res://scripts/spinners/rainbow_spinner.gd" id="49_sm6fg"]
+[ext_resource type="ArrayMesh" uid="uid://bmclbqit4optp" path="res://assets/fish/Lithognathus_mormyrus/Lithognathus mormyrus.fbx" id="50_c2n8d"]
 [ext_resource type="AudioStream" uid="uid://dte2r15k4t3hu" path="res://assets/audio/rainbow_fail_sound.wav" id="50_uatky"]
 [ext_resource type="AudioStream" uid="uid://cw1bba1yroksw" path="res://assets/audio/rainbow_win_sound.wav" id="51_rqtf5"]
+[ext_resource type="ArrayMesh" uid="uid://ldkb8omd2kp5" path="res://assets/fish/Luciobarbus_guiranois/Luciobarbus guiranois.fbx" id="51_wy5fy"]
 [ext_resource type="AudioStream" uid="uid://n7j2mbfnwelc" path="res://assets/audio/rainbow_jackpot_sound.wav" id="52_1vm84"]
 [ext_resource type="Texture2D" uid="uid://dkab0pyuwfehe" path="res://assets/lolipop.png" id="53_rqtf5"]
 [ext_resource type="Script" uid="uid://mnpburojbwsv" path="res://scripts/spinners/wheelspinner.gd" id="55_1vm84"]
@@ -402,6 +408,42 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector3(-1.5707964, 0, 0)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("coinrain:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("coinrain:amount")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [500]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("coinfountain:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.008105844, -0.5054805, -0.49239028)]
+}
 
 [sub_resource type="Animation" id="Animation_rqtf5"]
 resource_name = "coinfountain-lvl1"
@@ -536,6 +578,45 @@ tracks/10/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("othersounds")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}],
+"times": PackedFloat32Array(0.033333335)
+}
+tracks/11/use_blend = true
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ComboCOunter:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("coinfountain:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.008105844, -0.5054805, -0.88362134)]
+}
 
 [sub_resource type="Animation" id="Animation_1vm84"]
 resource_name = "coinfountain-lvl2"
@@ -574,7 +655,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [10.0]
+"values": [3.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -641,7 +722,7 @@ tracks/8/path = NodePath("coindrop:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(5.3698897, 5.4032226, 5.4365563, 5.46989, 5.503223, 5.5365567, 5.56989, 5.603223, 5.6365566, 5.6698904, 5.703223, 5.736557, 5.76989, 5.8032236, 5.8365574, 5.86989, 5.903225, 5.936558, 5.9698906, 6.0032253, 6.0365567, 6.069891, 6.103224, 6.1365585, 6.1698895, 6.203224, 6.236557, 6.26989, 6.3032246, 6.3365574, 6.36989, 6.403225, 6.436558, 6.4698896, 6.5032234, 6.5365562, 6.569891, 6.603222, 6.6365566, 6.6698914, 6.703224, 6.736557, 6.76989, 6.8032246, 6.8365555, 6.86989, 6.903223, 6.936558, 6.9698906, 7.0032234, 7.0365562, 7.069891, 7.103224, 7.1365566, 7.1698895, 7.203224, 7.236557, 7.26989, 7.3032246, 7.3365574, 7.36989, 7.403223, 7.436556, 7.4698906, 7.5032234, 7.5365562, 7.569889, 7.603224, 7.6365566, 7.6698895, 7.703224, 7.736557, 7.76989, 7.8032227, 7.8365574, 7.86989, 7.903223, 7.936558, 7.9698896, 8.003223, 8.036556, 8.069889, 8.103222, 8.136557, 8.169889, 8.203224, 8.236557, 8.26989, 8.303225, 8.3365555, 8.36989, 8.403221, 8.436558, 8.469891, 8.503223, 8.536556, 8.569891, 8.603224, 8.636557, 8.669889, 8.703224, 8.736557, 8.76989, 8.803225, 8.8365555, 8.86989, 8.903223, 8.936556, 8.969891, 9.003223, 9.036556, 9.069889, 9.103224, 9.136557, 9.169889, 9.203224, 9.236557, 9.26989, 9.303223, 9.336557, 9.403223, 9.436557, 9.469891, 9.503223, 9.536556, 9.56989, 9.636557, 9.703224, 9.736556, 9.76989, 9.803223, 9.836556, 9.869889, 9.903223, 9.936556, 9.969889, 10.003223, 10.036556, 10.069889, 10.103224, 10.136557, 10.169889, 10.203224, 10.236557, 10.269892, 10.303225, 10.336557, 10.369892, 10.403223, 10.436558, 10.469891, 10.503225, 10.536556, 10.569891, 10.603224, 10.636557, 10.669891, 10.703224, 10.736557, 10.769892, 10.803225, 10.8365555, 10.86989, 10.903223, 10.936558, 10.969889, 11.003223, 11.036558, 11.069891, 11.103224, 11.136557, 11.169891, 11.203222, 11.236557, 11.26989, 11.303225, 11.336557, 11.36989, 11.403223, 11.436558, 11.469891, 11.503223, 11.536556, 11.569891, 11.603224, 11.669891, 11.7, 11.703224, 11.736557, 11.76989, 11.803223, 11.836557, 11.86989, 11.903223, 11.936556, 11.969891, 12.003223, 12.036556, 12.069891, 12.103224, 12.136557, 12.169889, 12.203224, 12.236557, 12.26989, 12.303225, 12.3365555, 12.36989, 12.403223, 12.436556, 12.469889, 12.503223, 12.536556, 12.569891, 12.603224, 12.636557, 12.669891, 12.703222, 12.736557, 12.769888, 12.803225, 12.836557, 12.86989, 12.903223, 12.936558, 12.969891, 13.003223, 13.036556, 13.069891, 13.103224, 13.136557, 13.169891, 13.203222, 13.236557, 13.26989, 13.303223, 13.336557, 13.36989, 13.403223, 13.436556, 13.469891, 13.503223, 13.536556, 13.569889, 13.603222, 13.636555, 13.669888, 13.703224, 13.76989, 13.803223, 13.8365555, 13.86989, 13.903221, 13.936556, 14.003223, 14.069889, 14.103224, 14.136555, 14.169891, 14.203224, 14.236559, 14.26989, 14.303223, 14.336559, 14.369892, 14.403225, 14.436558, 14.469891, 14.503223, 14.536556, 14.569889, 14.603226, 14.636559, 14.669891, 14.703224, 14.736557, 14.76989, 14.803223, 14.836559, 14.869892, 14.903225, 14.936558, 14.969891, 15.036556, 15.069891, 15.103226, 15.136559, 15.169891, 15.203224, 15.26989, 15.336559, 15.403225, 15.833333, 15.866667, 16.266666),
+"times": PackedFloat32Array(2.8666668, 2.8999996, 2.9333334, 2.9666672, 3, 3.0333338, 3.066667, 3.1, 3.1333337, 3.1666675, 3.2000003, 3.233334, 3.266667, 3.3000007, 3.3333344, 3.3666673, 3.400002, 3.4333348, 3.4666677, 3.5000024, 3.5333338, 3.566668, 3.6000009, 3.6333356, 3.6666665, 3.7000012, 3.733334, 3.766667, 3.8000016, 3.8333344, 3.8666673, 3.900002, 3.9333348, 3.9666667, 4.0000005, 4.0333333, 4.066668, 4.099999, 4.1333337, 4.1666684, 4.2000012, 4.233334, 4.266667, 4.3000016, 4.3333325, 4.3666673, 4.4, 4.433335, 4.4666677, 4.5000005, 4.5333333, 4.566668, 4.600001, 4.6333337, 4.6666665, 4.7000012, 4.733334, 4.766667, 4.8000016, 4.8333344, 4.8666673, 4.9, 4.933333, 4.9666677, 5.0000005, 5.0333333, 5.066666, 5.100001, 5.1333337, 5.1666665, 5.2000012, 5.233334, 5.266667, 5.2999997, 5.3333344, 5.3666673, 5.4, 5.433335, 5.4666667, 5.5000005, 5.5333333, 5.566666, 5.599999, 5.6333337, 5.6666665, 5.7000012, 5.733334, 5.766667, 5.8000016, 5.8333325, 5.8666673, 5.899998, 5.933335, 5.9666677, 6.0000005, 6.0333333, 6.066668, 6.100001, 6.1333337, 6.1666665, 6.2000012, 6.233334, 6.266667, 6.3000016, 6.3333325, 6.3666673, 6.4, 6.433333, 6.4666677, 6.5000005, 6.5333333, 6.566666, 6.600001, 6.6333337, 6.6666665, 6.7000012, 6.733334, 6.766667, 6.7999997, 6.8333344, 6.9, 6.933334, 6.9666677, 7.0000005, 7.0333333, 7.066667, 7.1333337, 7.2000012, 7.233333, 7.266667, 7.2999997, 7.3333335, 7.3666663, 7.4, 7.433333, 7.4666657, 7.5000005, 7.5333333, 7.566666, 7.600001, 7.6333337, 7.6666665, 7.7000012, 7.733334, 7.766669, 7.8000016, 7.8333344, 7.866669, 7.9, 7.933335, 7.9666677, 8.000002, 8.033333, 8.066668, 8.1, 8.133333, 8.166668, 8.200001, 8.233334, 8.266668, 8.300001, 8.333332, 8.366667, 8.4, 8.433334, 8.466665, 8.5, 8.533335, 8.566668, 8.6, 8.633333, 8.666668, 8.699999, 8.733334, 8.766666, 8.800001, 8.833334, 8.866667, 8.9, 8.933334, 8.966667, 9, 9.033333, 9.066668, 9.1, 9.166668, 9.196777, 9.200001, 9.233334, 9.266666, 9.299999, 9.333334, 9.366667, 9.4, 9.433332, 9.466667, 9.5, 9.533333, 9.566668, 9.6, 9.633333, 9.666666, 9.700001, 9.733334, 9.766666, 9.800001, 9.833332, 9.866667, 9.9, 9.933332, 9.966665, 10, 10.033333, 10.066668, 10.1, 10.133333, 10.166668, 10.199999, 10.233334, 10.2666645, 10.300001, 10.333334, 10.366667, 10.4, 10.433334, 10.466667, 10.5, 10.533333, 10.566668, 10.6, 10.633333, 10.666668, 10.699999, 10.733334, 10.766666, 10.799999, 10.833334, 10.866667, 10.9, 10.933332, 10.966667, 11, 11.033333, 11.066666, 11.099998, 11.133331, 11.166664, 11.200001, 11.266666, 11.299999, 11.333332, 11.366667, 11.399998, 11.433332, 11.5, 11.566666, 11.6, 11.633331, 11.666668, 11.700001, 11.7333355, 11.766666, 11.799999, 11.833336, 11.866669, 11.900002, 11.933334, 11.966667, 12, 12.033333, 12.066666, 12.100002, 12.133335, 12.166668, 12.200001, 12.233334, 12.266666, 12.299999, 12.333336, 12.366669, 12.400002, 12.433334, 12.466667, 12.533333, 12.566668, 12.600002, 12.633335, 12.666668, 12.700001, 12.766666, 12.833336, 12.900002, 13.330111, 13.363443, 13.763443),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
@@ -681,6 +762,65 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0)]
 }
+tracks/12/type = "audio"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("othersounds")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}, {
+"end_offset": 1.171,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}],
+"times": PackedFloat32Array(0.033333335, 3.7666667, 7.3333335)
+}
+tracks/12/use_blend = true
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("coinrain:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.9, 11.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("coinrain:amount")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(2.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2000]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("coinfountain:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.008105844, -0.5054805, -0.49239028)]
+}
 
 [sub_resource type="Animation" id="Animation_wu3dr"]
 resource_name = "coinfountain-lvlMAX"
@@ -719,7 +859,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [10.0]
+"values": [3.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -728,10 +868,10 @@ tracks/3/path = NodePath("coinfountain:spread")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 15.566667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [17.79]
+"values": [25.0, 65.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -743,7 +883,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1, 0, -13.38)]
+"values": [Vector3(1, -0.52, -13.38)]
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -753,7 +893,7 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(25, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "bezier"
@@ -764,7 +904,7 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(60, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/7/type = "value"
@@ -786,10 +926,10 @@ tracks/8/path = NodePath("coindrop:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(9.199999, 9.2666645, 9.299999, 9.333334, 9.366667, 9.4, 9.433332, 9.466665, 9.499998, 9.533331, 9.566664, 9.6, 9.633333, 9.666666, 9.699999, 9.733332, 9.7666645, 9.800001, 9.833334, 9.866667, 9.9, 9.933332, 9.966669, 9.999998, 10.033335, 10.066668, 10.1, 10.133333, 10.166666, 10.199999, 10.233332, 10.266668, 10.300001, 10.333334, 10.366667, 10.4, 10.433332, 10.466665, 10.499998, 10.533335, 10.566664, 10.6, 10.633333, 10.666666, 10.699999, 10.733332, 10.766668, 10.799997, 10.833334, 10.866667, 10.9, 10.933332, 10.966665, 10.999998, 11.033335, 11.066668, 11.1, 11.133333, 11.166666, 11.199999, 11.233332, 11.266668, 11.300001, 11.333334, 11.366667, 11.4, 11.433332, 11.466665, 11.499998, 11.533331, 11.566668, 11.6, 11.633333, 11.666666, 11.699999, 11.733332, 11.7666645, 11.800001, 11.833334, 11.866667, 11.9, 11.933332, 11.966665, 11.999998, 12.033331, 12.066664, 12.1, 12.133333, 12.166666, 12.199999, 12.233332, 12.266668, 12.299997, 12.333334, 12.366663, 12.4, 12.433332, 12.466665, 12.499998, 12.533335, 12.566668, 12.6, 12.633333, 12.666666, 12.699999, 12.733332, 12.766668, 12.799997, 12.833334, 12.866667, 12.9, 12.933332, 12.966665, 12.999998, 13.033331, 13.066668, 13.1, 13.133333, 13.166666, 13.199999, 13.233332, 13.2666645, 13.300001, 13.333334, 13.366667, 13.4, 13.433332, 13.466665, 13.499998, 13.533331, 13.6, 13.633333, 13.666666, 13.699999, 13.733332, 13.7666645, 13.799997, 13.83333, 13.866667, 13.9, 13.933332, 13.966665, 13.999998, 14.033331, 14.066668, 14.1, 14.133333, 14.166666, 14.199999, 14.2333355, 14.266668, 14.300001, 14.333334, 14.366667, 14.4, 14.433332, 14.466669, 14.499998, 14.533335, 14.566668, 14.6, 14.633333, 14.666666, 14.699999, 14.7333355, 14.766668, 14.799997, 14.833334, 14.866667, 14.9, 14.933332, 14.966665, 15.000002, 15.033335, 15.066668, 15.1, 15.133333, 15.166666, 15.199999, 15.233332, 15.266668, 15.300001, 15.333334, 15.366667, 15.4, 15.433332, 15.466665, 15.499998, 15.533335, 15.566668, 15.6, 15.633333, 15.666666, 15.699999, 15.733332, 15.7666645, 15.800001, 15.833334, 15.866667, 15.9, 15.933332, 15.966665, 15.999998, 16.033335, 16.066668, 16.1, 16.133333, 16.166666, 16.199999, 16.233332, 16.266668, 16.299997, 16.333334, 16.366667, 16.4, 16.433332, 16.466665, 16.499998, 16.533335, 16.566668, 16.6, 16.633333, 16.666666, 16.699999, 16.733332, 16.766668, 16.800001, 16.833334, 16.866667, 16.9, 16.933332, 16.966665, 16.999998, 17.033335, 17.066668, 17.1, 17.133333, 17.166666, 17.199999, 17.233332, 17.266665, 17.300001, 17.333334, 17.366667, 17.4, 17.433332, 17.466665, 17.499998, 17.53333, 17.566664, 17.599997, 17.63333, 17.666666, 17.699999, 17.733332, 17.766665, 17.799997, 17.833334, 17.866663, 17.9, 17.966665, 17.999998, 18.03333, 18.066664, 18.099997, 18.133333, 18.166666, 18.199999, 18.233332, 18.266665, 18.300001, 18.333334, 18.366667, 18.4, 18.433332, 18.466665, 18.499998, 18.53333, 18.566668, 18.6, 18.633333, 18.666666, 18.699999, 18.733332, 18.766665, 18.800001, 18.833334, 18.866667, 18.9, 18.933332, 18.966665, 18.999998, 19.03333, 19.066668, 19.1, 19.133333, 19.166666, 19.233332, 19.300001, 19.366667, 19.4, 19.433332, 19.466665, 19.499998, 19.53333, 19.566664, 19.6, 19.633333, 19.666666, 19.699999, 19.733332, 19.766665, 19.799997, 19.833334, 19.866667, 19.9, 19.933332, 19.966665, 19.999998, 20.033335, 20.066664, 20.1, 20.133333, 20.166666, 20.199999, 20.233332, 20.266665, 20.299997, 20.333334, 20.366667, 20.4, 20.433332, 20.466665, 20.499998, 20.53333, 20.566664, 20.6, 20.63333, 20.666666, 20.699999, 20.733332, 20.766665, 20.799997, 20.833334, 20.866663, 20.9, 20.933332, 20.966665, 20.999998, 21.03333, 21.066664, 21.1, 21.133333, 21.166666, 21.199999, 21.233332, 21.266665, 21.299997, 21.333334, 21.366667, 21.4, 21.433332, 21.466665, 21.499998, 21.53333, 21.566664, 21.599997, 21.633333, 21.666666, 21.699999, 21.733332, 21.766665, 21.799997, 21.83333, 21.866667, 21.9, 21.933332, 21.966665, 21.999998, 22.03333, 22.066664, 22.099997, 22.13333, 22.166666, 22.199999, 22.233332, 22.266665, 22.299997, 22.333334, 22.366663, 22.4, 22.433329, 22.466665, 22.499998, 22.53333, 22.566664, 22.6, 22.633333, 22.666666, 22.699999, 22.733332, 22.766665, 22.799997, 22.833334, 22.866663, 22.9, 22.933332, 22.966665, 22.999998, 23.03333, 23.066664, 23.099997, 23.133333, 23.166666, 23.199999, 23.233332, 23.266665, 23.299997, 23.33333, 23.366667, 23.4, 23.433332, 23.466665, 23.499998, 23.53333, 23.566664, 23.6, 23.666666, 23.699999, 23.733332, 23.766665, 23.799997, 23.83333, 23.866667, 23.9, 23.933332, 23.966665, 23.999998, 24.03333, 24.066664, 24.099997, 24.133333, 24.166666, 24.199999, 24.233332, 24.266665, 24.300001, 24.333334, 24.366667, 24.4, 24.433332, 24.466665, 24.499998, 24.533335, 24.566664, 24.6, 24.633333, 24.666666, 24.699999, 24.733332, 24.766665, 24.800001, 24.833334, 24.866663, 24.9, 24.933332, 24.966665, 24.999998, 25.03333, 25.066668),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(5.166664, 5.23333, 5.2666645, 5.299999, 5.333332, 5.366665, 5.3999977, 5.4333305, 5.4666634, 5.499996, 5.533329, 5.5666656, 5.5999985, 5.6333313, 5.666664, 5.699997, 5.73333, 5.7666664, 5.799999, 5.833332, 5.866665, 5.8999977, 5.9333344, 5.9666634, 6, 6.033333, 6.0666656, 6.0999985, 6.1333313, 6.166664, 6.199997, 6.2333336, 6.2666664, 6.299999, 6.333332, 6.366665, 6.3999977, 6.4333305, 6.4666634, 6.5, 6.533329, 6.5666656, 6.5999985, 6.6333313, 6.666664, 6.699997, 6.7333336, 6.7666626, 6.799999, 6.833332, 6.866665, 6.8999977, 6.9333305, 6.9666634, 7, 7.033333, 7.0666656, 7.0999985, 7.1333313, 7.166664, 7.199997, 7.2333336, 7.2666664, 7.299999, 7.333332, 7.366665, 7.3999977, 7.4333305, 7.4666634, 7.499996, 7.533333, 7.5666656, 7.5999985, 7.6333313, 7.666664, 7.699997, 7.73333, 7.7666664, 7.799999, 7.833332, 7.866665, 7.8999977, 7.9333305, 7.9666634, 7.999996, 8.033329, 8.066666, 8.099998, 8.133331, 8.166664, 8.199997, 8.233334, 8.266663, 8.299999, 8.333328, 8.366665, 8.399998, 8.433331, 8.466663, 8.5, 8.533333, 8.566666, 8.599998, 8.633331, 8.666664, 8.699997, 8.733334, 8.766663, 8.799999, 8.833332, 8.866665, 8.899998, 8.933331, 8.966663, 8.999996, 9.033333, 9.066666, 9.099998, 9.133331, 9.166664, 9.199997, 9.23333, 9.266666, 9.299999, 9.333332, 9.366665, 9.399998, 9.433331, 9.466663, 9.499996, 9.566666, 9.599998, 9.633331, 9.666664, 9.699997, 9.73333, 9.766663, 9.799995, 9.833332, 9.866665, 9.899998, 9.933331, 9.966663, 9.999996, 10.033333, 10.066666, 10.099998, 10.133331, 10.166664, 10.200001, 10.233334, 10.266666, 10.299999, 10.333332, 10.366665, 10.399998, 10.433334, 10.466663, 10.5, 10.533333, 10.566666, 10.599998, 10.633331, 10.666664, 10.700001, 10.733334, 10.766663, 10.799999, 10.833332, 10.866665, 10.899998, 10.933331, 10.966667, 11, 11.033333, 11.066666, 11.099998, 11.133331, 11.166664, 11.199997, 11.233334, 11.266666, 11.299999, 11.333332, 11.366665, 11.399998, 11.433331, 11.466663, 11.5, 11.533333, 11.566666, 11.599998, 11.633331, 11.666664, 11.699997, 11.73333, 11.766666, 11.799999, 11.833332, 11.866665, 11.899998, 11.933331, 11.966663, 12, 12.033333, 12.066666, 12.099998, 12.133331, 12.166664, 12.199997, 12.233334, 12.266663, 12.299999, 12.333332, 12.366665, 12.399998, 12.433331, 12.466663, 12.5, 12.533333, 12.566666, 12.599998, 12.633331, 12.666664, 12.699997, 12.733334, 12.766666, 12.799999, 12.833332, 12.866665, 12.899998, 12.933331, 12.966663, 13, 13.033333, 13.066666, 13.099998, 13.133331, 13.166664, 13.199997, 13.23333, 13.266666, 13.299999, 13.333332, 13.366665, 13.399998, 13.433331, 13.466663, 13.499996, 13.533329, 13.566662, 13.599995, 13.633331, 13.666664, 13.699997, 13.73333, 13.766663, 13.799999, 13.833328, 13.866665, 13.933331, 13.966663, 13.999996, 14.033329, 14.066662, 14.099998, 14.133331, 14.166664, 14.199997, 14.23333, 14.266666, 14.299999, 14.333332, 14.366665, 14.399998, 14.433331, 14.466663, 14.499996, 14.533333, 14.566666, 14.599998, 14.633331, 14.666664, 14.699997, 14.73333, 14.766666, 14.799999, 14.833332, 14.866665, 14.899998, 14.933331, 14.966663, 14.999996, 15.033333, 15.066666, 15.099998, 15.133331, 15.199997, 15.266666, 15.333332, 15.366665, 15.399998, 15.433331, 15.466663, 15.499996, 15.533329, 15.566666, 15.599998, 15.633331, 15.666664, 15.699997, 15.73333, 15.766663, 15.799999, 15.833332, 15.866665, 15.899998, 15.933331, 15.966663, 16, 16.033329, 16.066666, 16.099998, 16.133331, 16.166664, 16.199997, 16.23333, 16.266663, 16.3, 16.333332, 16.366665, 16.399998, 16.43333, 16.466663, 16.499996, 16.533329, 16.566666, 16.599995, 16.633331, 16.666664, 16.699997, 16.73333, 16.766663, 16.8, 16.833328, 16.866665, 16.899998, 16.93333, 16.966663, 16.999996, 17.033329, 17.066666, 17.099998, 17.133331, 17.166664, 17.199997, 17.23333, 17.266663, 17.3, 17.333332, 17.366665, 17.399998, 17.43333, 17.466663, 17.499996, 17.533329, 17.566662, 17.599998, 17.633331, 17.666664, 17.699997, 17.73333, 17.766663, 17.799995, 17.833332, 17.866665, 17.899998, 17.93333, 17.966663, 17.999996, 18.033329, 18.066662, 18.099995, 18.133331, 18.166664, 18.199997, 18.23333, 18.266663, 18.3, 18.333328, 18.366665, 18.399994, 18.43333, 18.466663, 18.499996, 18.533329, 18.566666, 18.599998, 18.633331, 18.666664, 18.699997, 18.73333, 18.766663, 18.8, 18.833328, 18.866665, 18.899998, 18.93333, 18.966663, 18.999996, 19.033329, 19.066662, 19.099998, 19.133331, 19.166664, 19.199997, 19.23333, 19.266663, 19.299995, 19.333332, 19.366665, 19.399998, 19.43333, 19.466663, 19.499996, 19.533329, 19.566666, 19.633331, 19.666664, 19.699997, 19.73333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -827,6 +967,69 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("coinfountain:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.013, -0.91, -0.552)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("coinrain:amount")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("coinrain:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 5.2, 15.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/15/type = "audio"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("othersounds")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_sm6fg")
+}],
+"times": PackedFloat32Array(0, 3.6666667, 7.4666667, 11.266666)
+}
+tracks/15/use_blend = true
 
 [sub_resource type="Animation" id="Animation_cyx1q"]
 resource_name = "coinrain1"
@@ -1145,6 +1348,485 @@ noise = SubResource("FastNoiseLite_sfdu5")
 albedo_color = Color(0.4509804, 0.24313726, 0, 1)
 albedo_texture = SubResource("NoiseTexture2D_rluq3")
 uv1_scale = Vector3(0.18, 1, 1)
+
+[sub_resource type="Animation" id="Animation_gx4rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishSwarm:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishSwarm:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishSwarm2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FishSwarm2:amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fishsounds:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FishSwarm3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FishSwarm3:amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FishSwarm4:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FishSwarm4:amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ComboCOunter:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ComboCOunter:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ComboCOunter:font_size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_5dllo"]
+resource_name = "fishswarmlvl1"
+length = 10.066667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishSwarm:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishSwarm:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ComboCOunter:font_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 64]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ComboCOunter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ComboCOunter:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("fishsounds:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_phcyf"]
+resource_name = "fishswarmlvl2"
+length = 10.066667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishSwarm:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishSwarm:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishSwarm2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FishSwarm2:amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fishsounds:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.1333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ComboCOunter:font_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 96]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ComboCOunter:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ComboCOunter:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.8666667, 2.766667, 4, 4.866667, 5.866667, 6.7666664, 7.666667, 8.533334, 9.533334, 10.433333, 11.333333, 12.2, 13.2, 14.099999, 14.766666, 15.633333, 16.633333, 17.533333, 18.533333, 19.4, 20.4, 21.3, 22.133333, 23, 23.966667, 24.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_birbe"]
+resource_name = "fishswarmlvlMAX"
+length = 10.066667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FishSwarm:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FishSwarm:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FishSwarm2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FishSwarm2:amount")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fishsounds:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 1.1333333, 2.2333333, 3.3333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FishSwarm3:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 7.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FishSwarm3:amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FishSwarm4:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FishSwarm4:amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ComboCOunter:font_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 7.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 128]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ComboCOunter:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 10.033335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ComboCOunter:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.8666667, 2.766667, 4, 4.866667, 5.866667, 6.7666664, 7.666667, 8.533334, 9.533334, 10.433333, 11.333333, 12.2, 13.2, 14.099999, 14.766666, 15.633333, 16.633333, 17.533333, 18.533333, 19.4, 20.4, 21.3, 22.133333, 23, 23.966667, 24.9, 26.266666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0.5235988, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, -0.5235988, 0), Vector3(-1.5707964, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1p13"]
+_data = {
+&"RESET": SubResource("Animation_gx4rg"),
+&"fishswarmlvl1": SubResource("Animation_5dllo"),
+&"fishswarmlvl2": SubResource("Animation_phcyf"),
+&"fishswarmlvlMAX": SubResource("Animation_birbe")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4orf4"]
 resource_name = "Material.001"
@@ -1530,7 +2212,7 @@ gradient = SubResource("Gradient_getpj")
 [node name="Node3D" type="Node3D" unique_id=1543989762]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box", "rainbow_spinner")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.33787847)
+transform = Transform3D(-0.00872653, 0, -0.9999619, 0, 1, 0, 0.9999619, 0, -0.00872653, 0, 1.7, -0.33787847)
 fov = 60.0
 script = ExtResource("1_7mycd")
 dust_instance = NodePath("FingerDust")
@@ -1552,6 +2234,7 @@ spot_angle = 26.91444
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 4.440892e-16, 1, 0, -4.3711392e-08, 0, 0.27508438, -2.6172516)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=288587808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00053727627, -0.0019373894, -4.7385693e-06)
 light_energy = 1.912
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Camera3D" unique_id=1518906253]
@@ -1737,16 +2420,17 @@ horizontal_alignment = 2
 [node name="juiceZone" type="Node3D" parent="BasicSpinner" unique_id=1019013918]
 
 [node name="coinrain" type="CPUParticles3D" parent="BasicSpinner/juiceZone" unique_id=1745945854]
-transform = Transform3D(0.0645704, -0.9978924, -0.0064336015, 0.9978174, 0.064652175, -0.013432666, 0.013820306, -0.005552175, 0.9998891, -0.008105844, -0.059822083, -1.7805597)
+transform = Transform3D(0.0645704, -0.9978924, -0.0064336015, 0.9978174, 0.064652175, -0.013432666, 0.013820306, -0.005552175, 0.9998891, -0.008105844, -8.006047, -20.949533)
 material_override = ExtResource("23_rm4vd")
 emitting = false
 amount = 500
 lifetime = 5.0
+preprocess = 1.5
 mesh = ExtResource("24_pjyto")
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
-emission_ring_radius = 2.0
+emission_ring_radius = 10.0
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
 particle_flag_rotate_y = true
@@ -1756,7 +2440,7 @@ damping_min = 4.548
 damping_max = 7.796
 
 [node name="coinfountain" type="CPUParticles3D" parent="BasicSpinner/juiceZone" unique_id=802943434]
-transform = Transform3D(0.0645704, -0.99789244, -0.0064335996, 0.9777503, 0.061975043, 0.20040749, -0.19958636, -0.019230818, 0.9796913, -0.008105844, -0.5054805, -0.7407857)
+transform = Transform3D(0.0645704, -0.99789244, -0.0064335996, 0.9777503, 0.061975043, 0.20040749, -0.19958636, -0.019230818, 0.9796913, -0.008105844, -0.5054805, -0.49239028)
 material_override = ExtResource("23_rm4vd")
 emitting = false
 amount = 5000
@@ -1807,10 +2491,14 @@ volume_db = -24.0
 max_polyphony = 100
 
 [node name="ComboCOunter" type="Label3D" parent="BasicSpinner/juiceZone" unique_id=1184468257]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, -1.0148101, 0.57874894, -1.5501946)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, -1.463191, 0.57874894, -0.88605154)
 visible = false
 modulate = Color(255, 255, 255, 255)
 text = "$0"
+
+[node name="othersounds" type="AudioStreamPlayer3D" parent="BasicSpinner/juiceZone" unique_id=1052749184]
+volume_db = -30.141
+max_polyphony = 2
 
 [node name="FishSpinner" type="Node3D" parent="." unique_id=1033122556]
 transform = Transform3D(-4.3711385e-08, -0.99999994, 4.371139e-08, 0, -4.3711385e-08, -1, 0.99999994, -4.3711385e-08, 1.9106855e-15, 2.6319025, 1.987538, -0.32296872)
@@ -2116,6 +2804,88 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tt3u6")
 stream = ExtResource("35_0cbny")
 
 [node name="tickerSoundFishingGame" type="AudioStreamPlayer3D" parent="FishSpinner/FishingMiniGame" unique_id=1085427413]
+
+[node name="juiceZone" type="Node3D" parent="FishSpinner" unique_id=1261439173]
+
+[node name="FishSwarm" type="CPUParticles3D" parent="FishSpinner/juiceZone" unique_id=2099226612]
+transform = Transform3D(0.9999993, 1.0658141e-14, 0, -1.0658141e-14, 0.9999993, -8.351872e-23, 2.5410988e-21, 3.1974423e-14, 1, 7.654654, -2.6509283, -0.6646054)
+emitting = false
+amount = 3
+lifetime = 2.0
+mesh = ExtResource("47_jx0wj")
+particle_flag_rotate_y = true
+direction = Vector3(-200, 0, 0)
+spread = 10.38
+flatness = 1.0
+gravity = Vector3(0, -0.695, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.65
+angular_velocity_min = 20.0
+angular_velocity_max = 30.0
+scale_amount_min = 0.5
+
+[node name="FishSpinnerFishAnimationPlayer" type="AnimationPlayer" parent="FishSpinner/juiceZone" unique_id=972232232]
+libraries/ = SubResource("AnimationLibrary_f1p13")
+
+[node name="fishsounds" type="AudioStreamPlayer3D" parent="FishSpinner/juiceZone" unique_id=359220035]
+stream = ExtResource("48_kkkcx")
+volume_db = -14.725
+
+[node name="FishSwarm2" type="CPUParticles3D" parent="FishSpinner/juiceZone" unique_id=2082536059]
+transform = Transform3D(0.9999993, 1.0658141e-14, 0, -1.0658141e-14, 0.9999993, -8.351872e-23, 2.5410988e-21, 3.1974423e-14, 1, 7.654654, -2.6509283, -0.6646054)
+emitting = false
+amount = 5
+lifetime = 2.0
+mesh = ExtResource("49_34ol3")
+particle_flag_rotate_y = true
+direction = Vector3(-200, 0, 0)
+spread = 19.78
+gravity = Vector3(0, -0.695, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.65
+angular_velocity_min = 20.0
+angular_velocity_max = 30.0
+scale_amount_min = 0.5
+
+[node name="FishSwarm3" type="CPUParticles3D" parent="FishSpinner/juiceZone" unique_id=239338139]
+transform = Transform3D(0.99999917, 1.4210855e-14, 0, -1.4210855e-14, 0.99999917, -8.351872e-23, 2.9646153e-21, 3.5527137e-14, 1, -6.9818735, -4.1692038, -0.6646054)
+amount = 10
+lifetime = 2.0
+mesh = ExtResource("50_c2n8d")
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(200, 0, 0)
+spread = 19.78
+gravity = Vector3(0, -0.695, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.65
+angle_min = -677.8
+angle_max = -493.2
+scale_amount_min = 0.5
+
+[node name="FishSwarm4" type="CPUParticles3D" parent="FishSpinner/juiceZone" unique_id=2530053]
+transform = Transform3D(0.9999989, 1.7763568e-14, 0, -1.7763568e-14, 0.9999989, -8.351872e-23, 3.3881318e-21, 4.6185278e-14, 1, -0.47887248, -9.4583845, 0.53869295)
+amount = 15
+lifetime = 2.0
+mesh = ExtResource("51_wy5fy")
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 200, 0)
+spread = 19.78
+gravity = Vector3(0, -0.695, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 8.65
+angle_min = 47.5
+angle_max = 116.1
+scale_amount_min = 0.3
+scale_amount_max = 0.5
+
+[node name="ComboCOunter" type="Label3D" parent="FishSpinner/juiceZone" unique_id=433438431]
+transform = Transform3D(0.99999934, 0, 0, 0, -4.371139e-08, 0.9999993, 0, -1, -4.3711356e-08, -0.80540323, 0.57874846, -0.53056383)
+visible = false
+modulate = Color(255, 255, 255, 255)
+text = "0 FISH!"
+font_size = 128
 
 [node name="RainbowSpinner" type="Node3D" parent="." unique_id=2056949895]
 transform = Transform3D(-0.9999998, 8.742276e-08, -3.821371e-15, 0, -4.371138e-08, -1, -8.742276e-08, -0.9999998, 4.371139e-08, -0.0026448667, 1.6549999, 2.3901548)
