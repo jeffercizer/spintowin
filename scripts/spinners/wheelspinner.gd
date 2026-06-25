@@ -28,9 +28,9 @@ func _ready() -> void:
     add_slice("flatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
     add_slice("4xmulti", multi4xMat, 1.0, Callable(self, "multi_4x"))  
     add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
-    add_slice("2x_extra_spin", free2xspinMat, 1.0, Callable(self, "spin_2")) 
+    add_slice("2x_extra_spin", free2xspinMat, 1.0, Callable(self, "extra_spin_2")) 
     add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose"))
-    add_slice("4x_extra_spin", free4xspinMat, 1.0, Callable(self, "spin_4")) 
+    add_slice("4x_extra_spin", free4xspinMat, 1.0, Callable(self, "extra_spin_4")) 
     add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose"))
     super._ready()
     
@@ -112,6 +112,16 @@ var spinning = 0
 var flat_value = 0.0    
 var multi_value = 0.0
 
+
+@export var mini_spinner1: MiniSpinner
+@export var mini_spinner2: MiniSpinner
+@export var mini_spinner3: MiniSpinner
+@export var mini_spinner4: MiniSpinner
+@export var mini_spinner5: MiniSpinner
+@export var mini_spinner6: MiniSpinner
+@export var mini_spinner7: MiniSpinner
+
+
 func payout():
     print("payout")
     add_money(flat_value * multi_value)
@@ -149,11 +159,11 @@ func extra_spin():
     spinning += 1
     pass
     
-func spin_2():
+func extra_spin_2():
     spinning += 2
     pass
     
-func spin_4():
+func extra_spin_4():
     spinning += 4
     pass
     
