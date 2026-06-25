@@ -105,12 +105,6 @@ func get_payout():
         return 0
     return (base_payout  * pow(2,2*(payout_count-1))) * (level * level)
 
-func get_win_amount():
-    return ((20 * pow(Globals.level_effect, level-1)))
-    
-func get_jackpot_amount():
-    return (200 * pow(Globals.level_effect, level-1))
-
 
 @export var letter_mesh: MeshInstance3D
 
@@ -203,7 +197,7 @@ func cash_out():
     wheelSound.stream = jackpotSound
     wheelSound.play()
     var payout =  get_payout()#so its 5mil * 2/8/32/128/512/2048/8192 or 1/4/16/64/256/1024/4096
-    Globals.update_money(payout)
+    add_money(payout)
     
     var active_colors = []
     for color in lights.keys():

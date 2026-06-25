@@ -34,7 +34,7 @@ var wheel_angular_velocity = 0.0
 var damping = 0.98
 var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not this (base * level)
 
-var ticker_min_cooldown = 0.016
+var ticker_min_cooldown = 0.032
 var ticker_cooldown = ticker_min_cooldown
 
 var prev_wheel_y = 0.0
@@ -93,8 +93,7 @@ func _physics_process(delta: float) -> void:
         rotate_y(step)
         seconds_to_adjust -= delta
         if(seconds_to_adjust <= 0.0): #we score
-            result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y))
-            slices[result_slice].callback.call()
+            evaluate_wheel()
             
     elif dragging: #we spin the wheel with the mouse
         var torque_multi = clamp(mouse_distance / 200, 0.0, 1.0)
@@ -155,6 +154,10 @@ func ticker_crossed():
         
     return (clockwise and boundary <= rotation_degrees.y) \
     or (not clockwise and boundary >= rotation_degrees.y)
+    
+func evaluate_wheel():
+    result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y))
+    slices[result_slice].callback.call()
     
     
 func bias_angle(angle_deg):

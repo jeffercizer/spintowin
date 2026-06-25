@@ -73,6 +73,11 @@
 [ext_resource type="AudioStream" uid="uid://n7j2mbfnwelc" path="res://assets/audio/rainbow_jackpot_sound.wav" id="52_1vm84"]
 [ext_resource type="Texture2D" uid="uid://dkab0pyuwfehe" path="res://assets/lolipop.png" id="53_rqtf5"]
 [ext_resource type="Script" uid="uid://mnpburojbwsv" path="res://scripts/spinners/wheelspinner.gd" id="55_1vm84"]
+[ext_resource type="Texture2D" uid="uid://b3o2u6cpywk4u" path="res://assets/wheelwheel/freespin2x.png" id="61_34ol3"]
+[ext_resource type="Shader" uid="uid://cc4s536pc3a0y" path="res://shaders/winSliceShader.gdshader" id="61_gx4rg"]
+[ext_resource type="Texture2D" uid="uid://b4ui20gu7u1bo" path="res://assets/wheelwheel/freespin.png" id="61_wy5fy"]
+[ext_resource type="Shader" uid="uid://blqt4q85yb3d3" path="res://shaders/jackpotShader.gdshader" id="62_5dllo"]
+[ext_resource type="Texture2D" uid="uid://c42sphv700h8d" path="res://assets/wheelwheel/freespin4x.png" id="62_c2n8d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v8acg"]
 flip_faces = true
@@ -2192,6 +2197,48 @@ shader_parameter/snap_range_deg = 1.2
 shader_parameter/bend_amount = 0.175
 shader_parameter/tip_height = 0.22
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phcyf"]
+render_priority = 0
+shader = ExtResource("61_gx4rg")
+shader_parameter/tint_color = Color(0.31764707, 0.8666667, 0, 1)
+shader_parameter/noise_strength = 0.015
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtnc0"]
+render_priority = 0
+shader = ExtResource("62_5dllo")
+shader_parameter/segments = 16
+shader_parameter/shear = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dllo"]
+render_priority = 0
+shader = ExtResource("24_0cp0l")
+shader_parameter/albedo_tex = ExtResource("61_wy5fy")
+shader_parameter/noise_color = Color(0.46022856, 0.4738142, 0.9944461, 1)
+shader_parameter/strength = -0.08699995663250004
+shader_parameter/noise_scale = 6.035
+shader_parameter/noise_amount = 0.25
+shader_parameter/blank_threshold = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wy5fy"]
+render_priority = 0
+shader = ExtResource("24_0cp0l")
+shader_parameter/albedo_tex = ExtResource("61_34ol3")
+shader_parameter/noise_color = Color(0.7764706, 0.30588236, 1, 1)
+shader_parameter/strength = -0.22199996304500003
+shader_parameter/noise_scale = 7.88
+shader_parameter/noise_amount = 0.285
+shader_parameter/blank_threshold = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx4rg"]
+render_priority = 0
+shader = ExtResource("24_0cp0l")
+shader_parameter/albedo_tex = ExtResource("62_c2n8d")
+shader_parameter/noise_color = Color(1, 0, 1, 1)
+shader_parameter/strength = -0.05799995525500001
+shader_parameter/noise_scale = 6.84
+shader_parameter/noise_amount = 0.525
+shader_parameter/blank_threshold = 0.15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
 bg_color = Color(0, 0, 0, 0)
 
@@ -2750,6 +2797,7 @@ mesh = SubResource("CylinderMesh_pet1e")
 surface_material_override/0 = SubResource("ShaderMaterial_pet1e")
 script = ExtResource("34_f6a44")
 music_player = NodePath("../fishing_minigame_music")
+bad_result_sound = ExtResource("9_seu75")
 good_result_sound = ExtResource("35_hrvbo")
 best_result_sound = ExtResource("36_uypp3")
 minigame_parent = NodePath("..")
@@ -3071,7 +3119,7 @@ transform = Transform3D(1, 0, -4.106937e-12, -1.1672617e-25, 1, 0, 4.106937e-12,
 shape = SubResource("BoxShape3D_vchc8")
 
 [node name="SpinnerSpinner" type="Node3D" parent="." unique_id=924442121]
-transform = Transform3D(-4.371138e-08, 0.9999998, -4.371139e-08, 0, -4.371138e-08, -1, -0.9999998, -4.371138e-08, 1.9106855e-15, -4.10643, 1.2404162, -0.33926833)
+transform = Transform3D(-4.371138e-08, 0.9999998, -4.371139e-08, 0, -4.371138e-08, -1, -0.9999998, -4.371138e-08, 1.9106855e-15, -2.5811644, 1.3890682, -0.33926833)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=1683103120]
 transform = Transform3D(0.99999917, -3.907985e-14, -3.7252887e-09, 4.2632564e-14, 0.999999, 3.53643e-14, -7.450581e-09, 7.1054274e-15, 1, 0.06093228, 0.14878368, 0.7669347)
@@ -3091,7 +3139,7 @@ font_size = 20
 horizontal_alignment = 2
 
 [node name="Ticker" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=1298325657]
-transform = Transform3D(0.9999998, -8.4703295e-22, 7.1054274e-15, 7.1054274e-15, -4.3711367e-08, -0.9999998, 2.1175824e-22, 1, -4.371139e-08, 0, 0.06400013, -1.297949)
+transform = Transform3D(0.99999976, -8.4703295e-22, 1.0658141e-14, 1.0658141e-14, -4.371136e-08, -0.99999976, 2.1175824e-22, 1, -4.371139e-08, 0, 0.06400013, -1.3307217)
 mesh = SubResource("PrismMesh_pet1e")
 surface_material_override/0 = SubResource("ShaderMaterial_c2n8d")
 
@@ -3110,9 +3158,14 @@ volume_db = -12.0
 transform = Transform3D(-0.052335937, -3.5527137e-15, 0.99862957, 1.110223e-15, 1, 3.5527137e-15, -0.9986295, -8.3518705e-23, -0.052335948, 0, 0, -0.29116726)
 mesh = SubResource("CylinderMesh_0xm2m")
 script = ExtResource("55_1vm84")
-winMaterial = ExtResource("5_5vw27")
+winMaterial = SubResource("ShaderMaterial_phcyf")
+bigWinMaterial = SubResource("ShaderMaterial_mtnc0")
 loseMaterial = ExtResource("6_kek77")
-jackpotMaterial = ExtResource("8_2cqfq")
+freespinMat = SubResource("ShaderMaterial_5dllo")
+free2xspinMat = SubResource("ShaderMaterial_wy5fy")
+free4xspinMat = SubResource("ShaderMaterial_gx4rg")
+multi2xMat = ExtResource("19_hrvbo")
+multi4xMat = ExtResource("24_abqjc")
 level_label = NodePath("../MeshInstance3D/LevelUpLabelBasicSpinner")
 loseSound = ExtResource("9_seu75")
 winSound = ExtResource("10_htxhm")
@@ -3141,154 +3194,6 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15,
 transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
 
 [node name="Cylinder" type="MeshInstance3D" parent="SpinnerSpinner/Spinner/SpinnerAux/disc" unique_id=1197992650]
-transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
-mesh = SubResource("ArrayMesh_6ug14")
-surface_material_override/0 = ExtResource("12_d13ii")
-
-[node name="Minispinner1" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=308185272 node_paths=PackedStringArray("level_label", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
-transform = Transform3D(-0.03925195, -1.4210855e-14, 0.74897206, 8.881784e-16, 0.74999994, 1.4210855e-14, -0.7489721, 3.5527137e-15, -0.039251953, 1.0709127, -0.23841381, -1.4227022)
-mesh = SubResource("CylinderMesh_0xm2m")
-script = ExtResource("55_1vm84")
-winMaterial = ExtResource("5_5vw27")
-level_label = NodePath("../MeshInstance3D/LevelUpLabelBasicSpinner")
-loseSound = ExtResource("9_seu75")
-winSound = ExtResource("10_htxhm")
-jackpotSound = ExtResource("11_jq2sk")
-wheelSound = NodePath("../Wheel4Sound")
-ticker_low_player = NodePath("../ticker_low_player")
-ticker_high_player = NodePath("../ticker_high_player")
-level_up_bar = NodePath("../MeshInstance3D/LevelupBar")
-ticker = NodePath("../Ticker")
-money_box = NodePath("../../FullScreenControl")
-floating_text = ExtResource("2_e71vb")
-
-[node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerSpinner/Minispinner1" unique_id=943323451]
-transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpinnerSpinner/Minispinner1/SpinnerCollision" unique_id=1319850001]
-transform = Transform3D(1, 0, 0, 0, 0.93679696, -0.34982932, 0, 0.34982932, 0.93679696, 0, 0.06288576, -0.19317102)
-shape = SubResource("CylinderShape3D_pet1e")
-
-[node name="SpinnerAux" type="Node3D" parent="SpinnerSpinner/Minispinner1" unique_id=795885832]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15, 0.9999999, 0, 0, 0)
-
-[node name="spinner_spokes" parent="SpinnerSpinner/Minispinner1/SpinnerAux" unique_id=640083619 instance=ExtResource("6_272bh")]
-
-[node name="disc" type="Node3D" parent="SpinnerSpinner/Minispinner1/SpinnerAux" unique_id=1484905128]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
-
-[node name="Cylinder" type="MeshInstance3D" parent="SpinnerSpinner/Minispinner1/SpinnerAux/disc" unique_id=1618154213]
-transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
-mesh = SubResource("ArrayMesh_6ug14")
-surface_material_override/0 = ExtResource("12_d13ii")
-
-[node name="Minispinner2" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=741783945 node_paths=PackedStringArray("level_label", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
-transform = Transform3D(-0.039251946, -2.4868996e-14, 0.748972, 9.992007e-16, 0.7499999, 2.1316282e-14, -0.7489721, 3.5527137e-15, -0.039251953, -1.0195937, -0.14505959, -1.4227022)
-mesh = SubResource("CylinderMesh_0xm2m")
-script = ExtResource("55_1vm84")
-winMaterial = ExtResource("5_5vw27")
-level_label = NodePath("../MeshInstance3D/LevelUpLabelBasicSpinner")
-loseSound = ExtResource("9_seu75")
-winSound = ExtResource("10_htxhm")
-jackpotSound = ExtResource("11_jq2sk")
-wheelSound = NodePath("../Wheel4Sound")
-ticker_low_player = NodePath("../ticker_low_player")
-ticker_high_player = NodePath("../ticker_high_player")
-level_up_bar = NodePath("../MeshInstance3D/LevelupBar")
-ticker = NodePath("../Ticker")
-money_box = NodePath("../../FullScreenControl")
-floating_text = ExtResource("2_e71vb")
-
-[node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerSpinner/Minispinner2" unique_id=1625005047]
-transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpinnerSpinner/Minispinner2/SpinnerCollision" unique_id=1957282686]
-transform = Transform3D(1, 0, 0, 0, 0.93679696, -0.34982932, 0, 0.34982932, 0.93679696, 0, 0.06288576, -0.19317102)
-shape = SubResource("CylinderShape3D_pet1e")
-
-[node name="SpinnerAux" type="Node3D" parent="SpinnerSpinner/Minispinner2" unique_id=512059048]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15, 0.9999999, 0, 0, 0)
-
-[node name="spinner_spokes" parent="SpinnerSpinner/Minispinner2/SpinnerAux" unique_id=1703033157 instance=ExtResource("6_272bh")]
-
-[node name="disc" type="Node3D" parent="SpinnerSpinner/Minispinner2/SpinnerAux" unique_id=2104817093]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
-
-[node name="Cylinder" type="MeshInstance3D" parent="SpinnerSpinner/Minispinner2/SpinnerAux/disc" unique_id=1490218212]
-transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
-mesh = SubResource("ArrayMesh_6ug14")
-surface_material_override/0 = ExtResource("12_d13ii")
-
-[node name="Minispinner3" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=2020111485 node_paths=PackedStringArray("level_label", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
-transform = Transform3D(-0.03925193, -2.842171e-14, 0.74897176, 1.6653345e-15, 0.74999964, 2.4868996e-14, -0.7489721, 3.5527137e-15, -0.039251953, 1.2072588, -0.16784, 0.45695585)
-mesh = SubResource("CylinderMesh_0xm2m")
-script = ExtResource("55_1vm84")
-winMaterial = ExtResource("5_5vw27")
-level_label = NodePath("../MeshInstance3D/LevelUpLabelBasicSpinner")
-loseSound = ExtResource("9_seu75")
-winSound = ExtResource("10_htxhm")
-jackpotSound = ExtResource("11_jq2sk")
-wheelSound = NodePath("../Wheel4Sound")
-ticker_low_player = NodePath("../ticker_low_player")
-ticker_high_player = NodePath("../ticker_high_player")
-level_up_bar = NodePath("../MeshInstance3D/LevelupBar")
-ticker = NodePath("../Ticker")
-money_box = NodePath("../../FullScreenControl")
-floating_text = ExtResource("2_e71vb")
-
-[node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerSpinner/Minispinner3" unique_id=142027538]
-transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpinnerSpinner/Minispinner3/SpinnerCollision" unique_id=51656101]
-transform = Transform3D(1, 0, 0, 0, 0.93679696, -0.34982932, 0, 0.34982932, 0.93679696, 0, 0.06288576, -0.19317102)
-shape = SubResource("CylinderShape3D_pet1e")
-
-[node name="SpinnerAux" type="Node3D" parent="SpinnerSpinner/Minispinner3" unique_id=1173432904]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15, 0.9999999, 0, 0, 0)
-
-[node name="spinner_spokes" parent="SpinnerSpinner/Minispinner3/SpinnerAux" unique_id=270246516 instance=ExtResource("6_272bh")]
-
-[node name="disc" type="Node3D" parent="SpinnerSpinner/Minispinner3/SpinnerAux" unique_id=1111962582]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
-
-[node name="Cylinder" type="MeshInstance3D" parent="SpinnerSpinner/Minispinner3/SpinnerAux/disc" unique_id=233216926]
-transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
-mesh = SubResource("ArrayMesh_6ug14")
-surface_material_override/0 = ExtResource("12_d13ii")
-
-[node name="Minispinner4" type="MeshInstance3D" parent="SpinnerSpinner" unique_id=1226772322 node_paths=PackedStringArray("level_label", "wheelSound", "ticker_low_player", "ticker_high_player", "level_up_bar", "ticker", "money_box")]
-transform = Transform3D(-0.039251942, -2.1316282e-14, 0.74897194, 1.2212453e-15, 0.7499998, 1.7763568e-14, -0.7489721, 3.5527137e-15, -0.039251953, -0.9955692, -0.1932149, 0.4112665)
-mesh = SubResource("CylinderMesh_0xm2m")
-script = ExtResource("55_1vm84")
-winMaterial = ExtResource("5_5vw27")
-level_label = NodePath("../MeshInstance3D/LevelUpLabelBasicSpinner")
-loseSound = ExtResource("9_seu75")
-winSound = ExtResource("10_htxhm")
-jackpotSound = ExtResource("11_jq2sk")
-wheelSound = NodePath("../Wheel4Sound")
-ticker_low_player = NodePath("../ticker_low_player")
-ticker_high_player = NodePath("../ticker_high_player")
-level_up_bar = NodePath("../MeshInstance3D/LevelupBar")
-ticker = NodePath("../Ticker")
-money_box = NodePath("../../FullScreenControl")
-floating_text = ExtResource("2_e71vb")
-
-[node name="SpinnerCollision" type="StaticBody3D" parent="SpinnerSpinner/Minispinner4" unique_id=504157322]
-transform = Transform3D(1, 0, 0, 0, 0.93681115, 0.34983468, 0, -0.34983468, 0.93681115, 0, -0.05859804, 0.20296466)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpinnerSpinner/Minispinner4/SpinnerCollision" unique_id=257407436]
-transform = Transform3D(1, 0, 0, 0, 0.93679696, -0.34982932, 0, 0.34982932, 0.93679696, 0, 0.06288576, -0.19317102)
-shape = SubResource("CylinderShape3D_pet1e")
-
-[node name="SpinnerAux" type="Node3D" parent="SpinnerSpinner/Minispinner4" unique_id=1488378140]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, -3.5527137e-15, 0, 3.5527137e-15, 0.9999999, 0, 0, 0)
-
-[node name="spinner_spokes" parent="SpinnerSpinner/Minispinner4/SpinnerAux" unique_id=1813489746 instance=ExtResource("6_272bh")]
-
-[node name="disc" type="Node3D" parent="SpinnerSpinner/Minispinner4/SpinnerAux" unique_id=1192922546]
-transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, 0)
-
-[node name="Cylinder" type="MeshInstance3D" parent="SpinnerSpinner/Minispinner4/SpinnerAux/disc" unique_id=1216793910]
 transform = Transform3D(1, 0, 0, 0, 0.14491904, 0, 0, 0, 1, 0, 0.037097633, 0)
 mesh = SubResource("ArrayMesh_6ug14")
 surface_material_override/0 = ExtResource("12_d13ii")

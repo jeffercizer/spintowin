@@ -8,6 +8,7 @@ func _ready() -> void:
     pass
 
 @export var music_player: AudioStreamPlayer3D
+@export var bad_result_sound: AudioStream
 @export var good_result_sound: AudioStream
 @export var best_result_sound: AudioStream
 @export var minigame_parent: Node3D
@@ -35,9 +36,11 @@ func reset(): #requires 40 to 80 rotations
     seconds_between_variance = randi_range(1,3)
     seconds_until_variance = seconds_between_variance
     want_spin = false
+    failure_timer = 5.0
 
 var seconds_until_variance = 0
 var fish_variance = 1.0
+var failure_timer = 5.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
     if(Globals.want_fishing_minigame and not game_running):
@@ -75,12 +78,23 @@ func _physics_process(delta: float) -> void:
         
         if(degrees_of_rotation_for_fish >= max_degrees_for_fish):
             degrees_of_rotation_for_fish = max_degrees_for_fish
+            failure_timer -= delta
+            if(failure_timer <= 0.0):
+                wheelSound.stream = bad_result_sound
+                wheelSound.play() #failure sound
+                music_player.stop()
+                game_running = false
+                minigame_parent.visible = false
+                backwall_blocker.disabled = true
+                spinner_collider.disabled = true
         update_line()
         if(degrees_of_rotation_for_fish <= 0.0):
             #pull fish
+            wheelSound.stream = best_result_sound
             wheelSound.play() #victory sound
             music_player.stop()
             fish_animation.play("fishswarmlvl1")
+            add_money(5000000)
             game_running = false
             minigame_parent.visible = false
             backwall_blocker.disabled = true

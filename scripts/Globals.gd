@@ -20,8 +20,8 @@ var money: float = 10.0
 var luck = 1
 var spin_friction = 1
 
-#15 -> each level makes it 50% larger, 1 -> 1.5 -> 2.25 etc
-var level_effect = 1.5 
+#15 -> each level makes it 60% larger, 1 -> 1.6 -> 2.4 etc
+var level_effect = 1.6
 
 
 var mouse_fudging
