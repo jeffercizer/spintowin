@@ -87,14 +87,14 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
     super._physics_process(_delta)
 
-func start_spin():
-    super.start_spin()
+func start_spin(spin_num_mod):
+    super.start_spin(spin_num_mod)
     
 func _on_spin_requested() -> void:
     if(want_spin):
         return #we are already spinning
     emit_signal("spin_started")
-    start_spin()
+    start_spin(0)
     
 
 func add_experience(amount):

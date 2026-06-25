@@ -207,11 +207,12 @@ var result_bucket = 0
 func cash_out():
     pass #lazy solution to method visability
     
-func start_spin():    
+func start_spin(spin_num_mod):    
     chosen_angle = randi() % 360 #pick somewhere on the circle
     want_spin = true
     Globals.total_spins += 1
-    var full_spin_rads = TAU*8
+    var full_spin_rads = TAU*8 + spin_num_mod
+    print(full_spin_rads)
     target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
     #print(target_rad)
     seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement
@@ -230,7 +231,7 @@ func _on_spin_requested():
     if(want_spin):
         return #we are already spinning
     emit_signal("spin_started")
-    start_spin()
+    start_spin(0)
   
 var slices = []
 

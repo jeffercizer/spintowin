@@ -1,9 +1,18 @@
 extends SpinnerBase
-
+class_name WheelSpinner
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_experience_to_level_up = 20
+    spinners = [
+        mini_spinner1,
+        mini_spinner2,
+        mini_spinner3,
+        mini_spinner4,
+        mini_spinner5,
+        mini_spinner6,
+        mini_spinner7
+    ]
+    base_experience_to_level_up = get_flat_pos()
     experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
         "luck_cap": 10,
@@ -56,17 +65,32 @@ func _ready() -> void:
 
 @export var coin_animator: AnimationPlayer
 
+@export var payout_label: Label3D
 
+var t = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     super._process(delta)
+    t += delta
+    if(spinning >= 0):
+        payout_label.modulate.a = 1.0
+        payout_label.outline_modulate.a = 1.0
+        payout_label.text = "$"+ str(flat_value * multi_value)
+        payout_label.font_size = (flat_value * multi_value)/get_flat_pos()
+        var rot = sin(t) * 30.0
+        payout_label.rotation_degrees.y = rot
     if(spinning == 0 and waiting_to_payout):
         payout()
         waiting_to_payout = false
+        var tween = get_tree().create_tween()
+        tween.tween_property(payout_label, "modulate:a", 0.0, 1.0)
+        tween = get_tree().create_tween()
+        tween.tween_property(payout_label, "outline_modulate:a", 0.0, 1.0)
     
 var prev_seconds = 1.0
 func _physics_process(_delta: float) -> void:
-    super._physics_process(_delta) 
+    if(spinning <= 0.0):
+        super._physics_process(_delta) 
     
 func evaluate_wheel():
     result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y))
@@ -76,14 +100,19 @@ func evaluate_wheel():
     
     waiting_to_payout = true
 
-func start_spin():
-    super.start_spin()
+func start_spin(spin_num_mod):
+    super.start_spin(spin_num_mod)
     
 func _on_spin_requested() -> void:
     if(want_spin):
         return #we are already spinning
     emit_signal("spin_started")
-    start_spin()
+    start_spin(0)
+    
+func wheel_finished(flat_amount, multiplier_amount):
+    spinning -= 1
+    flat_value += flat_amount
+    multi_value += multiplier_amount
     
     
 func add_experience(amount):
@@ -108,11 +137,11 @@ func get_flat_negative():
     return -50000000000000.0 #50T
 
 var waiting_to_payout = false
-var spinning = 0
+var spinning = 0.0
 var flat_value = 0.0    
 var multi_value = 0.0
 
-
+var spinners: Array[MiniSpinner]
 @export var mini_spinner1: MiniSpinner
 @export var mini_spinner2: MiniSpinner
 @export var mini_spinner3: MiniSpinner
@@ -156,15 +185,20 @@ func multi_4x():
     pass
     
 func extra_spin():
+    spinners[spinning].start_spin((randi()%80)-40)
     spinning += 1
     pass
     
 func extra_spin_2():
-    spinning += 2
+    for i in 2:
+        spinners[spinning].start_spin((randi()%80)-40)
+        spinning += 1
     pass
     
 func extra_spin_4():
-    spinning += 4
+    for i in 4:
+        spinners[spinning].start_spin((randi()%80)-40)
+        spinning += 1
     pass
     
     

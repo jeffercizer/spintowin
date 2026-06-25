@@ -4,7 +4,7 @@ extends SpinnerBase
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     payout_label.text = Globals.format_number(get_payout())
-    base_experience_to_level_up = 20
+    base_experience_to_level_up = base_payout
     experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
         "luck_cap": 16,
@@ -69,14 +69,14 @@ func _process(delta: float) -> void:
 func _physics_process(_delta: float) -> void:
     super._physics_process(_delta)
 
-func start_spin():
-    super.start_spin()
+func start_spin(spin_num_mod):
+    super.start_spin(spin_num_mod)
     
 func _on_spin_requested() -> void:
     if(want_spin):
         return #we are already spinning
     emit_signal("spin_started")
-    start_spin()
+    start_spin(0)
     
     
 func add_experience(amount):
