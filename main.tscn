@@ -73,9 +73,12 @@
 [ext_resource type="AudioStream" uid="uid://n7j2mbfnwelc" path="res://assets/audio/rainbow_jackpot_sound.wav" id="52_1vm84"]
 [ext_resource type="Texture2D" uid="uid://dkab0pyuwfehe" path="res://assets/lolipop.png" id="53_rqtf5"]
 [ext_resource type="Script" uid="uid://mnpburojbwsv" path="res://scripts/spinners/wheelspinner.gd" id="55_1vm84"]
+[ext_resource type="Shader" uid="uid://lcf3uiqf1k02" path="res://main.gdshader" id="60_phcyf"]
 [ext_resource type="Texture2D" uid="uid://b3o2u6cpywk4u" path="res://assets/wheelwheel/freespin2x.png" id="61_34ol3"]
+[ext_resource type="AudioStream" uid="uid://bf3dh5oy6f83a" path="res://assets/audio/Fanfare 02.ogg" id="61_f1p13"]
 [ext_resource type="Shader" uid="uid://cc4s536pc3a0y" path="res://shaders/winSliceShader.gdshader" id="61_gx4rg"]
 [ext_resource type="Texture2D" uid="uid://b4ui20gu7u1bo" path="res://assets/wheelwheel/freespin.png" id="61_wy5fy"]
+[ext_resource type="PackedScene" uid="uid://bcwoagfud8hkr" path="res://assets/models/rainbow.tscn" id="62_4obbf"]
 [ext_resource type="Shader" uid="uid://blqt4q85yb3d3" path="res://shaders/jackpotShader.gdshader" id="62_5dllo"]
 [ext_resource type="Texture2D" uid="uid://c42sphv700h8d" path="res://assets/wheelwheel/freespin4x.png" id="62_c2n8d"]
 
@@ -2175,6 +2178,754 @@ size = Vector3(0.6052246, 0.20513916, 0.10058594)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vchc8"]
 size = Vector3(0.59472656, 0.20632935, 0.114868164)
 
+[sub_resource type="QuadMesh" id="QuadMesh_7qi08"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ug8er"]
+render_priority = 0
+shader = ExtResource("60_phcyf")
+shader_parameter/density = 0.25
+shader_parameter/speed = 0.1970000093575
+
+[sub_resource type="Animation" id="Animation_ovcoh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rainbowbg:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rainbowbg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rainbow1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.6739814, 0.62883365, 0.84353614)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rainbow2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0965222, 0.62883365, 0.8435361)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rainbow4:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.0837337, 0.62899876, -0.9248414)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rainbow3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.6872566, 0.62899923, -0.9163275)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Label3D:font_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label3D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.6542693e-08, 0.30413413, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label3D:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 4.235165e-22, -7.105428e-15)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label3D:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("rainbow9:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.8468832, 0.5795759, -0.42252183)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("rainbow6:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.28924316, 0.7112025, 0.82843167)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("rainbow5:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.8289863, 0.5795758, -0.42252183)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("rainbow1:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("rainbow2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("rainbow3:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("rainbow4:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("rainbow5:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("rainbow6:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("rainbow9:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ppx11"]
+resource_name = "rainbowlvl1"
+length = 5.133333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rainbowbg:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(9, 6), Vector2(9, 6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rainbowbg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 31.415926, 0), Vector3(-1.5707964, 31.415926, 0), Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rainbow1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.674, 0.629, 2.009), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 2.009)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rainbow2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.097, 0.629, 2.004), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 2.004)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("61_f1p13")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rainbow1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rainbow2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(-0.033333335, 5.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_1yv1y"]
+resource_name = "rainbowlvl2"
+length = 5.133333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rainbowbg:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(9, 6), Vector2(9, 6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rainbowbg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 62.831852, 0), Vector3(-1.5707964, 62.831852, 0), Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rainbow1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.674, 0.629, 2.009), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 2.009)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rainbow2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.097, 0.629, 2.004), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 2.004)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("61_f1p13")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rainbow4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.025, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.084, 0.629, -1.775), Vector3(1.0837337, 0.62899876, -0.9248414), Vector3(1.0837337, 0.62899876, -0.9248414), Vector3(1.084, 0.629, -1.775)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rainbow3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.025, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.687, 0.629, -1.946), Vector3(-1.6872566, 0.62899923, -0.9163275), Vector3(-1.6872566, 0.62899923, -0.9163275), Vector3(-1.687, 0.629, -1.946)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("rainbow1:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.041666985, 5.175),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("rainbow2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.041666985, 5.175),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("rainbow3:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 5.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("rainbow4:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_5yh34"]
+resource_name = "rainbowlvlMAX"
+length = 5.233333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rainbowbg:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(9, 6), Vector2(9, 6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rainbowbg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 628.31854, 0), Vector3(-1.5707964, 628.31854, 0), Vector3(-1.5707964, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rainbow1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.674, 0.629, 2.009), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 0.859), Vector3(1.674, 0.629, 2.009)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("rainbow2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7666667, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.097, 0.629, 2.004), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 0.844), Vector3(-1.097, 0.629, 2.004)]
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("61_f1p13")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("rainbow4:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.025, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.084, 0.629, -1.775), Vector3(1.0837337, 0.62899876, -0.9248414), Vector3(1.0837337, 0.62899876, -0.9248414), Vector3(1.084, 0.629, -1.775)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("rainbow3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.025, 3.7333333, 5.133333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.687, 0.629, -1.946), Vector3(-1.6872566, 0.62899923, -0.9163275), Vector3(-1.6872566, 0.62899923, -0.9163275), Vector3(-1.687, 0.629, -1.946)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Label3D:font_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [33]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7333333, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.081, 0), Vector3(0, 1.269, 0), Vector3(0, 1.269, 0), Vector3(0, -0.081, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 18.849556, 0), Vector3(-1.5707964, 18.849556, 0), Vector3(-1.5707964, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Label3D:modulate")
+tracks/10/interp = 2
+tracks/10/loop_wrap = false
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.76666665, 1.1333333, 1.5, 1.9333333, 2.3666666, 2.7, 3.1000001, 3.466667, 3.8333335, 4.2000003, 4.6333337, 5.066666, 5.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.9012504),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0.6, 0, 1), Color(0.95000005, 1, 0, 1), Color(0.19999993, 1, 0, 1), Color(0, 1, 0.9333334, 1), Color(0, 0.083333254, 1, 1), Color(0.7000003, 0, 1, 1), Color(1, 0, 0, 1), Color(1, 0.6, 0, 1), Color(0.95000005, 1, 0, 1), Color(0.19999993, 1, 0, 1), Color(0, 1, 0.9333334, 1), Color(0, 0.083333254, 1, 1), Color(0.7000003, 0, 1, 1), Color(1, 0, 0.099999905, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("rainbow9:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3, 3.6666667, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.8292527, 0.57957566, -0.42252183), Vector3(-1.8468832, 0.5795759, -0.42252183), Vector3(-1.8468832, 0.5795759, -0.42252183), Vector3(-2.8292527, 0.57957566, -0.42252183)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("rainbow6:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 3, 3.7, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.2892431, 0.71120214, 1.9843485), Vector3(0.28924316, 0.7112025, 0.82843167), Vector3(0.28924316, 0.7112025, 0.82843167), Vector3(0.2892431, 0.71120214, 1.9843485)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("rainbow5:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 3.0333333, 3.7333333, 5.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.8098488, 0.5795754, -0.42252183), Vector3(1.8289863, 0.5795758, -0.42252183), Vector3(1.8289863, 0.5795758, -0.42252183), Vector3(2.8098488, 0.5795754, -0.42252183)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("rainbow1:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(-0.016666668, 5.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("rainbow2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(-0.016666668, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("rainbow3:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.013685688, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("rainbow4:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0.013685688, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("rainbow5:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.013685688, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("rainbow6:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0.013685688, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("rainbow9:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0.013685688, 5.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjuso"]
+_data = {
+&"RESET": SubResource("Animation_ovcoh"),
+&"rainbowlvl1": SubResource("Animation_ppx11"),
+&"rainbowlvl2": SubResource("Animation_1yv1y"),
+&"rainbowlvlMAX": SubResource("Animation_5yh34")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c2n8d"]
 render_priority = 0
 shader = ExtResource("10_4w656")
@@ -2247,7 +2998,7 @@ gradient = SubResource("Gradient_getpj")
 [node name="Node3D" type="Node3D" unique_id=1543989762]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=559226723 node_paths=PackedStringArray("dust_instance", "ui_player", "omni_light", "next_machine_box", "prev_machine_box", "rainbow_spinner")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.33787847)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.7, -0.33787847)
 fov = 60.0
 script = ExtResource("1_7mycd")
 dust_instance = NodePath("FingerDust")
@@ -3105,6 +3856,45 @@ transform = Transform3D(0.99999964, -2.5410996e-21, 3.5527137e-14, 1.5529411e-21
 [node name="rainbow_cashout" type="CollisionShape3D" parent="RainbowSpinner/cashout_label/rainbow_cashout/rainbow_cashout" unique_id=1566914859]
 transform = Transform3D(1, 0, -4.106937e-12, -1.1672617e-25, 1, 0, 4.106937e-12, 0, 1, 0.04248047, 0.21372986, -0.054504395)
 shape = SubResource("BoxShape3D_vchc8")
+
+[node name="juiceZone" type="Node3D" parent="RainbowSpinner" unique_id=1577961931]
+
+[node name="rainbowbg" type="MeshInstance3D" parent="RainbowSpinner/juiceZone" unique_id=904185476]
+transform = Transform3D(0.99999976, 0, 0, 0, -4.371138e-08, 0.9999999, 0, -0.9999998, -4.3711385e-08, -1.18045136e-07, -1.3480599, -3.5762787e-07)
+mesh = SubResource("QuadMesh_7qi08")
+surface_material_override/0 = SubResource("ShaderMaterial_ug8er")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RainbowSpinner/juiceZone" unique_id=128827850]
+libraries/ = SubResource("AnimationLibrary_pjuso")
+
+[node name="rainbow1" parent="RainbowSpinner/juiceZone" unique_id=1639672313 instance=ExtResource("62_4obbf")]
+transform = Transform3D(-0.9999997, -2.964616e-21, -8.7422784e-08, 8.7422784e-08, -4.3711395e-08, -0.9999997, -3.82137e-15, -1, 4.3711385e-08, 1.6739814, 0.62883365, 0.84353614)
+
+[node name="rainbow2" parent="RainbowSpinner/juiceZone" unique_id=1637429173 instance=ExtResource("62_4obbf")]
+transform = Transform3D(-0.99999964, -3.388132e-21, -8.7422784e-08, 8.7422784e-08, -4.3711395e-08, -0.99999964, -3.8213705e-15, -1, 4.3711385e-08, -1.0965222, 0.62883365, 0.8435361)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RainbowSpinner/juiceZone" unique_id=1681307375]
+volume_db = -21.03
+
+[node name="rainbow3" parent="RainbowSpinner/juiceZone" unique_id=1484034133 instance=ExtResource("62_4obbf")]
+transform = Transform3D(0.99998754, 0.0048769824, -8.742271e-08, -8.763485e-08, 4.3284512e-08, -0.99999946, -0.004876982, 0.9999881, 4.3711374e-08, -1.6872566, 0.62899923, -0.9163275)
+
+[node name="rainbow4" parent="RainbowSpinner/juiceZone" unique_id=1012651703 instance=ExtResource("62_4obbf")]
+transform = Transform3D(0.9999874, 0.0048769824, -8.7422706e-08, -8.7634845e-08, 4.3284516e-08, -0.99999934, -0.004876982, 0.9999881, 4.3711378e-08, 1.0837337, 0.62899876, -0.9248414)
+
+[node name="rainbow5" parent="RainbowSpinner/juiceZone" unique_id=553044858 instance=ExtResource("62_4obbf")]
+transform = Transform3D(-4.3711356e-08, -0.99999964, -7.1054274e-15, -4.3711346e-08, 1.4210855e-14, -0.9999989, 0.99999946, -4.3711378e-08, -4.371135e-08, 1.8289863, 0.5795758, -0.42252183)
+
+[node name="rainbow6" parent="RainbowSpinner/juiceZone" unique_id=7350345 instance=ExtResource("62_4obbf")]
+transform = Transform3D(-0.9993429, 0.036220573, -8.7422684e-08, 8.5782126e-08, -4.684923e-08, -0.9999987, -0.036220595, -0.9993437, 4.371138e-08, 0.28924316, 0.7112025, 0.82843167)
+
+[node name="rainbow9" parent="RainbowSpinner/juiceZone" unique_id=830983966 instance=ExtResource("62_4obbf")]
+transform = Transform3D(-4.371136e-08, 0.9999996, 4.3711346e-08, 3.5527137e-15, -4.3711374e-08, 0.99999887, 0.99999946, 4.371137e-08, 3.5527137e-15, -1.8468832, 0.5795759, -0.42252183)
+
+[node name="Label3D" type="Label3D" parent="RainbowSpinner/juiceZone" unique_id=2114474115]
+transform = Transform3D(0.99999994, 7.1054274e-15, 4.235165e-22, -7.1054274e-15, 0.99999994, 0, -4.2351647e-22, -3.009266e-36, 1, 2.6542693e-08, 0.30413413, 0)
+text = "HAPPY PRIDE!"
+font_size = 33
 
 [node name="SpinnerSpinner" type="Node3D" parent="." unique_id=924442121]
 transform = Transform3D(-4.371138e-08, 0.9999998, -4.371139e-08, 0, -4.371138e-08, -1, -0.9999998, -4.371138e-08, 1.9106855e-15, -2.5811644, 1.3890682, -0.33926833)
