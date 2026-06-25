@@ -73,6 +73,7 @@
 [ext_resource type="AudioStream" uid="uid://n7j2mbfnwelc" path="res://assets/audio/rainbow_jackpot_sound.wav" id="52_1vm84"]
 [ext_resource type="Texture2D" uid="uid://dkab0pyuwfehe" path="res://assets/lolipop.png" id="53_rqtf5"]
 [ext_resource type="Script" uid="uid://mnpburojbwsv" path="res://scripts/spinners/wheelspinner.gd" id="55_1vm84"]
+[ext_resource type="Shader" uid="uid://lcf3uiqf1k02" path="res://main.gdshader" id="60_phcyf"]
 [ext_resource type="Texture2D" uid="uid://b3o2u6cpywk4u" path="res://assets/wheelwheel/freespin2x.png" id="61_34ol3"]
 [ext_resource type="Shader" uid="uid://cc4s536pc3a0y" path="res://shaders/winSliceShader.gdshader" id="61_gx4rg"]
 [ext_resource type="Texture2D" uid="uid://b4ui20gu7u1bo" path="res://assets/wheelwheel/freespin.png" id="61_wy5fy"]
@@ -2175,6 +2176,14 @@ size = Vector3(0.6052246, 0.20513916, 0.10058594)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vchc8"]
 size = Vector3(0.59472656, 0.20632935, 0.114868164)
 
+[sub_resource type="QuadMesh" id="QuadMesh_7qi08"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ug8er"]
+render_priority = 0
+shader = ExtResource("60_phcyf")
+shader_parameter/density = 0.25
+shader_parameter/speed = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c2n8d"]
 render_priority = 0
 shader = ExtResource("10_4w656")
@@ -2212,7 +2221,7 @@ render_priority = 0
 shader = ExtResource("24_0cp0l")
 shader_parameter/albedo_tex = ExtResource("61_34ol3")
 shader_parameter/noise_color = Color(0.7764706, 0.30588236, 1, 1)
-shader_parameter/strength = -0.22199996304500003
+shader_parameter/strength = -0.22199996304500005
 shader_parameter/noise_scale = 7.88
 shader_parameter/noise_amount = 0.285
 shader_parameter/blank_threshold = 0.05
@@ -3105,6 +3114,12 @@ transform = Transform3D(0.99999964, -2.5410996e-21, 3.5527137e-14, 1.5529411e-21
 [node name="rainbow_cashout" type="CollisionShape3D" parent="RainbowSpinner/cashout_label/rainbow_cashout/rainbow_cashout" unique_id=1566914859]
 transform = Transform3D(1, 0, -4.106937e-12, -1.1672617e-25, 1, 0, 4.106937e-12, 0, 1, 0.04248047, 0.21372986, -0.054504395)
 shape = SubResource("BoxShape3D_vchc8")
+
+[node name="juiceZone" type="Node3D" parent="RainbowSpinner" unique_id=1577961931]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RainbowSpinner/juiceZone" unique_id=904185476]
+mesh = SubResource("QuadMesh_7qi08")
+surface_material_override/0 = SubResource("ShaderMaterial_ug8er")
 
 [node name="SpinnerSpinner" type="Node3D" parent="." unique_id=924442121]
 transform = Transform3D(-4.371138e-08, 0.9999998, -4.371139e-08, 0, -4.371138e-08, -1, -0.9999998, -4.371138e-08, 1.9106855e-15, -2.5811644, 1.3890682, -0.33926833)

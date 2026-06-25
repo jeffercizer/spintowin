@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bcwoagfud8hkr"]
+
+[ext_resource type="PackedScene" uid="uid://fkgj7c6hve3n" path="res://assets/models/rainbow_emoji.glb" id="1_jwa1m"]
+
+[node name="Sketchfab_Scene" unique_id=1639672313 instance=ExtResource("1_jwa1m")]
+
+[node name="Sketchfab_Scene" parent="." index="1" unique_id=197185100 instance=ExtResource("1_jwa1m")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6380849, 0, 0)
