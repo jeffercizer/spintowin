@@ -43,6 +43,8 @@ var last_mouse_pos
 var last_particle_pos
 func _physics_process(delta: float) -> void:
     if active_spinner and active_spinner.want_spin:
+        print(active_spinner)
+        print(active_spinner.want_spin)
         mouse_pos = get_viewport().get_mouse_position()
         if holding_m1 and raycast_hits_spinner(mouse_pos):
             active_spinner.fudging = true
