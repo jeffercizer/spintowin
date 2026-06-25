@@ -208,7 +208,7 @@ func start_spin():
     chosen_angle = randi() % 360 #pick somewhere on the circle
     want_spin = true
     Globals.total_spins += 1
-    var full_spin_rads = TAU*8 * pow(0.8, Globals.spin_percision) #8 full spins + our target
+    var full_spin_rads = TAU*8
     target_rad = (deg_to_rad(chosen_angle)+full_spin_rads)
     #print(target_rad)
     seconds_to_spin = compute_spin_time(target_rad) #we add 267 because -3 degree to the middle and 270 for the ticker placement

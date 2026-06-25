@@ -18,7 +18,6 @@ var want_fishing_minigame = false
 #upgrades and info
 var money: float = 10.0
 var luck = 1
-var spin_percision = 1
 var spin_friction = 1
 
 #15 -> each level makes it 50% larger, 1 -> 1.5 -> 2.25 etc
