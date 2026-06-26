@@ -51,7 +51,11 @@ func _physics_process(delta: float) -> void:
             dust_instance.global_position = hit_position
             #var moving = hit_position.distance_to(last_particle_pos) > 0.05
             dust_instance.emitting = true
+            if(not drag_player.playing):
+                drag_player.play()
+            var intensity = get_dust_intensity(delta)
             apply_dust_intensity(get_dust_intensity(delta))
+            drag_player.volume_db = clamp(intensity*6-24,-24.0,3.0) #intensity ranges typically from 0 - 3
             var dir = get_particle_direction()
             if dir != Vector3.ZERO:
                 dust_instance.look_at(dust_instance.global_position + dir, Vector3.UP)
@@ -59,9 +63,11 @@ func _physics_process(delta: float) -> void:
         else:
             active_spinner.stop_fudging()
             dust_instance.emitting = false
+            drag_player.stop()
         last_mouse_pos = mouse_pos
     else:
         dust_instance.emitting = false
+        drag_player.stop()
     if (want_click):
         raycast_from_screen(mouse_pos)
         want_click = false
@@ -71,11 +77,11 @@ var want_click = false
 var mouse_pos
 #ui and other audio
 @export var ui_player: AudioStreamPlayer3D
+@export var drag_player: AudioStreamPlayer3D
 @export var good_sound: AudioStream
 @export var bad_sound: AudioStream
 
 
-@export var area_light: AreaLight3D
 @export var omni_light: OmniLight3D
 
 

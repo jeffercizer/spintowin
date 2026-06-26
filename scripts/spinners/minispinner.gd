@@ -7,12 +7,12 @@ func _ready() -> void:
     base_experience_to_level_up = 20
     experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
-        "luck_cap": 10,
+        "luck_cap": 20,
         "thresholds": [
-            { "luck": 1,  "Win": 10.0, "Lose": 15.0, "Jackpot": 2.0},
-            { "luck": 5,  "Win": 30.0, "Lose": 15.0, "Jackpot": 20.0},
-            { "luck": 7, "Win": 30.0, "Lose": 7.0, "Jackpot": 40.0},
-            { "luck": 9, "Win": 16.0, "Lose": 0.0,  "Jackpot": 84.0}
+            { "luck": 1,  "Win": 5.0, "Lose": 15.0, "Jackpot": 0.0},
+            { "luck": 12,  "Win": 5.0, "Lose": 15.0, "Jackpot": 0.0},
+            { "luck": 16, "Win": 30.0, "Lose": 7.0, "Jackpot": 20.0},
+            { "luck": 20, "Win": 16.0, "Lose": 0.0,  "Jackpot": 84.0}
         ]
     }
     #goodness can be used to have certain slices grow faster than their base weight would encourage
@@ -65,18 +65,18 @@ func _on_spin_requested() -> void:
     
 #wheel specific callbacks
 func default_win():
-    wheelwheel.wheel_finished(100,0)
+    wheelwheel.wheel_finished(5000000000000,0) #5T
     wheelSound.stream = winSound
     wheelSound.play()
 
 func default_lose():
-    wheelwheel.wheel_finished(-100,0)
+    wheelwheel.wheel_finished(-5000000000000,0) #-5T
     wheelSound.stream = loseSound
     wheelSound.play()
     pass
     
 func default_jackpot():
-    wheelwheel.wheel_finished(1000,0)
+    wheelwheel.wheel_finished(50000000000000,0) #50T
     #coin_animator.play("coinfountain-lvl1")
     wheelSound.stream = jackpotSound
     wheelSound.play()

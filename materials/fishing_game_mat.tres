@@ -7,7 +7,7 @@
 render_priority = 0
 shader = ExtResource("1_ol3qt")
 shader_parameter/albedo_tex = ExtResource("2_mcgud")
-shader_parameter/noise_color = Color(0.70161384, 0.80143553, 0.26934695, 1)
+shader_parameter/noise_color = Color(0.45247096, 0.8604858, 0.21452847, 1)
 shader_parameter/strength = 0.0
 shader_parameter/noise_scale = 4.0
 shader_parameter/noise_amount = 0.25

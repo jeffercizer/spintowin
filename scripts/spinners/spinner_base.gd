@@ -4,6 +4,7 @@ class_name SpinnerBase
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     prev_wheel_y = rotation_degrees.y
+    rebuild_spinner()
     readied = true
     
 var machine_curve
@@ -34,11 +35,12 @@ var wheel_angular_velocity = 0.0
 var damping = 0.98
 var fudging_base_strength = 1.0 #probably 0.3 for real game, level scales it not this (base * level)
 
-var ticker_min_cooldown = 0.032
+var ticker_min_cooldown = 0.060
 var ticker_cooldown = ticker_min_cooldown
 
 var prev_wheel_y = 0.0
 var readied = false
+var deg_per_sec
 func _process(delta: float) -> void:
     pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -106,27 +108,23 @@ func _physics_process(delta: float) -> void:
             wheel_angular_velocity *= damping #natural slow
             wheel_angular_velocity += diff * torque_multi #increase by mouse
         last_mouse_angle = angle   
-    elif abs(wheel_angular_velocity) > 0.0001: #we spin the wheel for fun
+    elif abs(wheel_angular_velocity) > 0.0001: #we spin the wheel for fun and slow down fast
         rotate_y(wheel_angular_velocity * delta)
-        wheel_angular_velocity *= damping
+        wheel_angular_velocity *= (damping - 0.03)
             
     if(Globals.luck != _rebuild_luck_store): #rebuild wheel when luck gets updated
         rebuild_spinner()
         _rebuild_luck_store = Globals.luck
     #always do this per frame
     var diff = abs(rotation_degrees.y - prev_wheel_y)
-    var deg_per_sec = diff / delta
+    deg_per_sec = diff / delta
     ticker_cooldown -= delta
     if(ticker_cooldown <= 0.0):
         if(ticker_crossed()):
             ticker_cooldown = ticker_min_cooldown
-            var time_per_peg = 6.0 / deg_per_sec
-            var playback_speed = clamp((0.2 / time_per_peg)/5, 1, 1)
             if(ticker_high_next):
-                ticker_high_player.pitch_scale = playback_speed
                 ticker_high_player.play()
             else:
-                ticker_low_player.pitch_scale = playback_speed
                 ticker_low_player.play()
             ticker_high_next = not ticker_high_next
     prev_wheel_y = rotation_degrees.y
@@ -288,11 +286,13 @@ func add_slice(label, material, weight, callback):
         "buckets": 0,
         "callback": callback
     })
-    rebuild_spinner()
     
 func remove_slice(label):
     slices = slices.filter(func(s): return s.label != label)
     rebuild_spinner()
+    
+func remove_allslices():
+    slices = []
 
 
 func set_slices(new_slices):

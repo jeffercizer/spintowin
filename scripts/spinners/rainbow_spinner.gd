@@ -4,7 +4,7 @@ extends SpinnerBase
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     payout_label.text = Globals.format_number(get_payout())
-    base_experience_to_level_up = base_payout
+    base_experience_to_level_up = base_payout * 2
     experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
         "luck_cap": 16,
@@ -35,9 +35,6 @@ func _ready() -> void:
     add_slice("black", blackMaterial, 1.0, Callable(self, "black_lose"))
     add_slice("rainbow", rainbowMaterial, 1.0, Callable(self, "rainbow_win")) 
     add_slice("black", blackMaterial, 1.0, Callable(self, "black_lose"))
-    
-    #winLabel.text = "= Win " + str(get_win_amount()) + "$"
-    #jackpotLabel.text = "= Win " + str(get_jackpot_amount()) + "$"
         
     super._ready()
     

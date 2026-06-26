@@ -19,6 +19,7 @@ var want_fishing_minigame = false
 var money: float = 10.0
 var luck = 1
 var spin_friction = 1
+var max_combo = 2
 
 #15 -> each level makes it 60% larger, 1 -> 1.6 -> 2.4 etc
 var level_effect = 1.6
@@ -63,7 +64,4 @@ func format_number(n: float) -> String:
         return str(n)
 
     var short = n / chosen_value
-    if(n > 0):
-        return "%.2f%s" % [short, chosen_suffix]
-    else:
-        return "-%.2f%s" % [short, chosen_suffix]
+    return "%.2f%s" % [short, chosen_suffix]

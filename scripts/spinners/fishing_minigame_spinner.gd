@@ -32,7 +32,7 @@ var max_degrees_for_fish = 9000 #100 rotations #25
 var seconds_between_variance
 func reset(): #requires 40 to 80 rotations
     degrees_of_rotation_for_fish  = randi_range(max_degrees_for_fish-3600, max_degrees_for_fish)
-    fish_strength = randi_range(40, 80)
+    fish_strength = randi_range(25, 35)
     seconds_between_variance = randi_range(1,3)
     seconds_until_variance = seconds_between_variance
     want_spin = false
@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
             fish_variance = randf() + 0.5
         if dragging: #we spin the wheel with the mouse
             var torque_multi = clamp(mouse_distance / 100, 0.0, 1.0)
-            torque_multi = torque_multi * 600 *  pow(1.1, Globals.spin_friction)
+            torque_multi = torque_multi * 600
             var angle = get_mouse_angle()
             if angle != null and last_mouse_angle != null:
                 var diff = wrapf(angle - last_mouse_angle, -PI, PI)
@@ -90,11 +90,9 @@ func _physics_process(delta: float) -> void:
         update_line()
         if(degrees_of_rotation_for_fish <= 0.0):
             #pull fish
-            wheelSound.stream = best_result_sound
-            wheelSound.play() #victory sound
             music_player.stop()
             fish_animation.play("fishswarmlvl1")
-            add_money(5000000)
+            add_money(5000000 * Globals.max_combo)  #5M * max_combo
             game_running = false
             minigame_parent.visible = false
             backwall_blocker.disabled = true

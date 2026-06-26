@@ -12,36 +12,56 @@ func _ready() -> void:
         mini_spinner6,
         mini_spinner7
     ]
-    base_experience_to_level_up = get_flat_pos()
+    base_experience_to_level_up = get_flat_pos() * 2
     experience_to_level_up = base_experience_to_level_up * (level * level)
     machine_curve = {
-        "luck_cap": 10,
+        "luck_cap": 20,
         "thresholds": [
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 5.0, "2xmulti": 20.0, "4xmulti": 20.0,  "2x_extra_spin": 20.0, "4x_extra_spin": 20.0},
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 5.0, "2xmulti": 20.0, "4xmulti": 20.0,  "2x_extra_spin": 20.0, "4x_extra_spin": 20.0},
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 10.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 0.0, "4x_extra_spin": 0.0},
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 10.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 0.0, "4x_extra_spin": 0.0},
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 10.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 0.0, "4x_extra_spin": 0.0},
-            { "luck": 1,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 10.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 0.0, "4x_extra_spin": 0.0},
+            { "luck": 1,  "extra_spin": 5.0, "flatpositive": 10.0, "bigflatpos": 5.0, "flatnegative": 10.0, "smallflatnegative": 5.0, "2xmulti": 10.0, "4xmulti": 0.0,  "2x_extra_spin": 5.0, "4x_extra_spin": 0.0},
+            { "luck": 12,  "extra_spin": 5.0, "flatpositive": 10.0, "bigflatpos": 5.0, "flatnegative": 10.0, "smallflatnegative": 5.0, "2xmulti": 10.0, "4xmulti": 0.0,  "2x_extra_spin": 5.0, "4x_extra_spin": 0.0},
+            { "luck": 13,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 5.0, "flatnegative": 10.0, "smallflatnegative": 5.0, "2xmulti": 10.0, "4xmulti": 5.0,  "2x_extra_spin": 10.0, "4x_extra_spin": 5.0},
+            { "luck": 16,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 10.0, "smallflatnegative": 10.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 10.0, "4x_extra_spin": 5.0},
+            { "luck": 18,  "extra_spin": 10.0, "flatpositive": 15.0, "bigflatpos": 10.0, "flatnegative": 5.0, "smallflatnegative": 5.0, "2xmulti": 2.0, "4xmulti": 2.0,  "2x_extra_spin": 20.0, "4x_extra_spin": 10.0},
+            { "luck": 20,  "extra_spin": 5.0, "flatpositive": 10.0, "bigflatpos": 20.0, "flatnegative": 0.0, "smallflatnegative": 0.0, "2xmulti": 10.0, "4xmulti": 20.0,  "2x_extra_spin": 10.0, "4x_extra_spin": 20.0},
         ]
     }
-    #goodness can be used to have certain slices grow faster than their base weight would encourage
-    #my idea is so we can make jackpots super super rare but become very doable
-    add_slice("extra_spin", freespinMat, 1.0, Callable(self, "extra_spin")) 
-    add_slice("flatnegative", loseMaterial, 1.0, Callable(self, "default_lose"))
-    add_slice("flatpositive", winMaterial, 1.0, Callable(self, "flat_pos")) 
-    add_slice("flatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
-    add_slice("bigflatpos", bigWinMaterial, 1.0, Callable(self, "big_flat_pos"))
-    add_slice("flatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
-    add_slice("2xmulti", multi2xMat, 1.0, Callable(self, "multi_2x"))
-    add_slice("flatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
-    add_slice("4xmulti", multi4xMat, 1.0, Callable(self, "multi_4x"))  
-    add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose")) 
-    add_slice("2x_extra_spin", free2xspinMat, 1.0, Callable(self, "extra_spin_2")) 
-    add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose"))
-    add_slice("4x_extra_spin", free4xspinMat, 1.0, Callable(self, "extra_spin_4")) 
-    add_slice("smallflatnegative", loseMaterial, 1.0, Callable(self, "default_lose"))
+    add_slices()
     super._ready()
+    
+    
+func add_slices():
+    var slices_defs = [
+        { "label": "flatnegative",      "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "flatnegative",      "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "flatnegative",      "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "flatnegative",      "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "smallflatnegative", "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "smallflatnegative", "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "smallflatnegative", "mat": loseMaterial,  "weight": 1.0, "callback": Callable(self, "default_lose") },
+        { "label": "flatpositive",      "mat": winMaterial,   "weight": 1.0, "callback": Callable(self, "flat_pos") },
+        { "label": "flatpositive",      "mat": winMaterial,   "weight": 1.0, "callback": Callable(self, "flat_pos") },
+        { "label": "flatpositive",      "mat": winMaterial,   "weight": 1.0, "callback": Callable(self, "flat_pos") },
+        { "label": "flatpositive",      "mat": winMaterial,   "weight": 1.0, "callback": Callable(self, "flat_pos") },
+        { "label": "bigflatpos",        "mat": bigWinMaterial,"weight": 1.0, "callback": Callable(self, "big_flat_pos") },
+        { "label": "bigflatpos",        "mat": bigWinMaterial,"weight": 1.0, "callback": Callable(self, "big_flat_pos") },
+        { "label": "2xmulti",           "mat": multi2xMat,    "weight": 1.0, "callback": Callable(self, "multi_2x") },
+        { "label": "2xmulti",           "mat": multi2xMat,    "weight": 1.0, "callback": Callable(self, "multi_2x") },
+        { "label": "4xmulti",           "mat": multi4xMat,    "weight": 1.0, "callback": Callable(self, "multi_4x") },
+        { "label": "extra_spin",        "mat": freespinMat,   "weight": 1.0, "callback": Callable(self, "extra_spin") },
+        { "label": "extra_spin",        "mat": freespinMat,   "weight": 1.0, "callback": Callable(self, "extra_spin") },
+        { "label": "extra_spin",        "mat": freespinMat,   "weight": 1.0, "callback": Callable(self, "extra_spin") },
+        { "label": "extra_spin",        "mat": freespinMat,   "weight": 1.0, "callback": Callable(self, "extra_spin") },
+        { "label": "2x_extra_spin",     "mat": free2xspinMat, "weight": 1.0, "callback": Callable(self, "extra_spin_2") },
+        { "label": "2x_extra_spin",     "mat": free2xspinMat, "weight": 1.0, "callback": Callable(self, "extra_spin_2") },
+        { "label": "4x_extra_spin",     "mat": free4xspinMat, "weight": 1.0, "callback": Callable(self, "extra_spin_4") },
+    ]
+
+    slices_defs.shuffle()
+
+    for slice in slices_defs:
+        add_slice(slice.label, slice.mat, slice.weight, slice.callback)
+    rebuild_spinner()
+
     
 
 
@@ -72,11 +92,14 @@ var t = 0.0
 func _process(delta: float) -> void:
     super._process(delta)
     t += delta
-    if(spinning >= 0):
+    if(spinning > 0):
+        print("----------")
         payout_label.modulate.a = 1.0
         payout_label.outline_modulate.a = 1.0
-        payout_label.text = "$"+ str(flat_value * multi_value)
-        payout_label.font_size = (flat_value * multi_value)/get_flat_pos()
+        print(flat_value)
+        print(multi_value)
+        payout_label.text = "$"+ Globals.format_number(flat_value * multi_value)
+        payout_label.font_size = clamp((flat_value * multi_value)/get_flat_pos(), 32, 256)
         var rot = sin(t) * 30.0
         payout_label.rotation_degrees.y = rot
     if(spinning == 0 and waiting_to_payout):
@@ -84,21 +107,45 @@ func _process(delta: float) -> void:
         waiting_to_payout = false
         var tween = get_tree().create_tween()
         tween.tween_property(payout_label, "modulate:a", 0.0, 1.0)
+        
         tween = get_tree().create_tween()
         tween.tween_property(payout_label, "outline_modulate:a", 0.0, 1.0)
+        
+        tween = get_tree().create_tween()
+        tween.tween_interval(2.0) 
+        tween.tween_callback(func():
+            remove_allslices()
+            add_slices()
+        )
     
+@export var l_ticker: MeshInstance3D
+@export var r_ticker: MeshInstance3D
 var prev_seconds = 1.0
 func _physics_process(_delta: float) -> void:
     if(spinning <= 0.0):
         super._physics_process(_delta) 
+    var l_mat = l_ticker.get_active_material(0) as ShaderMaterial
+    var r_mat = r_ticker.get_active_material(0) as ShaderMaterial
+    var fake_rotation_y = rotation_degrees.y
+    if(deg_per_sec > 40):
+        fake_rotation_y = 72.0
+    l_mat.set_shader_parameter("wheel_angle_deg", fake_rotation_y+90)
+    r_mat.set_shader_parameter("wheel_angle_deg", fake_rotation_y-90)
+    var clockwise_shader_val = -1.0 if clockwise else 1.0
+    l_mat.set_shader_parameter("clockwise", clockwise_shader_val)
+    r_mat.set_shader_parameter("clockwise", clockwise_shader_val)
     
 func evaluate_wheel():
     result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y))
     slices[result_slice].callback.call()
-    #result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y+90))
-    #slices[result_slice].callback.call()
-    
+    result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y+90))
+    slices[result_slice].callback.call()
+    result_slice = get_slice_from_bucket(get_bucket_index(rotation_degrees.y-90))
+    slices[result_slice].callback.call()
     waiting_to_payout = true
+    var tween = get_tree().create_tween()
+
+
 
 func start_spin(spin_num_mod):
     super.start_spin(spin_num_mod)
@@ -134,12 +181,12 @@ func get_flat_pos():
     return 5000000000000.0 * pow(Globals.level_effect, level) #5T
     
 func get_flat_negative():
-    return -50000000000000.0 #50T
+    return -5000000000000.0 #5T
 
 var waiting_to_payout = false
 var spinning = 0.0
 var flat_value = 0.0    
-var multi_value = 0.0
+var multi_value = 1.0
 
 var spinners: Array[MiniSpinner]
 @export var mini_spinner1: MiniSpinner
@@ -152,10 +199,10 @@ var spinners: Array[MiniSpinner]
 
 
 func payout():
-    print("payout")
     add_money(flat_value * multi_value)
+    add_experience(flat_value * multi_value)
     flat_value = 0.0
-    multi_value = 0.0
+    multi_value = 1.0
     
 #wheel specific callbacks
 func default_lose():
@@ -171,17 +218,17 @@ func flat_pos():
     pass
     
 func big_flat_pos():
-    flat_value += get_flat_pos() * 10.0
+    flat_value += get_flat_pos() * 10.0 #50T
     wheelSound.stream = winSound
     wheelSound.play()
     pass
     
 func multi_2x():
-    multi_value += 2.0
+    multi_value *= 2.0
     pass
     
 func multi_4x():
-    multi_value += 4.0
+    multi_value *= 4.0
     pass
     
 func extra_spin():

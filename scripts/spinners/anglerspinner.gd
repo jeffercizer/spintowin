@@ -3,14 +3,14 @@ extends SpinnerBase
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    base_experience_to_level_up = 20000
+    base_experience_to_level_up = get_fish1_win_reward() * 10
     experience_to_level_up = base_experience_to_level_up
-    fish1Label.text = "= Win " + str(int(100 * pow(1.1, level-1))) + "$"
-    fish2Label.text = "= Win " + str(int(500 * pow(1.1, level-1))) + "$"
-    fish3Label.text = "= Win " + str(int(5000 * pow(1.1, level-1))) + "$"
-    fish4Label.text = "= Win " + str(int(20000 * pow(1.1, level-1))) + "$"
-    junk1Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
-    junk2Label.text = "= Lose " + str(int(500 * pow(0.9, level-1))) + "$"
+    fish1Label.text = "= Win " + Globals.format_number(get_fish1_win_reward()) + "$"
+    fish2Label.text = "= Win " + Globals.format_number(get_fish2_win_reward()) + "$"
+    fish3Label.text = "= Win " + Globals.format_number(get_fish3_win_reward()) + "$"
+    fish4Label.text = "= Win " + Globals.format_number(get_fish4_win_reward()) + "$"
+    junk1Label.text = "= Lose " + Globals.format_number(get_junk1_win_reward()) + "$"
+    junk2Label.text = "= Lose " + Globals.format_number(get_junk2_win_reward()) + "$"
     machine_curve = {
         "luck_cap": 13,
         "thresholds": [
@@ -78,7 +78,8 @@ func _ready() -> void:
 @export var jackpotSound: AudioStream
 
 @export var fishing_minigame: FishingMinigameSpinner
-
+@export var combo_label: Label3D
+var combo = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -134,35 +135,60 @@ func get_junk2_win_reward():
 #wheel specific callbacks
 func fish1_win():
     var reward = get_fish1_win_reward()
-    add_money(reward)
-    add_experience(reward)
+    add_money(reward * combo)
+    add_experience(reward * combo)
+    if(combo < Globals.max_combo):
+        combo *= 2.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = winSound
     wheelSound.play()
     
 func fish2_win():
     var reward = get_fish2_win_reward()
-    add_money(reward)
-    add_experience(reward)
+    add_money(reward * combo)
+    add_experience(reward * combo)
+    if(combo < Globals.max_combo):
+        combo *= 2.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = winSound
     wheelSound.play()
     
 func fish3_win():
     var reward = get_fish3_win_reward()
-    add_money(reward)
-    add_experience(reward)
+    add_money(reward * combo)
+    add_experience(reward * combo)
+    if(combo < Globals.max_combo):
+        combo *= 2.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = winSound
     wheelSound.play()
     
 func fish4_win():
     var reward = get_fish4_win_reward()
-    add_money(reward)
-    add_experience(reward)
+    add_money(reward * combo)
+    add_experience(reward * combo)
+    if(combo < Globals.max_combo):
+        combo *= 2.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = winSound
     wheelSound.play()
     
 func junk1_lose():
     var reward = get_junk1_win_reward()
     add_money(reward)
+    if(combo < Globals.max_combo):
+        combo = 1.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = loseSound
     wheelSound.play()
     pass
@@ -170,6 +196,11 @@ func junk1_lose():
 func junk2_lose():
     var reward = get_junk2_win_reward()
     add_money(reward)
+    if(combo < Globals.max_combo):
+        combo = 1.0
+        combo_label.text = str(int(combo)) + "x"
+        combo_label.font_size = min(48+combo, 128)
+        combo_label.outline_modulate.a = combo / 32.0
     wheelSound.stream = loseSound
     wheelSound.play()
     pass
